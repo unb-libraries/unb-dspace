@@ -60,6 +60,7 @@
     -->
     <aspects>
         <aspect name="Artifact Browser" path="resource://aspects/ArtifactBrowser/" />
+        <aspect name="Sherpa Romeo" path="resource://aspects/SherpaRomeo/" />
         <aspect name="Administration" path="resource://aspects/Administrative/" />
         <aspect name="E-Person" path="resource://aspects/EPerson/" />
         <aspect name="Submission and Workflow" path="resource://aspects/Submission/" />

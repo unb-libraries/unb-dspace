@@ -52,17 +52,21 @@ Copy or link RiverRun build file (defines tasks for loading sample data):
 
 ## RiverRun extensions to DSpace
 
-Link riverrun-api project to DSpace source:
+Link `riverrun-api` and `riverrun-xmlui` projects to DSpace source:
 
 `ln -s [git]/unb-dspace/riverrun-api [dspace-src]/riverrun-api`
+
+`ln -s [git]/unb-dspace/riverrun-api [dspace-src]/riverrun-xmlui`
 
 Copy modified POM files to build RiverRun extensions:
 
 `cp [git]/unb-dspace/dspace/pom.xml [dspace-src]/dspace/pom.xml`
 
-Currenly, only the OAI webapp depends on RiverRun extensions, so update the POM here, too:
+The OAI and XMLUI webapps depend on RiverRun extensions, so update the POMs here, too:
 
 `cp [git]/unb-dspace/dspace/modules/oai/pom.xml [dspace-src]/dspace/modules/oai/pom.xml`
+
+`cp [git]/unb-dspace/dspace/modules/xmlui/pom.xml [dspace-src]/dspace/modules/xmlui/pom.xml`
 
 See DSpace build cookbook for details: https://wiki.duraspace.org/display/DSPACE/BuildCookbook
 

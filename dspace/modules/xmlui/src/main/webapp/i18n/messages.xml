@@ -324,7 +324,42 @@
 	<message key="xmlui.ItemExportDownloadReader.auth_header">This export archive is restricted.</message>
 	<message key="xmlui.ItemExportDownloadReader.auth_message">The export archive you are attempting to access is a restricted resource and requires credentials to view. Please login below to access the export archive.</message>
 
+
 	<!--!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+            Sherpa/RoMEO Aspect
+
+	!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
+
+        <!-- Item-view policy options -->
+        <message key="xmlui.SherpaRomeo.PolicyOptions.publisher_policies">Self-Archiving Policies</message>
+        <message key="xmlui.SherpaRomeo.PolicyOptions.show_policies">Check publishers' self-archiving policies</message>
+
+        <!-- Policy view -->
+        <message key="xmlui.SherpaRomeo.PolicyViewer.trail">View Policies</message>
+        <message key="xmlui.SherpaRomeo.PolicyViewer.title">Self-Archiving Policies</message>
+        <message key="xmlui.SherpaRomeo.PolicyViewer.no_information">No information is available about the self-archiving policies of this item's publisher.</message>
+        <message key="xmlui.SherpaRomeo.PolicyViewer.error">An error occurred while retrieving information about this item's publisher.</message>
+        <message key="xmlui.SherpaRomeo.PolicyViewer.contact_us">Please contact us for assistance.</message>
+        <message key="xmlui.SherpaRomeo.PolicyViewer.Journal.issn">ISSN: {0}</message>
+        <message key="xmlui.SherpaRomeo.PolicyViewer.Publisher.not_found">No publishers found.</message>
+        <message key="xmlui.SherpaRomeo.PolicyViewer.Publisher.found">Information found for {0} publisher(s).</message>    
+        <message key="xmlui.SherpaRomeo.PolicyViewer.Preprint.title">Author's Pre-print</message>
+        <message key="xmlui.SherpaRomeo.PolicyViewer.Postprint.title">Author's Post-print</message>
+        <message key="xmlui.SherpaRomeo.PolicyViewer.Permission.can">Self-archiving is permitted.</message>
+        <message key="xmlui.SherpaRomeo.PolicyViewer.Permission.cannot">Self-archiving is not permitted.</message>
+        <message key="xmlui.SherpaRomeo.PolicyViewer.Permission.restricted">Self-archiving is permitted, subject to the following restrictions.</message>
+        <message key="xmlui.SherpaRomeo.PolicyViewer.Permission.unclear">Self-archiving permission is unclear.</message>
+        <message key="xmlui.SherpaRomeo.PolicyViewer.Permission.unknown">Self-archiving permission is unknown.</message>
+        <message key="xmlui.SherpaRomeo.PolicyViewer.GeneralConditions.title">General Conditions</message>
+        <message key="xmlui.SherpaRomeo.PolicyViewer.PaidOpenAccess.title">Paid Open Access</message>
+        <message key="xmlui.SherpaRomeo.PolicyViewer.PaidOpenAccess.no_information">No information is available about paid open-accces options.</message>
+        <message key="xmlui.SherpaRomeo.PolicyViewer.Copyright.title">Copyright Policies</message>
+        <message key="xmlui.SherpaRomeo.PolicyViewer.Copyright.no_information">Copyright information is not available.</message>
+        <message key="xmlui.SherpaRomeo.PolicyViewer.Date.updated">Last updated: {0}</message>
+
+
+        <!--!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 		
 		                EPerson Aspect
 		

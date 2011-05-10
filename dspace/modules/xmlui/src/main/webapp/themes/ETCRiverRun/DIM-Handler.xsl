@@ -49,75 +49,7 @@
 			</xsl:if>
 		</span>
 	</xsl:template>
-
-	<!-- An item rendered in the summaryView pattern. This is the default way to view a DSpace item in Manakin. -->
-	<xsl:template name="itemSummaryView-DIM">
-		<!-- Generate the info about the item from the metadata section -->
-		<xsl:apply-templates select="./mets:dmdSec/mets:mdWrap[@OTHERMDTYPE='DIM']/mets:xmlData/dim:dim"
-			mode="itemSummaryView-DIM"/>
 		
-		<!-- Generate the bitstream information from the file section -->
-		<xsl:choose>
-			<xsl:when test="./mets:fileSec/mets:fileGrp[@USE='CONTENT' or @USE='ORIGINAL']">
-				<xsl:apply-templates select="./mets:fileSec/mets:fileGrp[@USE='CONTENT' or @USE='ORIGINAL']">
-					<xsl:with-param name="context" select="."/>
-					<xsl:with-param name="primaryBitstream"
-						select="./mets:structMap[@TYPE='LOGICAL']/mets:div[@TYPE='DSpace Item']/mets:fptr/@FILEID"
-					/>
-				</xsl:apply-templates>
-			</xsl:when>
-			<!-- Special case for handling ORE resource maps stored as DSpace bitstreams -->
-			<xsl:when test="./mets:fileSec/mets:fileGrp[@USE='ORE']">
-				<xsl:apply-templates select="./mets:fileSec/mets:fileGrp[@USE='ORE']"/>
-			</xsl:when>
-			<xsl:otherwise>
-				<h2>
-					<i18n:text>xmlui.dri2xhtml.METS-1.0.item-files-head</i18n:text>
-				</h2>
-				<table class="ds-table file-list">
-					<tr class="ds-table-header-row">
-						<th>
-							<i18n:text>xmlui.dri2xhtml.METS-1.0.item-files-file</i18n:text>
-						</th>
-						<th>
-							<i18n:text>xmlui.dri2xhtml.METS-1.0.item-files-size</i18n:text>
-						</th>
-						<th>
-							<i18n:text>xmlui.dri2xhtml.METS-1.0.item-files-format</i18n:text>
-						</th>
-						<th>
-							<i18n:text>xmlui.dri2xhtml.METS-1.0.item-files-view</i18n:text>
-						</th>
-					</tr>
-					<tr>
-						<td colspan="4">
-							<p>
-								<i18n:text>xmlui.dri2xhtml.METS-1.0.item-no-files</i18n:text>
-							</p>
-						</td>
-					</tr>
-				</table>
-			</xsl:otherwise>
-		</xsl:choose>
-		
-		<!-- @custom begin -->
-		<!-- Generate custom item information from the metadata section -->
-		<!-- @todo: aspect not theme -->
-		<xsl:apply-templates select="./mets:dmdSec/mets:mdWrap[@OTHERMDTYPE='DIM']/mets:xmlData/dim:dim"
-			mode="itemSummaryView-DIM-custom"/>
-		<!-- @custom end -->
-		
-		<!-- Generate the Creative Commons license information from the file section (DSpace deposit license hidden by default)-->
-		<xsl:apply-templates select="./mets:fileSec/mets:fileGrp[@USE='CC-LICENSE']"/>
-	</xsl:template>
-	
-	<!-- @custom begin  -->
-	<!-- Generate custom item info from the metadata section -->
-	<xsl:template match="dim:dim" mode="itemSummaryView-DIM-custom">
-		<xsl:call-template name="sherpaRmeoQuery"/>
-	</xsl:template>
-	<!-- @custom end -->
-	
 	<!-- render each field on a row, alternating phase between odd and even -->
 	<!-- recursion needed since not every row appears for each Item. -->
 	<xsl:template name="itemSummaryView-DIM-fields">
@@ -313,10 +245,7 @@
 			<xsl:when test="$clause = 5 and (dim:field[@element='identifier' and @qualifier='uri'])">
 				<tr class="ds-table-row {$phase}">
 					<td>
-						<!-- @custom begin -->
-						<!-- @todo: class is 'bold2' rather than 'bold'; intentional? -->
-						<span class="bold2"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-uri</i18n:text>:</span>
-						<!-- @custom end -->
+						<span class="bold"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-uri</i18n:text>:</span>
 					</td>
 					<td>
 						<xsl:for-each select="dim:field[@element='identifier' and @qualifier='uri']">
@@ -388,114 +317,4 @@
 		</xsl:choose>
 	</xsl:template>
 	
-	<!-- An item rendered in the detailView pattern, the "full item record" view of a DSpace item in Manakin. -->
-	<xsl:template name="itemDetailView-DIM">
-		
-		<!-- Output all of the metadata about the item from the metadata section -->
-		<xsl:apply-templates select="mets:dmdSec/mets:mdWrap[@OTHERMDTYPE='DIM']/mets:xmlData/dim:dim"
-			mode="itemDetailView-DIM"/>
-		
-		<!-- Generate the bitstream information from the file section -->
-		<xsl:choose>
-			<xsl:when test="./mets:fileSec/mets:fileGrp[@USE='CONTENT' or @USE='ORIGINAL']">
-				<xsl:apply-templates select="./mets:fileSec/mets:fileGrp[@USE='CONTENT' or @USE='ORIGINAL']">
-					<xsl:with-param name="context" select="."/>
-					<xsl:with-param name="primaryBitstream"
-						select="./mets:structMap[@TYPE='LOGICAL']/mets:div[@TYPE='DSpace Item']/mets:fptr/@FILEID"
-					/>
-				</xsl:apply-templates>
-			</xsl:when>
-			<!-- Special case for handling ORE resource maps stored as DSpace bitstreams -->
-			<xsl:when test="./mets:fileSec/mets:fileGrp[@USE='ORE']">
-				<xsl:apply-templates select="./mets:fileSec/mets:fileGrp[@USE='ORE']"/>
-			</xsl:when>
-			<xsl:otherwise>
-				<h2>
-					<i18n:text>xmlui.dri2xhtml.METS-1.0.item-files-head</i18n:text>
-				</h2>
-				<table class="ds-table file-list">
-					<tr class="ds-table-header-row">
-						<th>
-							<i18n:text>xmlui.dri2xhtml.METS-1.0.item-files-file</i18n:text>
-						</th>
-						<th>
-							<i18n:text>xmlui.dri2xhtml.METS-1.0.item-files-size</i18n:text>
-						</th>
-						<th>
-							<i18n:text>xmlui.dri2xhtml.METS-1.0.item-files-format</i18n:text>
-						</th>
-						<th>
-							<i18n:text>xmlui.dri2xhtml.METS-1.0.item-files-view</i18n:text>
-						</th>
-					</tr>
-					<tr>
-						<td colspan="4">
-							<p>
-								<i18n:text>xmlui.dri2xhtml.METS-1.0.item-no-files</i18n:text>
-							</p>
-						</td>
-					</tr>
-				</table>
-			</xsl:otherwise>
-		</xsl:choose>
-		
-		<!-- @custom begin -->
-		<!-- Generate custom item information from the metadata section -->
-		<xsl:apply-templates select="./mets:dmdSec/mets:mdWrap[@OTHERMDTYPE='DIM']/mets:xmlData/dim:dim"
-			mode="itemDetailView-DIM-custom"/>
-		<!-- @custom end -->
-		
-		<!-- Generate the Creative Commons license information from the file section (DSpace deposit license hidden by default) -->
-		<xsl:apply-templates select="mets:fileSec/mets:fileGrp[@USE='CC-LICENSE']"/>
-		
-	</xsl:template>
-	
-	<!-- @custom begin -->
-	<!-- Generate custom item info from the metadata section -->
-	<xsl:template match="dim:dim" mode="itemDetailView-DIM-custom">
-		<xsl:call-template name="sherpaRmeoQuery"/>
-	</xsl:template>
-	<!-- @custom end -->
-
-	<!-- @custom begin -->
-	<!-- @todo this has no business being here --> 
-	<!-- 
-		*************************************
-		SHERPA/RoMEO: publisher polices
-		*************************************
-		
-		Fetch information about publisher's stance on self-archiving.
-	-->
-	
-	<xsl:template name="sherpaRmeoQuery">
-		<xsl:variable name="publicationQuery">
-			<xsl:choose>
-				<xsl:when test="dim:field[@element='identifier'][@qualifier='issn']">
-					<xsl:value-of
-						select="concat('?issn=', dim:field[@element='identifier'][@qualifier='issn']/node())"/>
-				</xsl:when>
-				<xsl:when
-					test="dim:field[@element='type']='Journal Article' and dim:field[@element='relation'][@qualifier='ispartof']">
-					<xsl:value-of
-						select="concat('?jtitle=', dim:field[@element='relation'][@qualifier='ispartof']/node())"
-					/>
-				</xsl:when>
-				<xsl:otherwise/>
-			</xsl:choose>
-		</xsl:variable>
-		
-		<!-- 
-			We need the handle & item ID to allow the user to return to this item
-			via a (minimal, hacky) crumb trail. 
-		-->
-		<xsl:variable name="identifier" select="dim:field[@element='identifier'][@qualifier='uri']"/>
-		
-		<xsl:if test="string-length($publicationQuery)>0">
-			<p class="ds-paragraph">
-				<a href="/sherpa-romeo/query{$publicationQuery}&amp;id={$identifier}">Check publisher's
-					copyright and self-archiving policies</a>
-			</p>
-		</xsl:if>
-	</xsl:template>
-	<!-- @custom end -->
 </xsl:stylesheet>

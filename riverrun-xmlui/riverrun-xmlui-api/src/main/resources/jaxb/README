@@ -1,0 +1,2 @@
+JAXB used to generate classes in sherparomeo.jaxb from this DTD.
+DTD support is experimental but sufficiently functional for fairly basic S/R data.

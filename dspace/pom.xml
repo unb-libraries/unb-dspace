@@ -294,6 +294,19 @@
             </modules>
         </profile>
 
+        <!-- RiverRun extensions to DSpace XMLUI API -->
+        <profile>
+            <id>riverrun-xmlui-api</id>
+            <activation>
+                <file>
+                    <exists>../riverrun-xmlui-api/pom.xml</exists>
+                </file>
+            </activation>
+            <modules>
+                <module>../riverrun-xmlui-api</module>
+            </modules>
+        </profile>
+
         <profile>
             <id>dspace-xmlui-wing</id>
             <activation>
@@ -342,6 +355,21 @@
             </activation>
             <modules>
                 <module>../dspace-xmlui</module>
+            </modules>
+        </profile>
+
+        <!--
+           Builds XMLUI WAR for RiverRun extensions to DSpace
+        -->
+        <profile>
+            <id>riverrun-xmlui</id>
+            <activation>
+                <file>
+                    <exists>../riverrun-xmlui/pom.xml</exists>
+                </file>
+            </activation>
+            <modules>
+                <module>../riverrun-xmlui</module>
             </modules>
         </profile>
 

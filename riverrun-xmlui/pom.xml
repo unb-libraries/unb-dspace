@@ -1,0 +1,40 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+   <modelVersion>4.0.0</modelVersion>
+   <groupId>ca.unb.lib.riverrun</groupId>
+   <artifactId>riverrun-xmlui</artifactId>
+   <version>1.0</version>
+   <packaging>pom</packaging>
+   <name>RiverRun XML-UI (Manakin) Extensions</name>
+   <url>https://github.com/unb-libraries/unb-dspace</url>
+   <description>
+      RiverRun extensions to DSpace web-based user interface based upon Apache Cocoon.
+   </description>
+
+   <parent>
+      <groupId>org.dspace</groupId>
+      <artifactId>dspace-parent</artifactId>
+      <version>1.6.2</version>
+   </parent>
+
+   <repositories>
+      <repository>
+         <id>maven.dspace.org-snapshot</id>
+         <name>DSpace Maven Snapshot Repository</name>
+         <url>http://maven.dspace.org/snapshot</url>
+         <releases>
+            <enabled>false</enabled>
+            <checksumPolicy>fail</checksumPolicy>
+         </releases>
+         <snapshots>
+            <enabled>true</enabled>
+            <updatePolicy>never</updatePolicy>
+            <checksumPolicy>fail</checksumPolicy>
+         </snapshots>
+      </repository>
+   </repositories>
+   
+   <modules>
+      <module>riverrun-xmlui-api</module>
+   </modules>
+
+</project>
