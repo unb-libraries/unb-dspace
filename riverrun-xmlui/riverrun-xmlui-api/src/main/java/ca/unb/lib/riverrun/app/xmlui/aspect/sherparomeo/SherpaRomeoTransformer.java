@@ -6,9 +6,13 @@ import java.util.List;
 import org.apache.log4j.Logger;
 import org.dspace.app.xmlui.cocoon.AbstractDSpaceTransformer;
 import org.dspace.app.xmlui.wing.Message;
+import org.dspace.app.xmlui.wing.WingException;
+import org.dspace.app.xmlui.wing.element.TextContainer;
 import org.dspace.content.DCValue;
 import org.dspace.content.Item;
 import org.dspace.core.ConfigurationManager;
+import org.jsoup.Jsoup;
+import org.jsoup.safety.Whitelist;
 
 /**
  * This class will become more useful if we extend S/R queries to allow journal
@@ -85,6 +89,21 @@ public class SherpaRomeoTransformer extends AbstractDSpaceTransformer {
         }
 
         return issn;
+    }
+
+    /**
+     * SHERPA/RoMEO returns XML with elements that may contain escaped strings
+     * of unpredictable HTML/XML-ish content; this is a hack to get rid of it.
+     */
+    protected void addFilteredContent(TextContainer container, String content) throws WingException {
+
+        // This is a quick hack to parse & string HTML-ish content from text
+        String fragment = Jsoup.clean(content, Whitelist.none());
+        
+        // .. however, we now have HTML entities in the fragment
+        String filtered = fragment.replace("&quot;", "\"").replace("&lt;", "<").replace("&gt;", ">").replace("&amp;", "&");
+
+        container.addContent(filtered);
     }
 
 }

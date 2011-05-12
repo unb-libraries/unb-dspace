@@ -30,8 +30,6 @@ import org.dspace.app.xmlui.wing.element.Para;
 import org.dspace.authorize.AuthorizeException;
 import org.dspace.content.DSpaceObject;
 import org.dspace.content.Item;
-import org.jsoup.Jsoup;
-import org.jsoup.safety.Whitelist;
 import org.xml.sax.SAXException;
 
 /**
@@ -280,11 +278,8 @@ public class PolicyViewer extends SherpaRomeoTransformer implements CacheablePro
                         Iterator ipre = prerestriction.iterator();
                         while (ipre.hasNext()) {
                             Prerestriction pre = (Prerestriction) ipre.next();
-                            // Filter indeterminate, escaped XML and HTML
-                            // fragments returned in query
-                            preprintConditions.addItem(
-                                    Jsoup.clean(pre.getvalue(), Whitelist.none())
-                                    );
+                            // Filter indeterminate, escaped XML and HTML fragments returned by S/R
+                            addFilteredContent(preprintConditions.addItem(), pre.getvalue());
                         }
                     }
                 }
@@ -321,12 +316,8 @@ public class PolicyViewer extends SherpaRomeoTransformer implements CacheablePro
                         Iterator ipost = postrestriction.iterator();
                         while (ipost.hasNext()) {
                             Postrestriction post = (Postrestriction) ipost.next();
-
-                            // Filter indeterminate, escaped XML and HTML
-                            // fragments returned in query 
-                            postprintConditions.addItem(
-                                    Jsoup.clean(post.getvalue(), Whitelist.none())
-                                    );
+                            // Filter indeterminate, escaped XML and HTML fragments returned by S/R
+                            addFilteredContent(postprintConditions.addItem(), post.getvalue());
                         }
                     }
                 }
@@ -340,12 +331,8 @@ public class PolicyViewer extends SherpaRomeoTransformer implements CacheablePro
                     Iterator ic = conditionList.iterator();
                     while (ic.hasNext()) {
                         Condition cond = (Condition) ic.next();
-
-                        // Filter indeterminate, escaped XML and HTML
-                        // fragments returned in query
-                        conditions.addItem(
-                                Jsoup.clean(cond.getvalue(), Whitelist.none())
-                                );
+                        // Filter indeterminate, escaped XML and HTML fragments returned by S/R
+                        addFilteredContent(conditions.addItem(), cond.getvalue());
                     }
                 }
                 // Paid open access, if any
