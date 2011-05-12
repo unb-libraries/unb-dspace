@@ -60,11 +60,12 @@
     -->
     <aspects>
         <aspect name="Artifact Browser" path="resource://aspects/ArtifactBrowser/" />
-        <aspect name="Sherpa Romeo" path="resource://aspects/SherpaRomeo/" />
-        <aspect name="Administration" path="resource://aspects/Administrative/" />
-        <aspect name="E-Person" path="resource://aspects/EPerson/" />
+        <aspect name="Static Pages"     path="resource://aspects/StaticPages/" />
+        <aspect name="Sherpa Romeo"     path="resource://aspects/SherpaRomeo/" />
+        <aspect name="Administration"   path="resource://aspects/Administrative/" />
+        <aspect name="E-Person"         path="resource://aspects/EPerson/" />
         <aspect name="Submission and Workflow" path="resource://aspects/Submission/" />
-	<aspect name="Statistics" path="resource://aspects/Statistics/" />
+	<aspect name="Statistics"       path="resource://aspects/Statistics/" />
         <!-- 
             This aspect tests the various possible DRI features, 
             it helps a theme developer create themes 

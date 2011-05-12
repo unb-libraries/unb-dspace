@@ -358,6 +358,20 @@
         <message key="xmlui.SherpaRomeo.PolicyViewer.Copyright.no_information">Copyright information is not available.</message>
         <message key="xmlui.SherpaRomeo.PolicyViewer.Date.updated">Last updated: {0}</message>
 
+	<!--!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+             Static Pages Aspect
+
+	!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
+    <message key="xmlui.StaticPages.HelpViewer.trail">Help</message>
+    <message key="xmlui.StaticPages.HelpViewer.title">RiverRun Help</message>
+    <message key="xmlui.StaticPages.DefaultLicense.trail">Default License</message>
+    <message key="xmlui.StaticPages.DefaultLicense.title">RiverRun License</message>
+    <message key="xmlui.StaticPages.DefaultLicense.about">
+       The following limited licence allows UNB to store an electronic
+       copy of your work and make it available to others over the
+       Internet (unless a non-standard agreement is negotiated in advance).
+    </message>                
 
         <!--!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 		
@@ -1793,6 +1807,7 @@
 	<message key="xmlui.dri2xhtml.structural.profile">Profile: </message>
 	<message key="xmlui.dri2xhtml.structural.logout">Logout</message>
 	<message key="xmlui.dri2xhtml.structural.login">Login</message>
+	<message key="xmlui.dri2xhtml.structural.help">Help</message>        
 
 	<message key="xmlui.dri2xhtml.structural.search">Search RiverRun</message>
 	<message key="xmlui.dri2xhtml.structural.search-advanced">Advanced Search</message>
