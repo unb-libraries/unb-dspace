@@ -59,8 +59,12 @@
         /xmlui/cocoon/aspects/ directory followed by a slash.
     -->
     <aspects>
-        <aspect name="Artifact Browser" path="resource://aspects/ArtifactBrowser/" />
-        <aspect name="Static Pages"     path="resource://aspects/StaticPages/" />
+        <!--
+           We override DSpace's ArtifactBrowser with a customized version: see
+           aspect sitemap for details.
+         -->
+        <aspect name="RiverRun Artifact Browser" path="resource://aspects/RiverRunArtifactBrowser/" />
+
         <aspect name="Sherpa Romeo"     path="resource://aspects/SherpaRomeo/" />
         <aspect name="Administration"   path="resource://aspects/Administrative/" />
         <aspect name="E-Person"         path="resource://aspects/EPerson/" />

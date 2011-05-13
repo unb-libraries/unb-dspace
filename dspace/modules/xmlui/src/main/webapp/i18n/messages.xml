@@ -233,6 +233,11 @@
 	
 	
 	<!-- org.dspace.app.xmlui.artifactbrowser.Contact.java -->
+        <!--
+           These messages are for the default DSpace Contact page; messages for
+           the custom RiverRun version are grouped under the
+           RiverRunArifactBrowser aspect.
+        -->
 	<message key="xmlui.ArtifactBrowser.Contact.title">Contact us</message>
 	<message key="xmlui.ArtifactBrowser.Contact.trail">Contact us</message>
 	<message key="xmlui.ArtifactBrowser.Contact.head">Contact us</message>
@@ -322,7 +327,32 @@
 	
 	<!-- Export Archive download messages -->
 	<message key="xmlui.ItemExportDownloadReader.auth_header">This export archive is restricted.</message>
-	<message key="xmlui.ItemExportDownloadReader.auth_message">The export archive you are attempting to access is a restricted resource and requires credentials to view. Please login below to access the export archive.</message>
+    <message key="xmlui.ItemExportDownloadReader.auth_message">The export archive you are attempting to access is a restricted resource and requires credentials to view. Please login below to access the export archive.</message>
+
+    <!--!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            RiverRun Artifact Browser Aspect
+    !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
+
+    <!-- Contact page -->
+    <message key="xmlui.RiverRunArtifactBrowser.Contact.title">Contact Us</message>
+    <message key="xmlui.RiverRunArtifactBrowser.Contact.trail">Contact Us</message>
+    <message key="xmlui.RiverRunArtifactBrowser.Contact.head">Contact Us</message>
+    <message key="xmlui.RiverRunArtifactBrowser.Contact.para">For additional help or for questions, please contact the RiverRun administrators.</message>
+    <message key="xmlui.RiverRunArtifactBrowser.Contact.repoadmin_label">Content questions</message>
+    <message key="xmlui.RiverRunArtifactBrowser.Contact.sysadmin_label">Technical concerns</message>
+    <message key="xmlui.RiverRunArtifactBrowser.Contact.feedback_label">Online form</message>
+    <message key="xmlui.RiverRunArtifactBrowser.Contact.feedback_link">Send feedback</message>
+
+    <!-- Help pages -->
+    <message key="xmlui.RiverRunArtifactBrowser.HelpViewer.trail">Help</message>
+    <message key="xmlui.RiverRunArtifactBrowser.HelpViewer.title">RiverRun Help</message>
+    <message key="xmlui.RiverRunArtifactBrowser.DefaultLicense.trail">Default Licence</message>
+    <message key="xmlui.RiverRunArtifactBrowser.DefaultLicense.title">RiverRun Licence</message>
+    <message key="xmlui.RiverRunArtifactBrowser.DefaultLicense.about">
+       The following limited licence allows UNB to store an electronic
+       copy of your work and make it available to others over the
+       Internet (unless a non-standard agreement is negotiated in advance).
+    </message>
 
 
 	<!--!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -358,20 +388,7 @@
         <message key="xmlui.SherpaRomeo.PolicyViewer.Copyright.no_information">Copyright information is not available.</message>
         <message key="xmlui.SherpaRomeo.PolicyViewer.Date.updated">Last updated: {0}</message>
 
-	<!--!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-             Static Pages Aspect
-
-	!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
-    <message key="xmlui.StaticPages.HelpViewer.trail">Help</message>
-    <message key="xmlui.StaticPages.HelpViewer.title">RiverRun Help</message>
-    <message key="xmlui.StaticPages.DefaultLicense.trail">Default Licence</message>
-    <message key="xmlui.StaticPages.DefaultLicense.title">RiverRun Licence</message>
-    <message key="xmlui.StaticPages.DefaultLicense.about">
-       The following limited licence allows UNB to store an electronic
-       copy of your work and make it available to others over the
-       Internet (unless a non-standard agreement is negotiated in advance).
-    </message>                
+           
 
         <!--!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 		
