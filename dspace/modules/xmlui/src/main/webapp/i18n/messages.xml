@@ -1862,6 +1862,13 @@
 	<message key="xmlui.dri2xhtml.METS-1.0.item-publisher">Publisher</message>
 	<message key="xmlui.dri2xhtml.METS-1.0.item-subject">Subject</message>
 	
+	<!-- ETCRiverRun theme keys -->
+	<message key="xmlui.ETCRiverRun.METS-1.0.item-citation">Citation</message>
+	<message key="xmlui.ETCRiverRun.METS-1.0.item-doi">Published Version</message>	
+	<message key="xmlui.ETCRiverRun.METS-1.0.item-uri">Other Versions</message>
+	<message key="xmlui.ETCRiverRun.METS-1.0.item-handle">Citable link to this page</message>	
+	<!-- end ETCRiverRun theme keys -->
+	
 	<message key="xmlui.dri2xhtml.METS-1.0.item-files-head">Files in this item</message>
 	<message key="xmlui.dri2xhtml.METS-1.0.item-files-file">Files</message>
 	<message key="xmlui.dri2xhtml.METS-1.0.item-files-size">Size</message>
