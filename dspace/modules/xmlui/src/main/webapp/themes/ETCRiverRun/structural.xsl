@@ -331,4 +331,19 @@
             </a>
         </div>
     </xsl:template>
+
+<!--
+The default version of this template applies a style attribute with a variable
+font-size property to h[#] elements.  This version removes the attribute.
+-->
+    <xsl:template match="dri:div/dri:head" priority="3">
+        <xsl:variable name="head_count" select="count(ancestor::dri:div)"/>
+        <xsl:element name="h{$head_count}">
+            <xsl:call-template name="standardAttributes">
+                <xsl:with-param name="class">ds-div-head</xsl:with-param>
+            </xsl:call-template>
+            <xsl:apply-templates />
+        </xsl:element>
+    </xsl:template>
+
 </xsl:stylesheet>
