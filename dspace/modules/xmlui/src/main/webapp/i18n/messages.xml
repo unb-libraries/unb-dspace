@@ -333,6 +333,9 @@
             RiverRun Artifact Browser Aspect
     !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
 
+    <!-- ItemViewer -->
+    <message key="xmlui.RiverRunArtifactBrowser.ItemViewer.persistent_identifier">Cite or link to this item: </message>
+
     <!-- Contact page -->
     <message key="xmlui.RiverRunArtifactBrowser.Contact.title">Contact Us</message>
     <message key="xmlui.RiverRunArtifactBrowser.Contact.trail">Contact Us</message>

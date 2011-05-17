@@ -137,8 +137,13 @@
 		</span>
 	</xsl:template>
 
-	<!-- render each field on a row, alternating phase between odd and even -->
-	<!-- recursion needed since not every row appears for each Item. -->
+	<!-- 
+		Modified to include: 
+		* Citation 							dc.identifier.citation
+		* Published Version 		dc.identifer.doi
+		* Other Versions  			dc.identifier.uri
+		* Citable link					Handle as URL
+	-->		
 	<xsl:template name="itemSummaryView-DIM-fields">
 		<xsl:param name="clause" select="'1'"/>
 		<xsl:param name="phase" select="'even'"/>

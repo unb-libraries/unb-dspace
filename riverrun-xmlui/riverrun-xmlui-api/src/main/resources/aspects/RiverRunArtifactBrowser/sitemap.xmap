@@ -23,7 +23,6 @@ Adds handling for the following URL matches:
             <map:transformer name="CommunityBrowser" src="org.dspace.app.xmlui.aspect.artifactbrowser.CommunityBrowser"/>
             <map:transformer name="CommunityViewer" src="org.dspace.app.xmlui.aspect.artifactbrowser.CommunityViewer"/>
             <map:transformer name="CollectionViewer" src="org.dspace.app.xmlui.aspect.artifactbrowser.CollectionViewer"/>
-            <map:transformer name="ItemViewer" src="org.dspace.app.xmlui.aspect.artifactbrowser.ItemViewer"/>
             <map:transformer name="ConfigurableBrowse" src="org.dspace.app.xmlui.aspect.artifactbrowser.ConfigurableBrowse"/>
             <map:transformer name="SimpleSearch" src="org.dspace.app.xmlui.aspect.artifactbrowser.SimpleSearch"/>
             <map:transformer name="AdvancedSearch" src="org.dspace.app.xmlui.aspect.artifactbrowser.AdvancedSearch"/>
@@ -38,6 +37,7 @@ Adds handling for the following URL matches:
             <map:transformer name="DefaultLicense" src="ca.unb.lib.riverrun.app.xmlui.aspect.artifactbrowser.DefaultLicense"/>
             <map:transformer name="FeedbackForm" src="ca.unb.lib.riverrun.app.xmlui.aspect.artifactbrowser.FeedbackForm"/>
             <map:transformer name="Help" src="ca.unb.lib.riverrun.app.xmlui.aspect.artifactbrowser.Help"/>
+            <map:transformer name="ItemViewer" src="ca.unb.lib.riverrun.app.xmlui.aspect.artifactbrowser.ItemViewer"/>            
         </map:transformers>
 
         <map:matchers default="wildcard">

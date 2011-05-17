@@ -451,6 +451,25 @@ p.copyright-text {
         text-align: center;
 }
 
+p.item-view-persistent-identifier {
+  font-style: italic;
+  color: #333333;
+}
+
+p.item-view-persistent-identifier a {
+    color:#333333;
+    text-decoration: none;
+}
+p.item-view-persistent-identifier a:visited {
+    color:#333333;
+}
+p.item-view-persistent-identifier a:hover {
+    color:#333333;
+    text-decoration: underline;
+}
+
+
+
 div.primary {
         overflow: auto;
         margin-bottom: 20px;
