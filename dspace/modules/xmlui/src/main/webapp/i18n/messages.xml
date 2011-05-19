@@ -881,7 +881,7 @@
         <message key="xmlui.administrative.Navigation.context_export_metadata">Export Metadata</message>
 	
 	<!-- Site administrator options -->
-	<message key="xmlui.administrative.Navigation.administrative_head">Administrative</message>
+	<message key="xmlui.administrative.Navigation.administrative_head">Administer</message>
 	<message key="xmlui.administrative.Navigation.administrative_access_control">Access Control</message>
 	<message key="xmlui.administrative.Navigation.administrative_people">People</message>
 	<message key="xmlui.administrative.Navigation.administrative_groups">Groups</message>
@@ -1785,6 +1785,14 @@
 	<message key="xmlui.administrative.NotAuthorized.para1b">system administrators</message>
 	<message key="xmlui.administrative.NotAuthorized.para1c">.</message>
 	<message key="xmlui.administrative.NotAuthorized.para2">Login as another user</message>
+        
+    <!--!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        RiverRun Administrative Aspect
+    !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
+    <message key="xmlui.RiverRunAdministrative.Navigation.item_admin_head">This Item</message>
+    <message key="xmlui.RiverRunAdministrative.Navigation.collection_admin_head">This Collection</message>
+    <message key="xmlui.RiverRunAdministrative.Navigation.community.admin_head">This Community</message>
+    <message key="xmlui.RiverRunAdministrative.Navigation.communities.admin_head">This Community</message>    
 
 
     <!--!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!

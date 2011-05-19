@@ -30,18 +30,27 @@ public class Navigation
         extends org.dspace.app.xmlui.aspect.administrative.Navigation {
 
     /** 
-     * Language strings have private access in superclass so must be
-     * redeclared here.
+     * Language strings have private access in superclass so are redeclared here.
      */
-    private static final String T_CONTEXT_HEAD = "CONTEXT";// message("xmlui.administrative.Navigation.context_head");
+
+    private static final Message T_MY_ACCOUNT = message("xmlui.EPerson.Navigation.my_account");
+    private static final Message T_MY_ACCOUNT_EXPORTS = message("xmlui.administrative.Navigation.account_export");
+
     private static final Message T_CONTEXT_EDIT_ITEM = message("xmlui.administrative.Navigation.context_edit_item");
     private static final Message T_CONTEXT_EDIT_COLLECTION = message("xmlui.administrative.Navigation.context_edit_collection");
-    private static final Message T_CONTEXT_ITEM_MAPPER = message("xmlui.administrative.Navigation.context_item_mapper");
     private static final Message T_CONTEXT_EDIT_COMMUNITY = message("xmlui.administrative.Navigation.context_edit_community");
+
     private static final Message T_CONTEXT_CREATE_COLLECTION = message("xmlui.administrative.Navigation.context_create_collection");
     private static final Message T_CONTEXT_CREATE_SUBCOMMUNITY = message("xmlui.administrative.Navigation.context_create_subcommunity");
     private static final Message T_CONTEXT_CREATE_COMMUNITY = message("xmlui.administrative.Navigation.context_create_community");
+
     private static final Message T_CONTEXT_EXPORT_METADATA = message("xmlui.administrative.Navigation.context_export_metadata");
+    private static final Message T_CONTEXT_EXPORT_ITEM = message("xmlui.administrative.Navigation.context_export_item");
+    private static final Message T_CONTEXT_EXPORT_COLLECTION = message("xmlui.administrative.Navigation.context_export_collection");
+    private static final Message T_CONTEXT_EXPORT_COMMUNITY = message("xmlui.administrative.Navigation.context_export_community");
+
+    private static final Message T_CONTEXT_ITEM_MAPPER = message("xmlui.administrative.Navigation.context_item_mapper");
+
     private static final Message T_ADMINISTRATIVE_IMPORT_METADATA = message("xmlui.administrative.Navigation.administrative_import_metadata");
     private static final Message T_ADMINISTRATIVE_HEAD = message("xmlui.administrative.Navigation.administrative_head");
     private static final Message T_ADMINISTRATIVE_ACCESS_CONTROL = message("xmlui.administrative.Navigation.administrative_access_control");
@@ -54,13 +63,17 @@ public class Navigation
     private static final Message T_ADMINISTRATIVE_ITEMS = message("xmlui.administrative.Navigation.administrative_items");
     private static final Message T_ADMINISTRATIVE_WITHDRAWN = message("xmlui.administrative.Navigation.administrative_withdrawn");
     private static final Message T_ADMINISTRATIVE_CONTROL_PANEL = message("xmlui.administrative.Navigation.administrative_control_panel");
-    private static final Message T_STATISTICS = message("xmlui.administrative.Navigation.statistics");
-    private static final Message T_CONTEXT_EXPORT_ITEM = message("xmlui.administrative.Navigation.context_export_item");
-    private static final Message T_CONTEXT_EXPORT_COLLECTION = message("xmlui.administrative.Navigation.context_export_collection");
-    private static final Message T_CONTEXT_EXPORT_COMMUNITY = message("xmlui.administrative.Navigation.context_export_community");
-    private static final Message T_ACCOUNT_EXPORT = message("xmlui.administrative.Navigation.account_export");
-    private static final Message T_MY_ACCOUNT = message("xmlui.EPerson.Navigation.my_account");
 
+    private static final Message T_STATISTICS = message("xmlui.administrative.Navigation.statistics");
+
+    /**
+     * RiverRun-specific messages
+     */
+    private static final Message T_ITEM_ADMIN_HEAD = message("xmlui.RiverRunAdministrative.Navigation.item_admin_head");
+    private static final Message T_COLLECTION_ADMIN_HEAD = message("xmlui.RiverRunAdministrative.Navigation.collection_admin_head");
+    private static final Message T_COMMUNITY_ADMIN_HEAD = message("xmlui.RiverRunAdministrative.Navigation.community_admin_head");
+    private static final Message T_COMMUNITIES_ADMIN_HEAD = message("xmlui.RiverRunAdministrative.Navigation.communities_admin_head");     
+    
     /**
      * Exports available for download. Not accessible in parent; redeclared.
      */
@@ -94,14 +107,14 @@ public class Navigation
 
         options.addList("browse");
         List accountList = options.addList("account");
-        List contextList = options.addList("context");
+        options.addList("context");
         List adminList = options.addList("administrative");
 
         accountList.setHead(T_MY_ACCOUNT);
 
         // My Account options
         if (availableExports != null && availableExports.size() > 0) {
-            accountList.addItem().addXref(contextPath + "/admin/export", T_ACCOUNT_EXPORT);
+            accountList.addItem().addXref(contextPath + "/admin/export", T_MY_ACCOUNT_EXPORTS);
         }
 
         //Check if a system administrator
@@ -114,12 +127,16 @@ public class Navigation
         if (dso instanceof Item) {
             Item item = (Item) dso;
             if (item.canEdit()) {
-                contextList.setHead(T_CONTEXT_HEAD);
-                contextList.addItem().addXref(contextPath + "/admin/item?itemID=" + item.getID(), T_CONTEXT_EDIT_ITEM);
+                adminList.setHead(T_ADMINISTRATIVE_HEAD);
+
+                // Add a sublist for item admin options.
+                List itemList = adminList.addList("item-context");
+                itemList.setHead(T_ITEM_ADMIN_HEAD);
+                itemList.addItem().addXref(contextPath + "/admin/item?itemID=" + item.getID(), T_CONTEXT_EDIT_ITEM);
 
                 if (AuthorizeManager.isAdmin(this.context, dso)) {
-                    contextList.addItem().addXref(contextPath + "/admin/export?itemID=" + item.getID(), T_CONTEXT_EXPORT_ITEM);
-                    contextList.addItem().addXref(contextPath + "/csv/handle/" + dso.getHandle(), T_CONTEXT_EXPORT_METADATA);
+                    itemList.addItem().addXref(contextPath + "/admin/export?itemID=" + item.getID(), T_CONTEXT_EXPORT_ITEM);
+                    itemList.addItem().addXref(contextPath + "/csv/handle/" + dso.getHandle(), T_CONTEXT_EXPORT_METADATA);
                 }
             }
         }
@@ -129,14 +146,18 @@ public class Navigation
 
             // can they admin this collection?
             if (collection.canEditBoolean(true)) {
+                adminList.setHead(T_ADMINISTRATIVE_HEAD);
 
-                contextList.setHead(T_CONTEXT_HEAD);
-                contextList.addItemXref(contextPath + "/admin/collection?collectionID=" + collection.getID(), T_CONTEXT_EDIT_COLLECTION);
-                contextList.addItemXref(contextPath + "/admin/mapper?collectionID=" + collection.getID(), T_CONTEXT_ITEM_MAPPER);
+                // Add a sublist for collection admin options
+                List collectionList = adminList.addList("collection-context");
+                collectionList.setHead(T_COLLECTION_ADMIN_HEAD);
+
+                collectionList.addItemXref(contextPath + "/admin/collection?collectionID=" + collection.getID(), T_CONTEXT_EDIT_COLLECTION);
+                collectionList.addItemXref(contextPath + "/admin/mapper?collectionID=" + collection.getID(), T_CONTEXT_ITEM_MAPPER);
 
                 if (AuthorizeManager.isAdmin(this.context, dso)) {
-                    contextList.addItem().addXref(contextPath + "/admin/export?collectionID=" + collection.getID(), T_CONTEXT_EXPORT_COLLECTION);
-                    contextList.addItem().addXref(contextPath + "/csv/handle/" + dso.getHandle(), T_CONTEXT_EXPORT_METADATA);
+                    collectionList.addItem().addXref(contextPath + "/admin/export?collectionID=" + collection.getID(), T_CONTEXT_EXPORT_COLLECTION);
+                    collectionList.addItem().addXref(contextPath + "/csv/handle/" + dso.getHandle(), T_CONTEXT_EXPORT_METADATA);
                 }
             }
         }
@@ -144,30 +165,41 @@ public class Navigation
         else if (dso instanceof Community) {
             Community community = (Community) dso;
 
-            // can they admin this collection?
-            if (community.canEditBoolean()) {
+            boolean canAdministerCommunity = community.canEditBoolean();
+            boolean canAddtoCommunity = AuthorizeManager.authorizeActionBoolean(this.context, community, Constants.ADD);
 
-                contextList.setHead(T_CONTEXT_HEAD);
-                contextList.addItemXref(contextPath + "/admin/community?communityID=" + community.getID(), T_CONTEXT_EDIT_COMMUNITY);
-                if (AuthorizeManager.isAdmin(this.context, dso)) {
-                    contextList.addItem().addXref(contextPath + "/admin/export?communityID=" + community.getID(), T_CONTEXT_EXPORT_COMMUNITY);
+            if (canAdministerCommunity || canAddtoCommunity) {
+
+                // We need an admin options section for this community.
+                adminList.setHead(T_ADMINISTRATIVE_HEAD);
+
+                List communityList = adminList.addList("community-context");
+                communityList.setHead(T_COMMUNITY_ADMIN_HEAD);
+
+                if (canAdministerCommunity) {
+                    communityList.addItemXref(contextPath + "/admin/community?communityID=" + community.getID(), T_CONTEXT_EDIT_COMMUNITY);
+
+                    if (AuthorizeManager.isAdmin(this.context, dso)) {
+                        communityList.addItem().addXref(contextPath + "/admin/export?communityID=" + community.getID(), T_CONTEXT_EXPORT_COMMUNITY);
+                    }
+                    communityList.addItem().addXref(contextPath + "/csv/handle/" + dso.getHandle(), T_CONTEXT_EXPORT_METADATA);
                 }
-                contextList.addItem().addXref(contextPath + "/csv/handle/" + dso.getHandle(), T_CONTEXT_EXPORT_METADATA);
-            }
 
-            // can they add to this community?
-            if (AuthorizeManager.authorizeActionBoolean(this.context, community, Constants.ADD)) {
-                contextList.setHead(T_CONTEXT_HEAD);
-                contextList.addItemXref(contextPath + "/admin/collection?createNew&communityID=" + community.getID(), T_CONTEXT_CREATE_COLLECTION);
-                contextList.addItemXref(contextPath + "/admin/community?createNew&communityID=" + community.getID(), T_CONTEXT_CREATE_SUBCOMMUNITY);
+                if (canAddtoCommunity) {
+                    communityList.addItemXref(contextPath + "/admin/collection?createNew&communityID=" + community.getID(), T_CONTEXT_CREATE_COLLECTION);
+                    communityList.addItemXref(contextPath + "/admin/community?createNew&communityID=" + community.getID(), T_CONTEXT_CREATE_SUBCOMMUNITY);
+                }
             }
         }
 
         if ("community-list".equals(this.sitemapURI)) {
             // Only System administrators can create top-level communities
             if (isSystemAdmin) {
-                contextList.setHead(T_CONTEXT_HEAD);
-                contextList.addItemXref(contextPath + "/admin/community?createNew", T_CONTEXT_CREATE_COMMUNITY);
+                adminList.setHead(T_ADMINISTRATIVE_HEAD);
+
+                List communityOptions = adminList.addList("admin-community-context");
+                communityOptions.setHead(T_COMMUNITIES_ADMIN_HEAD);
+                communityOptions.addItemXref(contextPath + "/admin/community?createNew", T_CONTEXT_CREATE_COMMUNITY);
             }
         }
 
