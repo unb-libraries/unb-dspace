@@ -2058,5 +2058,9 @@
         <message key="xmlui.ArtifactBrowser.Navigation.browse_facultyauthor">Faculty Authors</message>
 <!-- / [Bugzilla #7] -->
 
+<!-- Bugzilla #42] -->
+	<message key="xmlui.ArtifactBrowser.AbstractSearch.sort_by.recordtype">item type</message>
+<!-- / [Bugzilla #42] -->
+
 
 </catalogue>
