@@ -72,7 +72,6 @@ public class Navigation
     private static final Message T_ITEM_ADMIN_HEAD = message("xmlui.RiverRunAdministrative.Navigation.item_admin_head");
     private static final Message T_COLLECTION_ADMIN_HEAD = message("xmlui.RiverRunAdministrative.Navigation.collection_admin_head");
     private static final Message T_COMMUNITY_ADMIN_HEAD = message("xmlui.RiverRunAdministrative.Navigation.community_admin_head");
-    private static final Message T_COMMUNITIES_ADMIN_HEAD = message("xmlui.RiverRunAdministrative.Navigation.communities_admin_head");     
     
     /**
      * Exports available for download. Not accessible in parent; redeclared.
@@ -198,7 +197,7 @@ public class Navigation
                 adminList.setHead(T_ADMINISTRATIVE_HEAD);
 
                 List communityOptions = adminList.addList("admin-community-context");
-                communityOptions.setHead(T_COMMUNITIES_ADMIN_HEAD);
+                communityOptions.setHead(T_COMMUNITY_ADMIN_HEAD);
                 communityOptions.addItemXref(contextPath + "/admin/community?createNew", T_CONTEXT_CREATE_COMMUNITY);
             }
         }

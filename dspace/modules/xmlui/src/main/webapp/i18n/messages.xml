@@ -1791,8 +1791,7 @@
     !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
     <message key="xmlui.RiverRunAdministrative.Navigation.item_admin_head">This Item</message>
     <message key="xmlui.RiverRunAdministrative.Navigation.collection_admin_head">This Collection</message>
-    <message key="xmlui.RiverRunAdministrative.Navigation.community.admin_head">This Community</message>
-    <message key="xmlui.RiverRunAdministrative.Navigation.communities.admin_head">This Community</message>    
+    <message key="xmlui.RiverRunAdministrative.Navigation.community_admin_head">This Community</message>
 
 
     <!--!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
