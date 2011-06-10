@@ -438,4 +438,27 @@
         </xsl:element>
     </xsl:template>
 
+	<!-- 
+		The default version of this template generates an <img/> element,
+		linked to a target, if specified.  
+		
+		This version generates an <iframe>, useful for embedding videos.
+
+		@fixme Te <figure> element has no @id attribute, according to 
+			http://www.dspace.org/1_5_2Documentation/ch13.html
+			This information is out of date; re-examine in 1.7.
+			
+			.. but test for, and apply, @id attribute if present. We can get away
+			with this because there is no official, distributed DRI schema.
+	-->
+	<xsl:template match="dri:figure[@rend='iframe']">
+		<iframe>
+			<xsl:if test="@id">
+				<xsl:attribute name="id"><xsl:value-of select="@id"/></xsl:attribute>
+			</xsl:if>
+			<xsl:attribute name="src"><xsl:value-of select="@source"/></xsl:attribute>
+			&#xFEFF; <!-- non-breaking space to force a eparate end tag -->
+		</iframe>	
+	</xsl:template>
+	
 </xsl:stylesheet>
