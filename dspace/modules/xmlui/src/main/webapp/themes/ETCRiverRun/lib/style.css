@@ -479,6 +479,15 @@ div.primary {
         margin-bottom: 10px;
 }
 
+/* Embedded content */
+iframe {
+	padding: 10px 20px;	
+	border: 0;
+	width: 400px;
+	height: 300px;
+}
+
+
 table {
     clear: both;
         border-spacing: 0px;
