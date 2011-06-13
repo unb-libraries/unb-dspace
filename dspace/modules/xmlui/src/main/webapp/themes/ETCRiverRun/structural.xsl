@@ -86,16 +86,14 @@
                                 //Clear default text of emty text areas on focus
                                 function tFocus(element)
                                 {
-                                        if (element.value == '
-                <i18n:text>xmlui.dri2xhtml.default.textarea.value</i18n:text>'){element.value='';}
+                                        if (element.value == '<i18n:text>xmlui.dri2xhtml.default.textarea.value</i18n:text>'){element.value='';}
                                 }
                                 //Clear default text of emty text areas on submit
                                 function tSubmit(form)
                                 {
                                         var defaultedElements = document.getElementsByTagName("textarea");
                                         for (var i=0; i != defaultedElements.length; i++){
-                                                if (defaultedElements[i].value == '
-                <i18n:text>xmlui.dri2xhtml.default.textarea.value</i18n:text>'){
+                                                if (defaultedElements[i].value == '<i18n:text>xmlui.dri2xhtml.default.textarea.value</i18n:text>'){
                                                         defaultedElements[i].value='';}}
                                 }
                                 //Disable pressing 'enter' key to submit a form (otherwise pressing 'enter' causes a submission to start over)
@@ -268,12 +266,6 @@
                             </a>
                         </xsl:otherwise>
                     </xsl:choose>
-
-                    <!-- @todo: access to the help link shouldn't depend on
-                    theme code (as do the 'feedback' and 'contact' options
-                    in the footer).  Should be available at aspect level, maybe
-                    an always-available options block, and then styled here.
-                    -->
                     <xsl:text> | </xsl:text>
                     <a>
                     <xsl:attribute name="href">
@@ -398,6 +390,14 @@
                 <i18n:text>xmlui.dri2xhtml.structural.footer-promotional</i18n:text>
             </div>
             <div id="ds-footer-links">
+                <a>
+                    <xsl:attribute name="href">
+                        <xsl:value-of select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='contextPath'][not(@qualifier)]"/>
+                        <xsl:text>/help</xsl:text>
+                    </xsl:attribute>
+                    <i18n:text>xmlui.dri2xhtml.structural.help</i18n:text>
+                </a>
+                <xsl:text> | </xsl:text>
                 <a>
                     <xsl:attribute name="href">
                         <xsl:value-of select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='contextPath'][not(@qualifier)]"/>
