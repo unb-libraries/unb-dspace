@@ -537,8 +537,7 @@
 						<xsl:text>&amp;</xsl:text>
 					</xsl:if>
 				</xsl:for-each>
-			</xsl:attribute> &#xFEFF; <!-- non-breaking space to force separating the end tag -->
-		</span>
+			</xsl:attribute>&#xFEFF;</span> <!-- non-breaking space to force separating the end tag -->
 
 	</xsl:template>
 
