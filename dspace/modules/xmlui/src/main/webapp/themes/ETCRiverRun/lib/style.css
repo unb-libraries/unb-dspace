@@ -1311,7 +1311,7 @@ input.ds-authority-lock.is-unlocked
    value show up as red in the item summary view: */
 span.ds-dc_contributor_author-authority { color: #982521; }
 
-.expArrow{
+.expArrow {
         padding-left: 20px;
         background: url("../images/arrow_right.png") no-repeat 0px 4px;
 }
@@ -1320,19 +1320,27 @@ span.ds-dc_contributor_author-authority { color: #982521; }
         background: url("../images/arrow_down.png") no-repeat 0px 4px;
 }
 
-
-.ListPlus {
-	display:inline;
-	width:20px;
+/** 
+ * Expand / collapse community, collection lists
+ */
+#aspect_artifactbrowser_CommunityBrowser_div_comunity-browser a.expanded,
+#aspect_artifactbrowser_CommunityBrowser_div_comunity-browser a.collapsed,
+#aspect_artifactbrowser_CommunityBrowser_div_comunity-browser a.no-children {
+  display: block;
+  float: left;
+  clear: left;
+  width: 20px;
+  text-decoration: none;
 }
 
-.ListMinus {
-        display:inline;
-        width:20px;
+#aspect_artifactbrowser_CommunityBrowser_div_comunity-browser a.expanded {
+  background: url("../images/expanded.png") no-repeat scroll 5px 50% transparent;  
+}
+#aspect_artifactbrowser_CommunityBrowser_div_comunity-browser a.collapsed {
+  background: url("../images/collapsed.png") no-repeat scroll 5px 45% transparent;    
 }
 
-
-
+/** end community, colleciton expand & collapse classes */
 
 #aspect_submission_StepTransformer_field_dc_title.ds-text-field,
 #aspect_submission_StepTransformer_field_description.ds-text-field,

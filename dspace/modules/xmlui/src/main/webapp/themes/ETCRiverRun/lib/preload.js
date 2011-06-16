@@ -1,79 +1,66 @@
 $(document).ready(function(){
 
-	// Collapse entries in each record.
-        $('.collapseclass').collapser({
-                target: 'next',
-                targetOnly: 'div',
-		changeText: 0,
-                expandClass: 'expArrow',
-                collapseClass: 'collArrow'
-        });
+  // Are we on the community-list page?
+  if (location.href.toLowerCase().indexOf( ('community-list').toLowerCase() ) > 0) {
+    
+    // turn off default list styling
+    $('.ds-artifact-item').css('list-style-type','none');
+    
+    // Collapse the list: hide any lists that follow a community heading
+    $('span.community-summary-list ~ ul').hide();
 
-	// OLD COLLAPSER
-	// Entries in 'community-list' page should collapse.
-	// pos = location.href.toLowerCase().indexOf( ('community-list').toLowerCase() );
-	// if (pos != -1){
+    // Add anchors with classes to identify list state: expanded/collapsed, or headings w/o children
+    $('span.community-summary-list').each(function(index) {
+      $(this).before(function() {
+        var listState = 
+          ( $(this).next('ul').children('li').length > 0 ) ?
+          'collapsed' :
+          'no-children';
+        return '<a href="#" class="' + listState + '">&nbsp;</a>';
+      });
+    });
 
-	//	$('.bold + ul').css('display','none');
+    // Click to expand:
+     $('.collapsed').live('click', expandList);
 
-        //	$('.bold').collapser({
-        //        	target: 'siblings',
-	//                targetOnly: 'ul',
-        //	        changeText: 0,
-        //        	expandClass: 'expArrow',
-	//                collapseClass: 'collArrow'
-        //	});
-
-	// }
-
-	// Hide the whole works if we're not on the community-list pages.
-	pos = location.href.toLowerCase().indexOf( ('community-list').toLowerCase() );
-        if (pos == -1){
-		$('.ListMinus').hide();
-		$('.ListPlus').hide();
-	} else {
-		$('.ds-artifact-item').css('list-style-type','none');
-	}
-
-	// Hide the Plus elements
-	$('.ListMinus').hide();
-	$('.ListMinus + span.bold ~ ul').hide();
-	
-	// Expansion
-	$("p.ListPlus").click(function(){
-		$(this).hide();
-		$(this).next("p.ListMinus").show();
-		//slideDown animation doesn't work in IE6:
-		if(navigator.userAgent.match("MSIE 6")) 
-		{
-		    $(this).parent().find("p.ListPlus").hide();
-		    $(this).parent().find("p.ListMinus").show();
-		    $(this).parent().find("p.ListMinus + span.bold ~ ul").show();
-		}
-		else
-		{
-		    $(this).parent().children("ul").slideDown("fast");
-		}
-	});
-
-
-	// Contraction
-	$("p.ListMinus").click(function(){
-		$(this).hide();
-		$(this).prev("p.ListPlus").show();
-		//slideUp animation doesn't work in IE6:
-		if(navigator.userAgent.match("MSIE 6")) 
-		{
-		    $(this).parent().find("p.ListPlus").show();
-		    $(this).parent().find("p.ListMinus").hide();
-		    $(this).parent().find("p.ListMinus + span.bold ~ ul").hide();
-		}
-		else
-		{
-		    $(this).parent().children("ul").slideUp("fast");
-		}
-	});
-
+    // Click to collapse:
+     $('.expanded').live('click', collapseList);
+  }
 
 });
+
+function expandList(e) {
+  $(this).addClass('expanded');    
+  $(this).removeClass('collapsed');
+
+  // slideDown animation doesn't work in IE6:
+  if (navigator.userAgent.match('MSIE 6')) {
+    $(this).parent().find('span.community-summary-list ~ ul').show();
+  }
+  else {
+    $(this).parent().children('ul').slideDown('fast');
+  }
+ 
+  // return false to discard href attribute value
+  return false;  
+}
+
+function collapseList(e) {
+  $(this).addClass('collapsed');
+  $(this).removeClass('expanded');    
+    
+  // slideDown animation doesn't work in IE6:
+  if (navigator.userAgent.match('MSIE 6')) {
+    $(this).parent().find('span.community-summary-list ~ ul').hide();    
+  } 
+  else {
+    $(this).parent().children('ul').slideUp('fast');
+  }
+  
+  // collapse any expanded children, as well
+  $(this).parent().find('ul li a.expanded').click();
+
+  return false;
+}
+
 

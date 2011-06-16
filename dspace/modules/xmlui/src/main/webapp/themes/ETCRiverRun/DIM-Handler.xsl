@@ -100,24 +100,15 @@
 		</div>
 	</xsl:template>
 
-	<!-- A community rendered in the summaryList pattern. Encountered on the
-		community-list and on  on the front page. -->
+	<!-- 
+	  A community rendered in the summaryList pattern, encountered on the
+		community-list and the front page. 
+	-->
 	<xsl:template name="communitySummaryList-DIM">
 		<xsl:variable name="data" select="./mets:dmdSec/mets:mdWrap/mets:xmlData/dim:dim"/>
-		<!-- @custom begin -->
-		<!-- @todo fix the paths; they'll break on live server -->
-		<p class="ListPlus">
-			<img class="collapseicon" src="/xmlui/themes/Reference/images/arrow_right.png"/>
-		</p>
-		<p class="ListMinus">
-			<img class="collapseicon" src="/xmlui/themes/Reference/images/arrow_down.png"/>
-		</p>
-		<!-- @custom end -->
-		<span class="bold">
-			<!-- @custom begin -->
-			<!-- class added -->
-			<a href="{@OBJID}" class="communitySummaryListAnchorDIM">
-				<!-- @custom end -->
+
+		<span class="community-summary-list bold">
+			<a href="{@OBJID}">
 				<xsl:choose>
 					<xsl:when test="string-length($data/dim:field[@element='title'][1]) &gt; 0">
 						<xsl:value-of select="$data/dim:field[@element='title'][1]"/>
@@ -546,8 +537,7 @@
 						<xsl:text>&amp;</xsl:text>
 					</xsl:if>
 				</xsl:for-each>
-			</xsl:attribute> &#xFEFF; <!-- non-breaking space to force separating the end tag -->
-		</span>
+			</xsl:attribute>&#xFEFF;</span> <!-- non-breaking space to force separating the end tag -->
 
 	</xsl:template>
 
