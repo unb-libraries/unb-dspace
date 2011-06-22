@@ -61,12 +61,16 @@
     <aspects>
         <!--
            We override DSpace's ArtifactBrowser and Administrative aspects with
-           customized versions: see aspect sitemaps for details.
+           customized versions.
+
+           We use simple, XSL-driven customizations to supplement DSpace's
+           EPerson aspect with always-on menu options in Account blocks.
          -->
         <aspect name="RiverRun Artifact Browser" path="resource://aspects/RiverRunArtifactBrowser/" />
         <aspect name="Sherpa Romeo"     path="resource://aspects/SherpaRomeo/" />
         <aspect name="RiverRun Administration" path="resource://aspects/RiverRunAdministrative/" />
         <aspect name="E-Person"         path="resource://aspects/EPerson/" />
+        <aspect name="RiverRun E-Person"  path="resource://aspects/RiverRunEPerson/" />
         <aspect name="Submission and Workflow" path="resource://aspects/Submission/" />
 	<aspect name="Statistics"       path="resource://aspects/Statistics/" />
         <!-- 
