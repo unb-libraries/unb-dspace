@@ -636,7 +636,7 @@ ul.ds-artifact-list {
         border: 2px solid rgb(240, 240, 210);
         padding: 0px;
         list-style-type: none;
-        margin: 0px;
+        margin: 0 0 1em 0;
         float: left;
         width: 584px;
 }
