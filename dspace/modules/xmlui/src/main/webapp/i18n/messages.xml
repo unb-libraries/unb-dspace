@@ -337,6 +337,14 @@
     <!-- ItemViewer -->
     <message key="xmlui.RiverRunArtifactBrowser.ItemViewer.persistent_identifier">Cite or link to this item: </message>
 
+    <!-- CollectionViewer -->
+    <message key="xmlui.RiverRunArtifactBrowser.CollectionViewer.no_recent_submissions">This collection has no recent submissions.</message>
+    <message key="xmlui.RiverRunArtifactBrowser.CollectionViewer.browse_all_items">Browse all items in this collection</message>
+
+    <!-- CommunityViewer -->
+    <message key="xmlui.RiverRunArtifactBrowser.CommunityViewer.no_recent_submissions">This collection has no recent submissions.</message>
+    <message key="xmlui.RiverRunArtifactBrowser.CommunityViewer.browse_all_items">Browse all items in this community</message>    
+
     <!-- Contact page -->
     <message key="xmlui.RiverRunArtifactBrowser.Contact.title">Contact Us</message>
     <message key="xmlui.RiverRunArtifactBrowser.Contact.trail">Contact Us</message>
