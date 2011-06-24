@@ -30,15 +30,17 @@ import org.xml.sax.SAXException;
 
 /**
  * Display a single collection. The default DSpace version includes a full text
- * search, browse by list, community display, and list of recent submissions.
+ * search and list of recent submissions.
  *
- * This version modified to include a link to browse all collection titles,
- * following the list of 'Recent Submissions.'
+ * This overrides the addBody() method to include a link to browse all
+ * collection titles, following the list of 'Recent Submissions.'
  *
  * If there are no recent submissions, a message is provided to that effect,
  * before the browse-all link.
  *
- * fixme browse code removed
+ * The addBody() method in the parent class generates a list of browse options
+ * that is not styled by any of the default XMLUI themes, nor by our custom
+ * theme, so the list has been removed here.
  */
 public class CollectionViewer extends org.dspace.app.xmlui.aspect.artifactbrowser.CollectionViewer {
 
@@ -66,7 +68,8 @@ public class CollectionViewer extends org.dspace.app.xmlui.aspect.artifactbrowse
     private static final Message T_BROWSE_ALL_ITEMS =
                                  message("xmlui.RiverRunArtifactBrowser.CollectionViewer.browse_all_items");
 
-    /** Redeclared: default number of recent submissions to include in the page,
+    /**
+     * Redeclared: default number of recent submissions to display,
      * if not otherwise stated in dspace.cfg
      */
     private static final int RECENT_SUBMISSIONS = 5;
@@ -165,7 +168,7 @@ public class CollectionViewer extends org.dspace.app.xmlui.aspect.artifactbrowse
      */
     private java.util.List<BrowseItem> getRecentlySubmittedItems(Collection collection) throws SQLException {
 
-        java.util.List recentSubmissions = null;
+        java.util.List<BrowseItem> recentSubmissions = null;
 
         String source = ConfigurationManager.getProperty("recent.submissions.sort-option");
         int numRecentSubmissions = ConfigurationManager.getIntProperty("recent.submissions.count", RECENT_SUBMISSIONS);
