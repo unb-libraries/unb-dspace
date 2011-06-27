@@ -436,6 +436,45 @@ ul.collection-browse,ul.community-browse {
         max-width: 195px;
 }
 
+/**
+ * Github issue #30, unb-libraries/unb-dspace
+ * Add a link to browse all items, floated to the right of the
+ * 'Recent Submissions' block on community, collection views
+ */
+p.community-view-browse-all-items,
+p.collection-view-browse-all-items {
+    width: 45%;
+    float: right;
+    text-align: right;
+}
+
+/**
+ * The XMLUI wing framework does not allow an ID or class to be assigned to
+ * the 'Recent Submissions' header, so a following-sibling selector applied
+ * to find the header & make it an inline element
+ */
+p.community-view-browse-all-items + h2.ds-div-head,
+p.collection-view-browse-all-items + h2.ds-div-head {
+    display: inline;
+}
+
+/**
+ * Bump up the top margin on the recent-submissions list to adjust for the
+ * margin, padding lost when header display made inline
+ */
+div.recent-submission {
+    margin-top: 0.25em;
+}
+
+/**
+ * Bump up bottom margin on list of sub-communities, to adjust for
+ * lost margin/padding
+ */
+div#ca_unb_lib_riverrun_app_xmlui_aspect_artifactbrowser_CommunityViewer_div_community-view {
+     margin-bottom: 1em;
+}
+/** end issue #30 */
+
 *.button-list input {
         width: auto;
 }

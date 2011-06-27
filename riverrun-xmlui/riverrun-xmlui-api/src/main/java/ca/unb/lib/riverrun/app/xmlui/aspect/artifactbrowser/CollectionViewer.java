@@ -139,13 +139,16 @@ public class CollectionViewer extends org.dspace.app.xmlui.aspect.artifactbrowse
             // Follow the list of recent submissions with the option to browse collection titles, 
             String browseURL =  contextPath + "/handle/" + collection.getHandle() + "/browse?type=title";
 
+            // 'Browse all' link placed here so it can be right-floated to appear
+            // next to the 'Recent Submissions' heading
+            home.addPara("collection-view-browse-all-items", "collection-view-browse-all-items").addXref(browseURL, T_BROWSE_ALL_ITEMS);
+
             Division lastSubmittedDiv = home.addDivision("collection-recent-submission", "secondary recent-submission");
             lastSubmittedDiv.setHead(T_HEAD_RECENT_SUBMISSIONS);
 
             // List of recent submissions may be null
             if (items == null || items.isEmpty()) {
                 lastSubmittedDiv.addPara().addContent(T_NO_RECENT_SUBMISSIONS);
-                lastSubmittedDiv.addPara().addXref(browseURL, T_BROWSE_ALL_ITEMS);
             }
             else {
                 ReferenceSet lastSubmitted =
@@ -155,8 +158,6 @@ public class CollectionViewer extends org.dspace.app.xmlui.aspect.artifactbrowse
                 for (BrowseItem item : items) {
                     lastSubmitted.addReference(item);
                 }
-
-                lastSubmittedDiv.addPara().addXref(browseURL, T_BROWSE_ALL_ITEMS);
             }
         }
     }
