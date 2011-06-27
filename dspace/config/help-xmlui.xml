@@ -125,29 +125,27 @@
 					<p>The ETC and UNB Libraries reserve the right to remove content posted in violation of
 						copyright or licensing agreements should a complaint be brought to our attention.</p>
 				</div>
-<!-- commented out until webcast updated: see issue #26 and issue #27 -->
-<!--
 				<div>
-					<head>How do I attach a file to a citation in my collection?</head>
-					<p>We encourage faculty to attach a full-text file of their articles to the citations
-						wherever possible. We recommend that faculty covert their files to PDF before uploading, 
-						a process made simple on most computers today. </p>
-					
-					<p>
-						Instructions on attaching a file can be viewed in the
-						following brief webcast.
-					</p>
-					<p>
-					<figure id="webcast-attach-file" rend="iframe"
-						source="http://player.vimeo.com/video/24611073?title=0&amp;byline=0&amp;portrait=0&amp;color=00acf0"/>
-					</p>
-					<p>
-						Can't view the webcast? 
-						<xref target="http://dspace.hil.unb.ca:8080/bitstream/handle/1882/19841/RRFAQ-AddBitstream.mp4">
-						Download the video</xref> and watch it on your computer.
-					</p>
-				</div>
--->
+          <head>How do I attach a file to a citation in my collection?</head>
+          <p>We encourage faculty to attach a full-text file of their articles to the citations
+            wherever possible. To attach a file:</p>
+          <list type="ordered">
+            <item>log into <hi rend="italic">RiverRun</hi> using your UNB ID and password;</item>
+            <item>navigate to the citation in your collection to which you wish to add a file;</item>
+            <item>in the menu on the right, click on "Edit this item" under Administer;</item>
+            <item>select the "Item bitstreams" tab;</item>
+            <item>click on the "Upload a new bitstream" link in the table of files;</item>
+            <item>use the Browse button to find the file on your computer;</item>
+            <item>enter a description of the file (if you wish);</item>
+            <item>hit the "upload" button.</item>
+          </list>
+        <p>The new file should now appear in the table of files associated with the record. You may now return to your collection to attach another file elsewhere, or log out of <hi rend="italic"> RiverRun</hi> if you are done.</p>
+        <!-- 
+          Instructions on attaching a file can be viewed in this
+          <xref target="http://dspace.hil.unb.ca:8080/bitstream/handle/1882/19841/RRFAQ-AddBitstream.mp4">brief webcast</xref>. 
+        -->
+        <p>We recommend that faculty covert their files to PDF before uploading, a process made simple on most computers today. </p>
+        </div>
 				<div>
 					<head>How do I know what my publisher will allow me to post in a repository?</head>
 					<p>Each publishing house has its own policies stipulating what authors may do with digital
