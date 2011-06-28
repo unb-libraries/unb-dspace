@@ -380,9 +380,14 @@
         <!-- Policy view -->
         <message key="xmlui.SherpaRomeo.PolicyViewer.trail">View Policies</message>
         <message key="xmlui.SherpaRomeo.PolicyViewer.title">Self-Archiving Policies</message>
-        <message key="xmlui.SherpaRomeo.PolicyViewer.no_information">No information is available about the self-archiving policies of this item's publisher.</message>
-        <message key="xmlui.SherpaRomeo.PolicyViewer.error">An error occurred while retrieving information about this item's publisher.</message>
-        <message key="xmlui.SherpaRomeo.PolicyViewer.contact_us">Please contact us for assistance.</message>
+        <message key="xmlui.SherpaRomeo.PolicyViewer.no_information">No information is available on this publisher's self-archiving policies.</message>
+        <message key="xmlui.SherpaRomeo.PolicyViewer.error">We are not able to retrieve information on this publisher's self-archiving policies.</message>
+        <!-- @warning hard-coded URL to 'Contact Us' page -->
+        <message key="xmlui.SherpaRomeo.PolicyViewer.check_publisher">
+            Please check the publisher's website for information on posting your
+            article to an institutional repository, or <a href="../../../contact">contact us</a> for additional
+            assistance.
+        </message>
         <message key="xmlui.SherpaRomeo.PolicyViewer.Journal.issn">ISSN: {0}</message>
         <message key="xmlui.SherpaRomeo.PolicyViewer.Publisher.not_found">No publishers found.</message>
         <message key="xmlui.SherpaRomeo.PolicyViewer.Publisher.found">Information found for {0} publisher(s).</message>    
