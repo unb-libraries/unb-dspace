@@ -58,8 +58,8 @@ public class PolicyViewer extends SherpaRomeoTransformer implements CacheablePro
     private static final Message T_NO_INFORMATION =
                                  message("xmlui.SherpaRomeo.PolicyViewer.no_information");
 
-    private static final Message T_CONTACT_US =
-                                 message("xmlui.SherpaRomeo.PolicyViewer.contact_us");
+    private static final Message T_CHECK_PUBLISHER =
+                                 message("xmlui.SherpaRomeo.PolicyViewer.check_publisher");
 
     /** Cached validity object */
     private SourceValidity validity = null;
@@ -208,12 +208,12 @@ public class PolicyViewer extends SherpaRomeoTransformer implements CacheablePro
 
     private void displayFailed(Division division) throws WingException {
         division.addPara(T_ERROR);
-        division.addPara(T_CONTACT_US);
+        division.addPara(T_CHECK_PUBLISHER);
     }
 
     private void displayNotFound(Division division) throws WingException {
         division.addPara(T_NO_INFORMATION);
-        division.addPara(T_CONTACT_US);
+        division.addPara(T_CHECK_PUBLISHER);
     }
 
 
