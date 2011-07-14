@@ -73,6 +73,9 @@
                     </xsl:attribute>
                 </link>
             </xsl:if>
+
+            <!-- add a faviicon -->
+            <link type="image/x-icon" href="/xmlui/themes/ETCRiverRun/images/favicon.png" rel="shortcut icon"> </link>
 			
 			<!-- The following javascript removes the default text of empty text areas when they are focused on or submitted -->
 			<!-- There is also javascript to disable submitting a form when the 'enter' key is pressed. -->
