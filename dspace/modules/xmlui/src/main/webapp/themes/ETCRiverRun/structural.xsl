@@ -15,11 +15,6 @@
 	
     <xsl:template name="buildHead">
         <head>
-			<!-- @custom begin -->
-			<!-- @todo: messages.xml reference -->
-            <title>RiverRun | UNB</title>
-			<!-- @custom end -->
-
             <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
             <meta name="Generator">
                 <xsl:attribute name="content">
@@ -157,20 +152,17 @@
                     <xsl:text>} catch(err) {}</xsl:text>
                 </script>
             </xsl:if>
-
 			
-			
-			<!-- Add the title in -->
-
+            <!-- Add the title in -->
             <xsl:variable name="page_title" select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='title']" />
             <title>
+                <xsl:text>RiverRun</xsl:text>
                 <xsl:choose>
                     <xsl:when test="not($page_title)">
-
                         <xsl:text>  </xsl:text>
-
                     </xsl:when>
                     <xsl:otherwise>
+                        <xsl:text> | </xsl:text>
                         <xsl:copy-of select="$page_title/node()" />
                     </xsl:otherwise>
                 </xsl:choose>
