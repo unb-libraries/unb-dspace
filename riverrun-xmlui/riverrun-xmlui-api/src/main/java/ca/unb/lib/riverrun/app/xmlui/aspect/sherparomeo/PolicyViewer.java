@@ -148,7 +148,8 @@ public class PolicyViewer extends SherpaRomeoTransformer implements CacheablePro
         division.setHead(T_TITLE);
 
         Item item = (Item) dso;
-        Query query = new Query(getItemISSN(item));
+        String issn = getItemISSN(item);
+        Query query = new Query(issn);
         Romeoapi response = query.getResponse();
 
         if (response != null) {
@@ -178,20 +179,20 @@ public class PolicyViewer extends SherpaRomeoTransformer implements CacheablePro
                     case uniqueZetoc:
                         // Responses to unimplemented S/R query types
                         // it's an error if they're received
-                        log.error("Unexpected SHERPA/RoMEO outcome: " + outcome);
+                        log.error("Unexpected SHERPA/RoMEO outcome: " + outcome + ", ISSN " + issn);
                         displayFailed(division);
                         break;
 
                     default:
                         // Unhandled outcomes are an error.
-                        log.error("Unhandled SHERPA/RoMEO outcome: " + outcome);
+                        log.error("Unhandled SHERPA/RoMEO outcome: " + outcome + ", ISSN " + issn);
                         displayFailed(division);
                         break;
                 }
             }
             catch (IllegalArgumentException ex) {
                 // Log the error, report failure.
-                log.error("Unknown SHERPA/RoMEO outcome", ex);
+                log.error("Unknown SHERPA/RoMEO outcome" + ex + ", ISSN " + issn);
                 displayFailed(division);
             }
         }
