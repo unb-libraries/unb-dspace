@@ -18,7 +18,7 @@
  <!-- for handle "default".                                                -->
  <submission-map>
    <name-map collection-handle="default" submission-name="traditional" />
-   <name-map collection-handle="123456789/256" submission-name="SeniorReports" />
+   <name-map collection-handle="1882/1497" submission-name="SeniorReports" />
  </submission-map>
 
 
@@ -231,24 +231,11 @@
    </submission-process>
 
    <!--This "Senior Reports" process defines the item submission process for that collection-->
-   <submission-process name="SeniorReports">
-     
-     <!--Uncommment to display the SAMPLE step as your first step-->
-     <!--<step id="sample"/>-->
-     
-     <!--Step 1 will be to gather initial information-->
-<!--     <step>
-       <heading>submit.progressbar.initial-questions</heading>
-       <processing-class>org.dspace.submit.step.InitialQuestionsStep</processing-class>
-       <jspui-binding>org.dspace.app.webui.submit.step.JSPInitialQuestionsStep</jspui-binding>   	    
-       <xmlui-binding>org.dspace.app.xmlui.aspect.submission.submit.InitialQuestionsStep</xmlui-binding>
-       <workflow-editable>true</workflow-editable>
-     </step>-->
+   <submission-process name="SeniorReports">        
      
      <!--If you disable the initial questions step you should insert the -->
      <!--SkipInitialQuestionsStep below, to enable proper processing of  -->
      <!--input-forms configuration                                       -->
-     
      <step>
        <processing-class>org.dspace.submit.step.SkipInitialQuestionsStep</processing-class>
      </step>
@@ -281,14 +268,7 @@
        <workflow-editable>true</workflow-editable>
      </step>
      
-     <!--Step 5 will be to Sign off on the License-->
-<!--     <step>
-       <heading>submit.progressbar.license</heading>
-       <processing-class>org.dspace.submit.step.LicenseStep</processing-class>
-       <jspui-binding>org.dspace.app.webui.submit.step.JSPLicenseStep</jspui-binding>
-       <xmlui-binding>org.dspace.app.xmlui.aspect.submission.submit.LicenseStep</xmlui-binding>
-       <workflow-editable>false</workflow-editable>
-     </step>-->
+     <!--This submission workflow does not include license sign-off-->
      
    </submission-process>
    
