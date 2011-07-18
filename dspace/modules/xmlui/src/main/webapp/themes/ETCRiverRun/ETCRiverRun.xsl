@@ -19,9 +19,6 @@
 	
 	<!-- override templates in ../dri2xhtml/DIM-Handler.xsl -->
 	<xsl:import href="DIM-Handler.xsl"/>
-	
-	<!-- override templates in ../.dri2xhtml/General-Handler -->
-	<xsl:import href="General-Handler.xsl"/>
 
 	<xsl:output indent="yes"/>       
 	
