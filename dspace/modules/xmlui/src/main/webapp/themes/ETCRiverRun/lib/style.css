@@ -647,7 +647,6 @@ table.ds-gloss-list td ul {
 
 /* Formatting associated with the "Files in this item" table in the item view */
 *.file-list td {
-        text-align: center;
 }
 
 a.image-link img {
