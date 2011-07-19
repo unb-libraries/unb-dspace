@@ -49,6 +49,7 @@
 			<outputDirectory>.</outputDirectory>
 			<includes>
 				<include>config/**</include>
+				<include>solr/**</include>
 			</includes>
 			<excludes>
 				<exclude>config/dspace.cfg</exclude>
