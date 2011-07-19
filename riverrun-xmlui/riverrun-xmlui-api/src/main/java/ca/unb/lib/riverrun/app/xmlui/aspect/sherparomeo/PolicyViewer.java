@@ -162,10 +162,16 @@ public class PolicyViewer extends SherpaRomeoTransformer implements CacheablePro
                 switch (outcome) {
 
                     case failed:
+                        log.error("SHERPA/RoMEO: failed, ISSN " + issn);
                         displayFailed(division);
                         break;
 
                     case notFound:
+                    case uniqueZetoc:
+			// 'uniqueZetoc' indicates publisher is known, but no
+			// information is available; 'notFound' indicates
+			// publisher is not known -- same message for both cases.
+                        log.error("SHERPA/RoMEO: not found. Outcome: " + outcome + ", ISSN " + issn);
                         displayNotFound(division);
                         break;
 
@@ -176,7 +182,7 @@ public class PolicyViewer extends SherpaRomeoTransformer implements CacheablePro
                     case manyJournals:
                     case excessJournals:
                     case publisherFound:
-                    case uniqueZetoc:
+
                         // Responses to unimplemented S/R query types
                         // it's an error if they're received
                         log.error("Unexpected SHERPA/RoMEO outcome: " + outcome + ", ISSN " + issn);
