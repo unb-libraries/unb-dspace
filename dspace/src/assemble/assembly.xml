@@ -1,3 +1,12 @@
+<!--
+
+    The contents of this file are subject to the license and copyright
+    detailed in the LICENSE and NOTICE files at the root of the source
+    tree and available online at
+
+    http://www.dspace.org/license/
+
+-->
 <assembly xmlns="http://maven.apache.org/POM/4.0.0"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/assembly-1.1.0-SNAPSHOT.xsd">
@@ -13,7 +22,6 @@
 			<outputDirectory>.</outputDirectory>
 			<includes>
 				<include>build.xml</include>
-				<include>build-riverrun.xml</include>
 			</includes>
 		</fileSet>
 		<fileSet>
@@ -21,12 +29,10 @@
 			<includes>
 				<include>bin/**</include>
 				<include>config/**</include>
-				<include>data/**</include>
 				<include>docs/**</include>
 				<include>etc/**</include>
 				<include>solr/**</include>
-        <include>build.xml</include>
-        <include>build-riverrun.xml</include>
+				<include>build.xml</include>
 				<include>LICENSE*</include>
 				<include>CHANGES</include>
 				<include>KNOWN_BUGS</include>
@@ -34,6 +40,17 @@
 			</includes>
 			<excludes>
 				<exclude>src</exclude>
+				<exclude>config/dspace.cfg</exclude>
+			</excludes>
+		</fileSet>
+		<!-- Apply RiverRun customizations -->
+		<fileSet>
+			<directory>../riverrun</directory>
+			<outputDirectory>.</outputDirectory>
+			<includes>
+				<include>config/**</include>
+			</includes>
+			<excludes>
 				<exclude>config/dspace.cfg</exclude>
 			</excludes>
 		</fileSet>
