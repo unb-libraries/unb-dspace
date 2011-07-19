@@ -57,8 +57,9 @@
 	</fileSets>
 
 	<files>
+		<!-- Use RiverRun-flavoured dspace.cfg file -->
 		<file>
-			<source>config/dspace.cfg</source>
+			<source>../riverrun/config/dspace.cfg</source>
 			<outputDirectory>config</outputDirectory>
 			<filtered>true</filtered>
 		</file>

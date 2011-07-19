@@ -18,6 +18,9 @@
         </property>
       </activation>
       <properties>
+          <!-- Database settings -->
+	  <default.db.url>jdbc:postgresql://localhost:5432/dspace</default.db.url>
+
           <!-- Email settings -->
           <!-- don't spam the admins: change these for development builds -->
           <repoadmin.email>gsallen@unb.ca</repoadmin.email>
