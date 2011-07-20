@@ -25,6 +25,14 @@
 			</includes>
 		</fileSet>
 		<fileSet>
+		  <!-- RiverRun-specific Ant tasks -->
+		  <directory>../riverrun/src/main/config</directory>
+		  <outputDirectory>.</outputDirectory>
+		  <includes>
+		    <include>build-riverrun.xml</include>
+		  </includes>
+		</fileSet>
+		<fileSet>
 			<outputDirectory>.</outputDirectory>
 			<includes>
 				<include>bin/**</include>
