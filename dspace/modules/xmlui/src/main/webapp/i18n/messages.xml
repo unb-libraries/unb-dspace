@@ -1833,27 +1833,24 @@
     <message key="xmlui.statistics.Navigation.view">View Statistics</message>
     <message key="xmlui.statistics.trail">Statistics</message>
 
+	<!--!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
+    dri2xhtml-alt is the base set of XSL stylesheets for Mirage and derived
+    themes; define i18n-able messages for use in theme stylesheets here.
 
+		!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
 
-
-
-
-
-	<!--!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-		                  dri2xhtml
-
-		!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
-
-
-
-
-
-	<!-- structural.xsl -->
-	<message key="xmlui.dri2xhtml.structural.footer-promotional">
-	  <p>This website is maintained by the Electronic Text Centre in the Harriet Irving Library, University of New Brunswick, using DSpace software. For more information visit <a href="http://lib.unb.ca/etc/">http://lib.unb.ca/etc</a> and <a href="http://dspace.org">http://dspace.org</a></p>
+  <!-- page-structure.xsl -->
+  <message key="xmlui.dri2xhtml-alt.page-structure.footer-promotional">
+	  <p>
+	    This website is maintained by the Electronic Text Centre in the Harriet Irving Library, 
+	    University of New Brunswick, using DSpace software. For more information visit 
+	    <a href="http://lib.unb.ca/etc/">http://lib.unb.ca/etc</a> and 
+	    <a href="http://dspace.org">http://dspace.org</a>
+	  </p>
 	</message>
+	
+	<!-- the following not yet incorporated into by ETCMirage subtheme -->
 	<message key="xmlui.dri2xhtml.structural.contact-link">Contact Us</message>
 	<message key="xmlui.dri2xhtml.structural.feedback-link">Send Feedback</message>
 	

@@ -31,6 +31,9 @@
     <!-- Bring in unmodified Mirage stylesheets -->
     <xsl:import href="../Mirage/Mirage.xsl"/>
     
+    <!-- Override Mirage with RiverRun customizations -->
+    <xsl:import href="lib/xsl/core/page-structure.xsl"/>
+    
     <xsl:output indent="yes"/>
     
 
