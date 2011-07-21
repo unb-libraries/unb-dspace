@@ -133,6 +133,8 @@
                     <map:parameter name="stylesheet.screen#4" value="../{global:base-theme-path}/lib/css/jquery-ui-1.8.5.custom.css"/>
                     <map:parameter name="stylesheet.screen#5" value="../{global:base-theme-path}/lib/css/style.css"/>
                     <map:parameter name="stylesheet.screen#6" value="../{global:base-theme-path}/lib/css/authority-control.css"/>
+                    <!-- Theme-specific CSS -->
+                    <map:parameter name="stylesheet.screen#7" value="lib/css/style.css"/>
                 </map:transform>
 
                 <map:transform type="IncludePageMeta">

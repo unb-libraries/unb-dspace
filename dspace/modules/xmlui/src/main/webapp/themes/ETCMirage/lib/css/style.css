@@ -1,0 +1,10 @@
+/*
+ * style.css
+ *
+ * Customizations to Mirage base theme for RiverRun, UNB's instance of DSpace.
+ */
+ 
+/* Front-page news, read from {dspace}/config/news-xmlui.xml */
+#frontpage-news #sparc-addendum img {
+  float: right;
+}
