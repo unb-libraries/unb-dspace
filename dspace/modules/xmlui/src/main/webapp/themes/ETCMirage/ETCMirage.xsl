@@ -1,17 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-
-    The contents of this file are subject to the license and copyright
-    detailed in the LICENSE and NOTICE files at the root of the source
-    tree and available online at
-
-    http://www.dspace.org/license/
-
--->
-<!--
-    TODO: Describe this XSL file
-    Author: Alexey Maslov
-
+	Import stylesheets for current & base theme
 -->
 
 <xsl:stylesheet xmlns:i18n="http://apache.org/cocoon/i18n/2.1"
@@ -26,15 +15,18 @@
 	xmlns="http://www.w3.org/1999/xhtml"
 	exclude-result-prefixes="i18n dri mets xlink xsl dim xhtml mods dc">
 
-    <xsl:import href="../dri2xhtml-alt/dri2xhtml.xsl"/>
-    
-    <!-- Bring in unmodified Mirage stylesheets -->
-    <xsl:import href="../Mirage/Mirage.xsl"/>
-    
-    <!-- Override Mirage with RiverRun customizations -->
-    <xsl:import href="lib/xsl/core/page-structure.xsl"/>
-    
-    <xsl:output indent="yes"/>
+	<xsl:import href="../dri2xhtml-alt/dri2xhtml.xsl"/>
+	
+	<!-- Bring in unmodified Mirage stylesheets -->
+	<xsl:import href="../Mirage/Mirage.xsl"/>
+	
+	<!-- Define additional global variables -->
+	<xsl:import href="lib/xsl/core/global-variables.xsl"/>
+	
+	<!-- Override Mirage with RiverRun customizations -->
+	<xsl:import href="lib/xsl/core/page-structure.xsl"/>
+	
+	<xsl:output indent="yes"/>
     
 
 </xsl:stylesheet>

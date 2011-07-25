@@ -126,6 +126,7 @@
 
                 <!--3 different IncludePageMeta transformers to ensure that the
                 stylesheets end up in the correct order-->
+                
                 <map:transform type="IncludePageMeta">
                     <map:parameter name="stylesheet.screen#1" value="../{global:base-theme-path}/lib/css/reset.css"/>
                     <map:parameter name="stylesheet.screen#2" value="../{global:base-theme-path}/lib/css/base.css"/>
@@ -147,6 +148,8 @@
                     <map:parameter name="javascript" value="../{global:base-theme-path}/lib/js/jquery-ui-1.8.5.custom.min.js"/>
                     <map:parameter name="theme.path" value="{global:theme-path}"/>
                     <map:parameter name="theme.name" value="{global:theme-name}"/>
+                    <map:parameter name="basetheme.path" value="{global:base-theme-path}"/>
+                    <map:parameter name="basetheme.name" value="{global:base-theme-name}"/>
                 </map:transform>
 
 				<!-- Debuging output -->
