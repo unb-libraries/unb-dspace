@@ -25,6 +25,7 @@ public class Help extends AbstractDSpaceTransformer implements CacheableProcessi
      * Generate the unique caching key.
      * This key must be unique inside the space of this component.
      */
+    @Override
     public Serializable getKey() {
         return "1";
     }
@@ -32,6 +33,7 @@ public class Help extends AbstractDSpaceTransformer implements CacheableProcessi
     /**
      * Generate the cache validity object.
      */
+    @Override
     public SourceValidity getValidity() {
         return NOPValidity.SHARED_INSTANCE;
     }

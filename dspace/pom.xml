@@ -16,24 +16,8 @@
     <parent>
         <groupId>org.dspace</groupId>
         <artifactId>dspace-parent</artifactId>
-        <version>1.6.2</version>
+        <version>1.7.2</version>
     </parent>
-
-    <repositories>
-        <repository>
-            <id>maven.dspace.org-snapshot</id>
-            <name>DSpace Maven Snapshot Repository</name>
-            <url>http://maven.dspace.org/snapshot</url>
-            <releases>
-                <enabled>false</enabled>
-                <checksumPolicy>fail</checksumPolicy>
-            </releases>
-            <snapshots>
-                <enabled>true</enabled>
-                <checksumPolicy>fail</checksumPolicy>
-            </snapshots>
-        </repository>
-    </repositories>
 
     <!--
          The Subversion repository location is used by Continuum to update against
@@ -41,9 +25,9 @@
          into the snapshot repository below.
     -->
     <scm>
-        <connection>scm:svn:http://scm.dspace.org/svn/repo/dspace/tags/dspace-1.6.2/dspace</connection>
-        <developerConnection>scm:svn:https://scm.dspace.org/svn/repo/dspace/tags/dspace-1.6.2/dspace</developerConnection>
-        <url>http://scm.dspace.org/svn/repo/dspace/tags/dspace-1.6.2/dspace</url>
+        <connection>scm:svn:http://scm.dspace.org/svn/repo/dspace/tags/dspace-1.7.2</connection>
+        <developerConnection>scm:svn:https://scm.dspace.org/svn/repo/dspace/tags/dspace-1.7.2</developerConnection>
+        <url>http://scm.dspace.org/svn/repo/dspace/tags/dspace-1.7.2</url>
     </scm>
 
     <profiles>
@@ -97,22 +81,6 @@
         </profile>
 
         <!--
-            Builds RiverRun extensions to DSpace API
-        -->
-        <profile>
-        <id>riverrun-api</id>
-        <activation>
-           <file>
-              <exists>../riverrun-api/pom.xml</exists>
-           </file>
-        </activation>
-        <modules>
-           <module>../riverrun-api</module>
-        </modules>
-     </profile>
-
-
-        <!--
            Builds DSpace Solr Stats for DSpace
         -->
         <profile>
@@ -124,6 +92,21 @@
             </activation>
             <modules>
                 <module>../dspace-stats</module>
+            </modules>
+        </profile>
+
+        <!--
+            Builds DSpace discovery for DSpace
+        -->
+        <profile>
+            <id>dspace-discovery</id>
+            <activation>
+                <file>
+                    <exists>../dspace-discovery/pom.xml</exists>
+                </file>
+            </activation>
+            <modules>
+                <module>../dspace-discovery</module>
             </modules>
         </profile>
 
@@ -169,18 +152,6 @@
             </activation>
             <modules>
                 <module>../dspace-oai</module>
-            </modules>
-        </profile>
-
-        <profile>
-            <id>dspace-ui-shared</id>
-            <activation>
-                <file>
-                    <exists>../dspace-ui-shared/pom.xml</exists>
-                </file>
-            </activation>
-            <modules>
-                <module>../dspace-ui-shared</module>
             </modules>
         </profile>
 
@@ -293,17 +264,16 @@
                 <module>../dspace-xmlui-api</module>
             </modules>
         </profile>
-
-        <!-- RiverRun extensions to DSpace XMLUI API -->
+        
         <profile>
             <id>riverrun-xmlui-api</id>
             <activation>
                 <file>
-                    <exists>../riverrun-xmlui-api/pom.xml</exists>
+                    <exists>../riverrun/riverrun-xmlui-api/pom.xml</exists>
                 </file>
             </activation>
             <modules>
-                <module>../riverrun-xmlui-api</module>
+                <module>../riverrun/riverrun-xmlui-api</module>
             </modules>
         </profile>
 
@@ -357,19 +327,16 @@
                 <module>../dspace-xmlui</module>
             </modules>
         </profile>
-
-        <!--
-           Builds XMLUI WAR for RiverRun extensions to DSpace
-        -->
+        
         <profile>
             <id>riverrun-xmlui</id>
             <activation>
                 <file>
-                    <exists>../riverrun-xmlui/pom.xml</exists>
+                    <exists>../riverrun/riverrun-xmlui/pom.xml</exists>
                 </file>
             </activation>
             <modules>
-                <module>../riverrun-xmlui</module>
+                <module>../riverrun/riverrun-xmlui</module>
             </modules>
         </profile>
 
@@ -525,7 +492,7 @@
             <dependencies>
                 <dependency>
                     <groupId>com.oracle</groupId>
-                    <artifactId>ojdbc14</artifactId>
+                    <artifactId>ojdbc6</artifactId>
                 </dependency>
             </dependencies>
         </profile>
@@ -593,11 +560,6 @@
             <artifactId>dspace-api</artifactId>
         </dependency>
         <dependency>
-            <groupId>ca.unb.lib.riverrun</groupId>
-            <artifactId>riverrun-api</artifactId>
-            <version>1.0</version>
-        </dependency>
-        <dependency>
             <groupId>org.dspace</groupId>
             <artifactId>dspace-api-lang</artifactId>
         </dependency>
@@ -612,6 +574,10 @@
         <dependency>
              <groupId>org.dspace</groupId>
              <artifactId>dspace-stats</artifactId>
+         </dependency>
+         <dependency>
+            <groupId>org.dspace</groupId>
+            <artifactId>dspace-discovery-provider</artifactId>
          </dependency>
          <dependency>
             <groupId>javax.servlet</groupId>

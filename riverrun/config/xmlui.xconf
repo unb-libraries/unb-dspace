@@ -64,13 +64,15 @@
             BrowseArtifacts, SearchArtifacts
             <aspect name="Artifact Browser" path="resource://aspects/ArtifactBrowser/" />
         -->
-        <aspect name="Displaying Artifacts" path="resource://aspects/ViewArtifacts/" />
+
+	<aspect name="RiverRun: Displaying Artifacts" path="resource://aspects/RiverRunViewArtifacts/" />
         <aspect name="Browsing Artifacts" path="resource://aspects/BrowseArtifacts/" />
         <aspect name="Searching Artifacts" path="resource://aspects/SearchArtifacts/" />
         <aspect name="Administration" path="resource://aspects/Administrative/" />
         <aspect name="E-Person" path="resource://aspects/EPerson/" />
         <aspect name="Submission and Workflow" path="resource://aspects/Submission/" />
-	    <aspect name="Statistics" path="resource://aspects/Statistics/" />
+	<aspect name="Statistics" path="resource://aspects/Statistics/" />
+
         <!--
             To enable Discovery, uncomment this Aspect that will enable it
             within your existing XMLUI
