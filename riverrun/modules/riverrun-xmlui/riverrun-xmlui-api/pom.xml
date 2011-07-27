@@ -3,7 +3,7 @@
     <groupId>ca.unb.lib.riverrun</groupId>
     <artifactId>riverrun-xmlui-api</artifactId>
     <packaging>jar</packaging>
-    <name>RiverRun extensions to DSpace XML-UI (Manakin) :: API and Core Aspects</name>
+    <name>RiverRun XML-UI (Manakin) :: API and Core Aspects</name>
     <url>https://github.com/unb-libraries/unb-dspace</url>
     <description>
         RiverRun extensions to DSpace/Manakin XMLUI-based APIs and components, built on Cocoon and Wing frameworks.

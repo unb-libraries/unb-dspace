@@ -4,10 +4,10 @@
    <artifactId>riverrun-xmlui</artifactId>
    <version>2.0</version>
    <packaging>pom</packaging>
-   <name>RiverRun extensions to XML-UI (Manakin)</name>
+   <name>RiverRun XML-UI (Manakin)</name>
    <url>https://github.com/unb-libraries/unb-dspace</url>
    <description>
-      Extensions to DSpace's web-based UI built on Apache Cocoon.
+      RiverRun extensions to DSpace's web-based UI built on Apache Cocoon.
    </description>
 
    <parent>
