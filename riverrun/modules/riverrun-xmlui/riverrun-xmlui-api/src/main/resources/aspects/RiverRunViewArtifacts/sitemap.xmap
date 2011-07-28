@@ -28,8 +28,9 @@
       <map:transformer name="Statistics" src="org.dspace.app.xmlui.aspect.artifactbrowser.StatisticsViewer"/>
       
       <!-- RiverRun customizations -->
+      <map:transformer name="Contact" src="ca.unb.lib.riverrun.app.xmlui.aspect.artifactbrowser.Contact"/>
+      <map:transformer name="DefaultLicense" src="ca.unb.lib.riverrun.app.xmlui.aspect.artifactbrowser.DefaultLicense"/>      
       <map:transformer name="Help" src="ca.unb.lib.riverrun.app.xmlui.aspect.artifactbrowser.Help"/>
-      <map:transformer name="DefaultLicense" src="ca.unb.lib.riverrun.app.xmlui.aspect.artifactbrowser.DefaultLicense"/>
     </map:transformers>
     
     <map:matchers default="wildcard">
