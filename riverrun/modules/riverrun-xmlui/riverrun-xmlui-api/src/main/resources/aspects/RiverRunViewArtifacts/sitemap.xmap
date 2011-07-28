@@ -29,6 +29,7 @@
       
       <!-- RiverRun customizations -->
       <map:transformer name="Help" src="ca.unb.lib.riverrun.app.xmlui.aspect.artifactbrowser.Help"/>
+      <map:transformer name="DefaultLicense" src="ca.unb.lib.riverrun.app.xmlui.aspect.artifactbrowser.DefaultLicense"/>
     </map:transformers>
     
     <map:matchers default="wildcard">
@@ -224,7 +225,18 @@
           </map:act>
 
           <map:serialize type="xml"/>
-      </map:match>      
+      </map:match>
+
+      <!-- Help pages: display text of default licence -->
+      <map:match pattern="help/default-licence">
+        <!-- 
+          DSpace code uses verb form "license" and we follow this convention in
+          RiverRun code.  In the UI, choose noun ("licence") or verb form, as
+          appropriate. 
+        -->
+        <map:transform type="DefaultLicense"/>
+        <map:serialize type="xml"/>
+      </map:match>
       
       <!-- Not a URL we care about, so just pass it on. -->
       <map:serialize type="xml"/>
