@@ -1,7 +1,7 @@
 /*
  * ETDMSDisseminationCrosswalk.java
  */
-package ca.unb.lib.riverrun.content.crosswalk;
+package ca.unb.lib.riverrun.app.oai;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -118,14 +118,13 @@ public class ETDMSDisseminationCrosswalk extends SelfNamedPlugin
 
     // prefix of Theses Canada identifier
     // @todo remove this.  Crosswalks shouldn't generate metadata
-    private static final String TC_ID_PREFIX = "TC-UNB-";
+    private static final String CONFIG_TC_ID = CONFIG_PREFIX + ".thesescanada.id";
 
     // XML schemaLocation fragment for this crosswalk, from config.
     private String schemaLocation = null;
 
-    private static final Namespace XLINK_NS =
-            Namespace.getNamespace("xlink", "http://www.w3.org/TR/xlink");
-
+    // Theses Canada ID prefix, to be prepended to item handle
+    private String thesesCanadaId = null;
 
     /**
      * Fill in the plugin-name table from DSpace configuration entries
@@ -211,6 +210,9 @@ public class ETDMSDisseminationCrosswalk extends SelfNamedPlugin
         // get XML schemaLocation fragment from config
         schemaLocation = ConfigurationManager.getProperty(CONFIG_PREFIX + ".schemaLocation." + myName);
 
+        // get ThesesCanada ID prefix from config
+        thesesCanadaId = ConfigurationManager.getProperty(CONFIG_TC_ID);
+
         // read properties
         String cmPropName = CONFIG_PREFIX + ".properties." + myName;
         String propsFilename = ConfigurationManager.getProperty(cmPropName);
@@ -257,6 +259,7 @@ public class ETDMSDisseminationCrosswalk extends SelfNamedPlugin
         }
     }
 
+    @Override
     public Namespace[] getNamespaces() {
         try {
             init();
@@ -265,6 +268,7 @@ public class ETDMSDisseminationCrosswalk extends SelfNamedPlugin
         return namespaces;
     }
 
+    @Override
     public String getSchemaLocation() {
         try {
             init();
@@ -274,8 +278,9 @@ public class ETDMSDisseminationCrosswalk extends SelfNamedPlugin
     }
 
     /**
-     * Returns object's metadata in MODS format, as XML structure node.
+     * Returns object's metadata in ETDMS format, as XML structure node.
      */
+    @Override
     public List disseminateList(DSpaceObject dso)
             throws CrosswalkException,
             IOException, SQLException, AuthorizeException {
@@ -337,13 +342,17 @@ public class ETDMSDisseminationCrosswalk extends SelfNamedPlugin
 
         // Theses Canada identifier
         // @todo remove TC ID generation; crosswalks shouldn't create metadata
-        String handle = item.getHandle();
-        if (handle != null) {
-            Element tcElement = new Element("identifier");
-            tcElement.addContent(TC_ID_PREFIX + handle.substring(handle.lastIndexOf("/")+1));
-            if (addSchema)
-                tcElement.setAttribute("schemaLocation", schemaLocation, XSI_NS);
-            result.add(tcElement);
+        // If we don't have a ThesesCanada prefix, skip this mess altogether.
+        if (thesesCanadaId != null && (! thesesCanadaId.isEmpty())) {
+            String handle = item.getHandle();
+            if (handle != null) {
+                Element tcElement = new Element("identifier");
+                tcElement.addContent(thesesCanadaId + "-" + handle.substring(handle.lastIndexOf("/") + 1));
+                if (addSchema) {
+                    tcElement.setAttribute("schemaLocation", schemaLocation, XSI_NS);
+                }
+                result.add(tcElement);
+            }
         }
         // end TC ID hack
 

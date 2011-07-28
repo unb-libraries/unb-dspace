@@ -1,0 +1,27 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+   <modelVersion>4.0.0</modelVersion>
+   <groupId>ca.unb.lib.riverrun</groupId>
+   <artifactId>riverrun-api</artifactId>
+   <version>2.0</version>
+   <name>RiverRun API</name>
+   <description>RiverRun extensions to DSpace core data model and service APIs.</description>
+   <url>https://github.com/unb-libraries/unb-dspace</url>
+
+   <parent>
+      <groupId>ca.unb.lib.riverrun</groupId>
+      <artifactId>riverrun-oai</artifactId>
+      <version>2.0</version>
+   </parent>
+
+   <dependencies>
+      <dependency>
+         <groupId>org.dspace</groupId>
+         <artifactId>dspace-api</artifactId>
+      </dependency>
+      <dependency>
+         <groupId>jdom</groupId>
+         <artifactId>jdom</artifactId>
+      </dependency>
+   </dependencies>
+
+</project>
