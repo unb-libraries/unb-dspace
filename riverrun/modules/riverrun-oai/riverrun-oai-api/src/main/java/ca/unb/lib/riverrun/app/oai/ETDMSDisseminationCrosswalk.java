@@ -423,6 +423,7 @@ public class ETDMSDisseminationCrosswalk extends SelfNamedPlugin
         return result;
     }
 
+    @Override
     public Element disseminateElement(DSpaceObject dso)
             throws CrosswalkException,
             IOException, SQLException, AuthorizeException {
@@ -436,10 +437,12 @@ public class ETDMSDisseminationCrosswalk extends SelfNamedPlugin
         return root;
     }
 
+    @Override
     public boolean canDisseminate(DSpaceObject dso) {
         return true;
     }
 
+    @Override
     public boolean preferList() {
         return false;
     }
