@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <!--
-    Document   : add-account-options.xsl.xsl
-    Created on : June 13, 2011, 11:50 AM
-    Author     : dspace
-    Description: adds simple, always-on options to the Account options block.
-
+  This XSL-driven aspect adds simple, always-on options to the XMLUI.
 -->
-
 <xsl:stylesheet
   xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
   xmlns:dri="http://di.tamu.edu/DRI/1.0/"
@@ -23,7 +17,7 @@
         </xsl:copy>
     </xsl:template>
 
-    <xsl:template match="dri:list[@id='aspect.artifactbrowser.Navigation.list.account']">
+    <xsl:template match="dri:list[@id='aspect.viewArtifacts.Navigation.list.account']">
         <xsl:copy>
             <xsl:copy-of select="@*"/>
             <xsl:apply-templates/>
