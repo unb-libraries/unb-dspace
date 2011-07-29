@@ -342,6 +342,16 @@
                         </xsl:attribute>
                         <i18n:text>xmlui.dri2xhtml.structural.feedback-link</i18n:text>
                     </a>
+                    <xsl:text> | </xsl:text>                    
+                    <a>
+                      <!-- @fixme: add help page URL to DRI -->
+                      <xsl:attribute name="href">
+                        <xsl:value-of select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='contextPath'][not(@qualifier)]"/>
+                        <xsl:text>/help</xsl:text>
+                      </xsl:attribute>
+                      <i18n:text>xmlui.dri2xhtml.structural.help</i18n:text>
+                    </a>
+                    
                 </div>
                 <!--Invisible link to HTML sitemap (for search engines) -->
                 <a class="hidden">
