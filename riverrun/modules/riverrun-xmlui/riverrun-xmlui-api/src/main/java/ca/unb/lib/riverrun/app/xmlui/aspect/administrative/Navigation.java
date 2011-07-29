@@ -26,8 +26,7 @@ import org.xml.sax.SAXException;
  * Overrides addOptions method to modify the layout of the 'Context' and
  * 'Administrative' options blocks.
  */
-public class Navigation
-        extends org.dspace.app.xmlui.aspect.administrative.Navigation {
+public class Navigation extends org.dspace.app.xmlui.aspect.administrative.Navigation {
 
     /** 
      * Language strings have private access in superclass so are redeclared here.
@@ -72,6 +71,7 @@ public class Navigation
     private static final Message T_ITEM_ADMIN_HEAD = message("xmlui.RiverRunAdministrative.Navigation.item_admin_head");
     private static final Message T_COLLECTION_ADMIN_HEAD = message("xmlui.RiverRunAdministrative.Navigation.collection_admin_head");
     private static final Message T_COMMUNITY_ADMIN_HEAD = message("xmlui.RiverRunAdministrative.Navigation.community_admin_head");
+    private static final Message T_ALL_COMMUNITIES_ADMIN_HEAD = message("xmlui.RiverRunAdministrative.Navigation.all_communities_admin_head");
     
     /**
      * Exports available for download. Not accessible in parent; redeclared.
@@ -191,13 +191,14 @@ public class Navigation
             }
         }
 
-        if ("community-list".equals(this.sitemapURI)) {
-            // Only System administrators can create top-level communities
+        // If viewing the home page or the list of all collections & communities...
+        if ("community-list".equals(this.sitemapURI) || this.sitemapURI.isEmpty()) {
+            // ...allow system administrators to create top-level communities
             if (isSystemAdmin) {
                 adminList.setHead(T_ADMINISTRATIVE_HEAD);
 
                 List communityOptions = adminList.addList("admin-community-context");
-                communityOptions.setHead(T_COMMUNITY_ADMIN_HEAD);
+                communityOptions.setHead(T_ALL_COMMUNITIES_ADMIN_HEAD);
                 communityOptions.addItemXref(contextPath + "/admin/community?createNew", T_CONTEXT_CREATE_COMMUNITY);
             }
         }
