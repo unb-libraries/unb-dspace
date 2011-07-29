@@ -3,6 +3,7 @@
     constructed by Mirage base theme.
     
     * Modifies <head> to refer to ETCMirage files, where customized 
+    * Modifies page header to include 'Help' link next to 'Login' link
     * Modifies page footer
 -->
 
@@ -217,7 +218,96 @@
 			
 		</head>
 	</xsl:template>
-	
+
+
+  <!-- 
+    The header (distinct from the HTML head element) contains the title,
+    subtitle, login box and various placeholders for header images
+  -->
+  <xsl:template name="buildHeader">
+    <div id="ds-header-wrapper">
+      <div id="ds-header" class="clearfix">
+        
+        <a id="ds-header-logo-link">
+          <xsl:attribute name="href">
+            <xsl:value-of select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='contextPath'][not(@qualifier)]"/>
+            <xsl:text>/</xsl:text>
+          </xsl:attribute>
+          <span id="ds-header-logo">&#160;</span>
+          <span id="ds-header-logo-text">RiverRun</span>
+        </a>
+        
+        <h1 class="pagetitle visuallyhidden">
+          <xsl:choose>
+            <!-- protection against an empty page title -->
+            <xsl:when test="not(/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='title'])">
+              <xsl:text> </xsl:text>
+            </xsl:when>
+            <xsl:otherwise>
+              <xsl:copy-of select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='title']/node()"/>
+            </xsl:otherwise>
+          </xsl:choose>
+        </h1>
+        
+        <h2 class="static-pagetitle visuallyhidden">
+          <i18n:text>xmlui.dri2xhtml.structural.head-subtitle</i18n:text>
+        </h2>
+
+        <!-- begin list of links in user box -->
+        <div id="ds-user-box">
+          <p>
+            <!-- user logged in? -->
+            <xsl:choose>
+              <xsl:when test="/dri:document/dri:meta/dri:userMeta/@authenticated = 'yes'">
+                <a>
+                  <xsl:attribute name="href">
+                    <xsl:value-of
+                      select="/dri:document/dri:meta/dri:userMeta/dri:metadata[@element='identifier' and @qualifier='url']"/>
+                  </xsl:attribute>
+                  <i18n:text>xmlui.dri2xhtml.structural.profile</i18n:text>
+                  <xsl:value-of select="/dri:document/dri:meta/dri:userMeta/dri:metadata[@element='identifier' and @qualifier='firstName']"/>
+                  <xsl:text> </xsl:text>
+                  <xsl:value-of select="/dri:document/dri:meta/dri:userMeta/dri:metadata[@element='identifier' and @qualifier='lastName']"/>
+                </a>
+                <xsl:text> | </xsl:text>
+                <a>
+                <xsl:attribute name="href">
+                  <xsl:value-of select="/dri:document/dri:meta/dri:userMeta/dri:metadata[@element='identifier' and @qualifier='logoutURL']"/>
+                </xsl:attribute>
+                <i18n:text>xmlui.dri2xhtml.structural.logout</i18n:text>
+                </a>
+              </xsl:when>
+              <xsl:otherwise>
+                <!-- not logged in -->
+                <a>
+                  <xsl:attribute name="href">
+                    <xsl:value-of
+                      select="/dri:document/dri:meta/dri:userMeta/dri:metadata[@element='identifier' and @qualifier='loginURL']"/>
+                  </xsl:attribute>
+                  <i18n:text>xmlui.dri2xhtml.structural.login</i18n:text>
+                </a>
+              </xsl:otherwise>
+            </xsl:choose>
+            
+            <!-- Add a help link -->
+            <xsl:text> | </xsl:text>
+            <a>
+              <!-- @fixme: add help page URL to DRI metadata (see contact, feedback links)-->
+              <xsl:attribute name="href">
+                <xsl:value-of
+                        select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='contextPath'][not(@qualifier)]"/>
+                <xsl:text>/help</xsl:text>
+              </xsl:attribute>
+              <i18n:text>xmlui.dri2xhtml.structural.help</i18n:text>
+            </a>
+          </p>
+        </div><!-- end div#ds-user-box -->
+        
+      </div> <!-- end div#ds-header -->
+    </div> <!-- end div#ds-header-wrapper -->
+    
+  </xsl:template>
+  	
     <xsl:template name="buildFooter">
         <div id="ds-footer-wrapper">
             <div id="ds-footer">
@@ -234,6 +324,7 @@
                 </div>
                 <div id="ds-footer-links">
                     <a>
+                      <!-- @fixme: contact page URL is available in DRI metadata -->
                         <xsl:attribute name="href">
                             <xsl:value-of
                                     select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='contextPath'][not(@qualifier)]"/>
@@ -243,6 +334,7 @@
                     </a>
                     <xsl:text> | </xsl:text>
                     <a>
+                      <!-- @fixme: feedback page URL is available in DRI metadata -->
                         <xsl:attribute name="href">
                             <xsl:value-of
                                     select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='contextPath'][not(@qualifier)]"/>
