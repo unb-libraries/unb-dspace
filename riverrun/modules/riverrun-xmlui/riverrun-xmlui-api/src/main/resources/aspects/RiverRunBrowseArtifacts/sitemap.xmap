@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  sitemap.xmap
+-->
+<!--
+  The RiverRunBrowseArtifacts aspect is a cloned & customized version of
+  DSpace's BrowseArtifacts aspect.  This version:
+
+  * overrides default handling of lists of recently-submitted items for
+    communities & collections
+-->
+<map:sitemap xmlns:map="http://apache.org/cocoon/sitemap/1.0">
+    <map:components>
+
+        <map:transformers>
+            <map:transformer name="Navigation" src="org.dspace.app.xmlui.aspect.browseArtifacts.Navigation"/>
+            <map:transformer name="CommunityBrowser" src="org.dspace.app.xmlui.aspect.artifactbrowser.CommunityBrowser"/>
+            <map:transformer name="CommunityRecentSubmissions" src="ca.unb.lib.riverrun.app.xmlui.aspect.artifactbrowser.CommunityRecentSubmissions"/>
+            <map:transformer name="CollectionRecentSubmissions" src="ca.unb.lib.riverrun.app.xmlui.aspect.artifactbrowser.CollectionRecentSubmissions"/>
+            <map:transformer name="ConfigurableBrowse" src="org.dspace.app.xmlui.aspect.artifactbrowser.ConfigurableBrowse"/>
+        </map:transformers>
+
+        <map:matchers default="wildcard">
+                <map:matcher name="HandleTypeMatcher" src="org.dspace.app.xmlui.aspect.general.HandleTypeMatcher"/>
+                <map:matcher name="HandleAuthorizedMatcher" src="org.dspace.app.xmlui.aspect.general.HandleAuthorizedMatcher"/>
+        </map:matchers>
+    </map:components>
+
+    <map:pipelines>
+        <map:pipeline>
+            <map:generate/>
+
+            <!--
+                    Navigation links to browse the repository.
+                    - This includes links that are relative to the currently
+            -->
+            <map:transform type="Navigation"/>
+
+            <map:match pattern="">
+                <map:transform type="CommunityBrowser">
+                        <map:parameter name="depth" value="1"/>
+                </map:transform>
+                <map:serialize type="xml"/>
+            </map:match>
+
+            <!-- List all communities & collections in DSpace -->
+            <map:match pattern="community-list">
+                    <map:transform type="CommunityBrowser">
+                            <map:parameter name="depth" value="999"/>
+                    </map:transform>
+                    <map:serialize type="xml"/>
+            </map:match>
+
+            <!-- Browse (by anything) -->
+            <map:match pattern="browse">
+                    <map:transform type="ConfigurableBrowse"/>
+                    <map:serialize type="xml"/>
+            </map:match>
+
+            <!-- Handle specific features -->
+            <map:match pattern="handle/*/**">
+                <map:match type="HandleAuthorizedMatcher" pattern="READ">
+                    <map:match type="HandleTypeMatcher" pattern="community,collection">
+                        <!-- Browse (by anything) -->
+                        <map:match pattern="handle/*/*/browse">
+                            <map:transform type="ConfigurableBrowse"/>
+                            <map:serialize type="xml"/>
+                        </map:match>
+
+                        <map:match type="HandleTypeMatcher" pattern="community">
+                            <map:match pattern="handle/*/*">
+                                <map:transform type="CommunityRecentSubmissions"/>
+                            </map:match>
+                        </map:match>
+
+                        <map:match type="HandleTypeMatcher" pattern="collection">
+                            <map:match pattern="handle/*/*">
+                                <map:transform type="CollectionRecentSubmissions"/>
+                            </map:match>
+                        </map:match>
+
+                    </map:match>
+
+                </map:match>
+
+            </map:match>
+
+
+            <!-- Not a URL we care about, so just pass it on. -->
+            <map:serialize type="xml"/>
+
+        </map:pipeline>
+    </map:pipelines>
+</map:sitemap>
