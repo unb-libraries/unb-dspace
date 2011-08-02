@@ -85,14 +85,16 @@ public class Navigation extends org.dspace.app.xmlui.aspect.administrative.Navig
     public void setup(SourceResolver resolver, Map objectModel, String src, Parameters parameters)
             throws ProcessingException, SAXException, IOException {
 
-    	super.setup(resolver, objectModel, src, parameters);
+        availableExports = null;
 
-        try {
-            availableExports = ItemExport.getExportsAvailable(context.getCurrentUser());
-    	}
-    	catch (Exception e) {
-            // nothing to do
-    	}
+        if (context.getCurrentUser() != null) {
+            try {
+                availableExports = ItemExport.getExportsAvailable(context.getCurrentUser());
+            }
+            catch (Exception e) {
+                throw new ProcessingException("Error getting available exports", e);
+            }
+        }
     }
 
     @Override

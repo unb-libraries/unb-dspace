@@ -18,14 +18,14 @@
   
     <map:transformers>
       <map:transformer name="Navigation" src="org.dspace.app.xmlui.aspect.viewArtifacts.Navigation"/>
-      <map:transformer name="CommunityViewer" src="org.dspace.app.xmlui.aspect.artifactbrowser.CommunityViewer"/>
-      <map:transformer name="CollectionViewer" src="org.dspace.app.xmlui.aspect.artifactbrowser.CollectionViewer"/>
       <map:transformer name="ItemViewer" src="org.dspace.app.xmlui.aspect.artifactbrowser.ItemViewer"/>
       <map:transformer name="FeedbackForm" src="org.dspace.app.xmlui.aspect.artifactbrowser.FeedbackForm"/>
       <map:transformer name="FeedbackSent" src="org.dspace.app.xmlui.aspect.artifactbrowser.FeedbackSent"/>
       <map:transformer name="Contact" src="org.dspace.app.xmlui.aspect.artifactbrowser.Contact"/>
       <map:transformer name="RestrictedItem" src="org.dspace.app.xmlui.aspect.artifactbrowser.RestrictedItem"/>
       <map:transformer name="Statistics" src="org.dspace.app.xmlui.aspect.artifactbrowser.StatisticsViewer"/>
+      <map:transformer name="CollectionViewer" src="org.dspace.app.xmlui.aspect.artifactbrowser.CollectionViewer"/>
+      <map:transformer name="CommunityViewer" src="org.dspace.app.xmlui.aspect.artifactbrowser.CommunityViewer"/>
       
       <!-- RiverRun customizations -->
       <map:transformer name="Contact" src="ca.unb.lib.riverrun.app.xmlui.aspect.artifactbrowser.Contact"/>
