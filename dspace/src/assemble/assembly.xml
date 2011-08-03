@@ -51,14 +51,12 @@
 				<exclude>config/dspace.cfg</exclude>
 			</excludes>
 		</fileSet>
-		<!-- RiverRun configuration files, scripts, and sample data -->
+		<!-- RiverRun configuration files -->
 		<fileSet>
 			<directory>../riverrun</directory>
 			<outputDirectory>.</outputDirectory>
 			<includes>
-				<include>bin/**</include>
 				<include>config/**</include>
-				<include>data/**</include>
 				<include>solr/**</include>
 			</includes>
 			<excludes>
