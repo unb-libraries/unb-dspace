@@ -1,8 +1,9 @@
 <!--
-  ETCMirage/lib/xsl/aspect/artifactbrowser/item-view.xsl
-  
-  Templates for rendering the item display page in ETCMirage, a 'subtheme' of
-  Mirage.
+	ETCMirage customizations to item view constructed by Mirage base theme.
+	
+	* Adds a named template, dimField, that generates a row of metadata in the
+		table presented on detailed item view. dimField can be invoked with modified
+	  content from matching templates, as needed.
 -->
 <xsl:stylesheet xmlns:i18n="http://apache.org/cocoon/i18n/2.1"
 	xmlns:dri="http://di.tamu.edu/DRI/1.0/" xmlns:mets="http://www.loc.gov/METS/"
@@ -16,54 +17,18 @@
 
 	<xsl:output indent="yes"/>
 	
-	<!-- Special handling for dc.identifier.uri -->
-	<xsl:template match="dim:field[@mdschema='dc' and @element='identifier' and @qualifier='uri']" mode="itemDetailView-DIM">
-		<xsl:call-template name="dimField">
-			<xsl:with-param name="value">
-				<a>
-					<xsl:attribute name="href">
-						<xsl:value-of select="node()"/>
-					</xsl:attribute>
-					<xsl:value-of select="node()"/>
-				</a>
-			</xsl:with-param>
-		</xsl:call-template>
-	</xsl:template>
-	
-	<!-- Special handling for dc.identifier.doi -->
-	<xsl:template match="dim:field[@mdschema='dc' and @element='identifier' and @qualifier='doi']" mode="itemDetailView-DIM">	
+	<!-- 
+		dimField
 		
-		<!-- DOIs may have been entered as URLs. Sort out which. -->
-		<xsl:call-template name="dimField">
-			<xsl:with-param name="value">
-				<xsl:if test="starts-with(node(), 'http://')">
-					<!-- assume it's been entered as a URL -->
-					<a>
-						<xsl:attribute name="href">
-							<xsl:value-of select="node()"/>
-						</xsl:attribute>
-						<xsl:value-of select="substring-after(node(),'http://dx.doi.org/')"/>
-					</a>
-				</xsl:if>
-				<xsl:if test="not(starts-with(node(), 'http://'))">
-					<!-- assume it's a DOI... -->
-					<a>
-						<xsl:attribute name="href">
-							<xsl:value-of select="concat('http://dx.doi.org/', node())"/>
-						</xsl:attribute>
-						<xsl:value-of select="node()"/>
-					</a>
-				</xsl:if>
-			</xsl:with-param>
-		</xsl:call-template>
-	</xsl:template>
-
-	<!-- All remaining DIM fields: --> 
-	<xsl:template match="dim:field" mode="itemDetailView-DIM">
-		<xsl:call-template name="dimField"/>
-	</xsl:template>
-	
-	<!-- Generate a row in metadata table of item detail view -->
+		parameters:
+			value:  Content to be displayed in metadata table row; default value is 
+							content of current node.
+							
+		Invoked with modified content in $value parameter by templates matching
+		DIM metadata elements that require special handling.  Invoked without
+		parameters by all other templates matching DIM metadata elements, for 
+		generic handling.
+	-->
 	<xsl:template name="dimField">
 		<xsl:param name="value">
 			<xsl:copy-of select="node()"/>
@@ -97,5 +62,60 @@
 			</td>
 		</tr>
 	</xsl:template>
+	
+	<!-- 
+		Special handling for dc.identifier.uri: display as link
+	-->
+	<xsl:template match="dim:field[@mdschema='dc' and @element='identifier' and @qualifier='uri']" mode="itemDetailView-DIM">
+		<xsl:call-template name="dimField">
+			<xsl:with-param name="value">
+				<a>
+					<xsl:attribute name="href">
+						<xsl:value-of select="node()"/>
+					</xsl:attribute>
+					<xsl:value-of select="node()"/>
+				</a>
+			</xsl:with-param>
+		</xsl:call-template>
+	</xsl:template>
+	
+	<!-- 
+		Special handling for dc.identifier.doi: display as link
+	-->
+	<xsl:template match="dim:field[@mdschema='dc' and @element='identifier' and @qualifier='doi']" mode="itemDetailView-DIM">	
+		
+		<!-- DOIs may have been entered as URLs. Sort out which. -->
+		<xsl:call-template name="dimField">
+			<xsl:with-param name="value">
+				<xsl:if test="starts-with(node(), 'http://')">
+					<!-- assume it's been entered as a URL -->
+					<a>
+						<xsl:attribute name="href">
+							<xsl:value-of select="node()"/>
+						</xsl:attribute>
+						<xsl:value-of select="substring-after(node(),'http://dx.doi.org/')"/>
+					</a>
+				</xsl:if>
+				<xsl:if test="not(starts-with(node(), 'http://'))">
+					<!-- assume it's a DOI... -->
+					<a>
+						<xsl:attribute name="href">
+							<xsl:value-of select="concat('http://dx.doi.org/', node())"/>
+						</xsl:attribute>
+						<xsl:value-of select="node()"/>
+					</a>
+				</xsl:if>
+			</xsl:with-param>
+		</xsl:call-template>
+	</xsl:template>
+
+	<!-- 
+		All remaining DIM fields
+	--> 
+	<xsl:template match="dim:field" mode="itemDetailView-DIM">
+		<xsl:call-template name="dimField"/>
+	</xsl:template>
+	
+
 
 </xsl:stylesheet>
