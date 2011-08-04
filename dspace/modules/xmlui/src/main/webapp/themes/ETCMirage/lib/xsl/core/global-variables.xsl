@@ -20,18 +20,17 @@
 		Global variables:
 			* $context-path
 			* $theme-path 
+			
 		are defined in dri2xhtml-alt/core/global-variables.xsl. 
 		
-		ETCMirage builds on Mirage as a 'base theme' so we define global variables
-		for the base theme name and path which are included in the DRI document by
-		our sitemap.xmamp.
+		ETCMirage builds on Mirage as a base theme; the global variable $theme-path
+		refers to Mirage.
 		
-		$base-theme-path represents the full path to the 'base' theme, useful for 
-		accessing static resources (CSS, Java, images) used by ETCMirage without
-		modification.
+		Add global variables to refer to ETCMirage subtheme path to include static 
+		resources (CSS, Java, images) modified for use by ETCMirage.
 	-->
 	<xsl:variable 
-		name="base-theme-path" 
-		select="concat($context-path,'/themes/',/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='basetheme'][@qualifier='path'])"/>
+		name="subtheme-path" 
+		select="concat($context-path,'/themes/',/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='subtheme'][@qualifier='path'])"/>
 	
 </xsl:stylesheet>

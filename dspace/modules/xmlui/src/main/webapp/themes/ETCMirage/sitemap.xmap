@@ -1,40 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  The contents of this file are subject to the license and copyright
-  detailed in the LICENSE and NOTICE files at the root of the source
-  tree and available online at
-
-  http://www.dspace.org/license/
+	Sitemap for ETCMirage, a 'subtheme' of Mirage.
 -->
 <map:sitemap xmlns:map="http://apache.org/cocoon/sitemap/1.0">
 
-    <map:components>
-        <map:readers>
-            <map:reader name="ConcatenationReader" src="org.dspace.app.xmlui.cocoon.ConcatenationReader"/>
-        </map:readers>
-    </map:components>
+	<map:components>
+		<map:readers>
+			<map:reader name="ConcatenationReader" src="org.dspace.app.xmlui.cocoon.ConcatenationReader"/>
+		</map:readers>
+	</map:components>
 
-    <map:pipelines>
+	<map:pipelines>
 
 		<!--
-			Define global theme variables that are used later in this
-			sitemap. Two variables are typically defined here, the theme's
-			path and name. The path is the directory name where this theme
-			is located, such as "Reference" for the reference theme. The
-			theme's name is used only for descriptive purposes to describe
-			the theme.
+			Define global theme variables that are used later in this sitemap.  This
+			theme uses Mirage as a base theme.  
+
+			theme-path: name of base theme directory
+			theme-name: base theme name			
 			
-			This sitemap adds the base theme's path and name, so we can include
-			files from the base theme that do not need to be customized.
+			subtheme-path: name of subtheme directory
+			subtheme-name: subtheme name
 		-->
 		<map:component-configurations>
 			<global-variables>
-				<theme-path>ETCMirage</theme-path>
-				<theme-name>ETCMirage</theme-name>
-				<base-theme-path>Mirage</base-theme-path>
-				<base-theme-name>Mirage</base-theme-name>
+				<theme-path>Mirage</theme-path>
+				<theme-name>Mirage</theme-name>
+				<subtheme-path>ETCMirage</subtheme-path>
+				<subtheme-name>ETCMirage</subtheme-name>
 			</global-variables>
-    </map:component-configurations>
+		</map:component-configurations>
 
 
 		<map:pipeline>
@@ -42,22 +37,24 @@
 			<map:parameter name="expires" value="access plus 1 hours"/>
 
 
-            <!-- handle static js and css -->
-            <map:match pattern="themes/*/**.js">
-                    <map:read type="ConcatenationReader" src="{2}.js">
-                        <map:parameter name="requestQueryString" value="{request:queryString}"/>
-                    </map:read>
-            </map:match>
-            <map:match pattern="themes/*/**.css">
-                    <map:read type="ConcatenationReader" src="{2}.css">
-                        <map:parameter name="requestQueryString" value="{request:queryString}"/>
-                    </map:read>
-            </map:match>
-            <map:match pattern="themes/*/**.json">
-                    <map:read type="ConcatenationReader" src="{2}.json">
-                        <map:parameter name="requestQueryString" value="{request:queryString}"/>
-                    </map:read>
-            </map:match>
+			<!-- handle static js and css -->
+			<map:match pattern="themes/*/**.js">
+				<map:read type="ConcatenationReader" src="{2}.js">
+					<map:parameter name="requestQueryString" value="{request:queryString}"/>
+				</map:read>
+			</map:match>
+			
+			<map:match pattern="themes/*/**.css">
+				<map:read type="ConcatenationReader" src="{2}.css">
+					<map:parameter name="requestQueryString" value="{request:queryString}"/>
+				</map:read>
+			</map:match>
+			
+			<map:match pattern="themes/*/**.json">
+				<map:read type="ConcatenationReader" src="{2}.json">
+					<map:parameter name="requestQueryString" value="{request:queryString}"/>
+				</map:read>
+			</map:match>
 
 			<!-- Static content -->
 			<map:match pattern="themes/*/**">
@@ -124,33 +121,37 @@
 
 				<!-- Step 2 Add page metadata -->
 
-                <!--3 different IncludePageMeta transformers to ensure that the
+				<!--3 different IncludePageMeta transformers to ensure that the
                 stylesheets end up in the correct order-->
-                
-                <map:transform type="IncludePageMeta">
-                    <map:parameter name="stylesheet.screen#1" value="../{global:base-theme-path}/lib/css/reset.css"/>
-                    <map:parameter name="stylesheet.screen#2" value="../{global:base-theme-path}/lib/css/base.css"/>
-                    <map:parameter name="stylesheet.screen#3" value="../{global:base-theme-path}/lib/css/helper.css"/>
-                    <map:parameter name="stylesheet.screen#4" value="../{global:base-theme-path}/lib/css/jquery-ui-1.8.5.custom.css"/>
-                    <map:parameter name="stylesheet.screen#5" value="../{global:base-theme-path}/lib/css/style.css"/>
-                    <map:parameter name="stylesheet.screen#6" value="../{global:base-theme-path}/lib/css/authority-control.css"/>
-                    <!-- Theme-specific CSS -->
-                    <map:parameter name="stylesheet.screen#7" value="lib/css/style.css"/>
-                </map:transform>
 
-                <map:transform type="IncludePageMeta">
-                    <map:parameter name="stylesheet.handheld" value="../{global:base-theme-path}/lib/css/handheld.css"/>
-                    <map:parameter name="stylesheet.print" value="../{global:base-theme-path}/lib/css/print.css"/>
-                </map:transform>
+				<map:transform type="IncludePageMeta">
+					<!-- base theme CSS -->
+					<map:parameter name="stylesheet.screen#1" value="lib/css/reset.css"/>
+					<map:parameter name="stylesheet.screen#2" value="lib/css/base.css"/>
+					<map:parameter name="stylesheet.screen#3" value="lib/css/helper.css"/>
+					<map:parameter name="stylesheet.screen#4" value="lib/css/jquery-ui-1.8.5.custom.css"/>
+					<map:parameter name="stylesheet.screen#5" value="lib/css/style.css"/>
+					<map:parameter name="stylesheet.screen#6" value="css/authority-control.css"/>
+					
+					<!-- subtheme CSS -->
+					<map:parameter name="stylesheet.screen#7" value="../{global:subtheme-path}/lib/css/style.css"/>
+				</map:transform>
 
-                <map:transform type="IncludePageMeta">
-                    <map:parameter name="stylesheet.all" value="../{global:base-theme-path}/lib/css/media.css"/>
-                    <map:parameter name="javascript" value="../{global:base-theme-path}/lib/js/jquery-ui-1.8.5.custom.min.js"/>
-                    <map:parameter name="theme.path" value="{global:theme-path}"/>
-                    <map:parameter name="theme.name" value="{global:theme-name}"/>
-                    <map:parameter name="basetheme.path" value="{global:base-theme-path}"/>
-                    <map:parameter name="basetheme.name" value="{global:base-theme-name}"/>
-                </map:transform>
+				<map:transform type="IncludePageMeta">
+					<map:parameter name="stylesheet.handheld" value="lib/css/handheld.css"/>
+					<map:parameter name="stylesheet.print" value="lib/css/print.css"/>
+				</map:transform>
+
+				<map:transform type="IncludePageMeta">
+					<map:parameter name="stylesheet.all" value="lib/css/media.css"/>
+					<map:parameter name="javascript" value="lib/js/jquery-ui-1.8.5.custom.min.js"/>
+
+					<map:parameter name="theme.path" value="{global:theme-path}"/>
+					<map:parameter name="theme.name" value="{global:theme-name}"/>
+					
+					<map:parameter name="subtheme.path" value="{global:subtheme-path}"/>
+					<map:parameter name="subtheme.name" value="{global:subtheme-name}"/>
+				</map:transform>
 
 				<!-- Debuging output -->
 				<map:match type="request" pattern="XML">
@@ -158,7 +159,7 @@
 				</map:match>
 
 				<!-- Step 3: Transform to XHTML -->
-				<map:transform src="{global:theme-name}.xsl"/>
+				<map:transform src="{global:subtheme-name}.xsl"/>
 
 				<!-- Step 4: Localize the page -->
 				<map:act type="locale">

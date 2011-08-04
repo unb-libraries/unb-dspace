@@ -1,7 +1,8 @@
 <!--
-    RiverRun customizations to the main structure of the page
-    constructed by Mirage base theme.
-    
+    RiverRun customizations to the main structure of the page constructed by
+    Mirage base theme.
+
+		@todo update this 
     * Modifies <head> to refer to ETCMirage files, where customized 
     * Modifies page header to include 'Help' link next to 'Login' link
     * Modifies page footer
@@ -38,7 +39,7 @@
 		* $theme-path 
 		
 		ETCMirage/core/global-variables.xsl
-		* $base-theme-path
+		* $subtheme-path
 		
 	-->
 	<xsl:template name="buildHead">
@@ -60,13 +61,13 @@
 			
 			<link rel="shortcut icon">
 				<xsl:attribute name="href">
-					<xsl:value-of select="$theme-path"/>
+					<xsl:value-of select="$subtheme-path"/>
 					<xsl:text>/images/favicon.ico</xsl:text>
 				</xsl:attribute>
 			</link>
 			<link rel="apple-touch-icon">
 				<xsl:attribute name="href">
-					<xsl:value-of select="$base-theme-path"/>
+					<xsl:value-of select="$theme-path"/>
 					<xsl:text>/images/apple-touch-icon.png</xsl:text>
 				</xsl:attribute>
 			</link>
@@ -82,8 +83,8 @@
 			</meta>
 			
 			<!-- 
-				Add stylsheets.  All paths here are relative to the current theme;
-				modify sitemap.xmap to add / modify stylesheet paths.
+				Add stylsheets. Sitemap defines all stylesheet paths relative to base 
+				theme; modify sitemap.xmap to add / change stylesheet paths.
 			-->
 			<xsl:for-each select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='stylesheet']">
 				<link rel="stylesheet" type="text/css">
@@ -191,7 +192,7 @@
 			<!-- Modernizr enables HTML5 elements & feature detects -->
 			<script type="text/javascript">
                 <xsl:attribute name="src">
-                		<xsl:value-of select="$base-theme-path"/>
+                		<xsl:value-of select="$theme-path"/>
                     <xsl:text>/lib/js/modernizr-1.5.min.js</xsl:text>
                 </xsl:attribute>&#160;</script>
 			

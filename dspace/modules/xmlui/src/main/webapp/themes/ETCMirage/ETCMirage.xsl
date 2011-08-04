@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-	Import stylesheets for current & base theme
+	Import stylesheets from deafult, base, and sub-themes.
 -->
 
 <xsl:stylesheet xmlns:i18n="http://apache.org/cocoon/i18n/2.1"
