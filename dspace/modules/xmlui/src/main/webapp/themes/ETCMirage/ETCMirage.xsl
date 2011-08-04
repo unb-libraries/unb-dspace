@@ -26,6 +26,7 @@
 	<!-- Override Mirage with RiverRun customizations -->
 	<xsl:import href="lib/xsl/core/page-structure.xsl"/>
 	<xsl:import href="lib/xsl/aspect/artifactbrowser/item-view.xsl"/>
+	<xsl:import href="lib/xsl/aspect/artifactbrowser/item-list.xsl"/>
 	
 	<xsl:output indent="yes"/>
     
