@@ -1,8 +1,15 @@
 <!--
 	ETCMirage customizations to item view constructed by Mirage base theme.
 	
-	* Modifies named template itemSummaryView-DIM-fields to fix 
-		https://jira.duraspace.org/browse/DS-967
+	* Modifies named template itemSummaryView-DIM-fields to correct layout issues
+		resulting from 	https://jira.duraspace.org/browse/DS-967, "Item view in
+		Mirage theme generates self-closing <div/> when abstract is empty."
+		
+	* Modifies itemSummaryView-DIM-fields to output a COinS object before 
+	  tiem title
+	  
+	* Modifies template matching dim:dim, mode = itemDetailView-DIM, to force the
+		COinS-object span tag to close.
 	
 	* Adds a named template, dimField, that generates a row of metadata in the
 		table presented on detailed item view. dimField can be invoked with modified
@@ -37,7 +44,11 @@
 		<xsl:choose>
 			<!-- Title row -->
 			<xsl:when test="$clause = 1">
-
+				<!-- Throw in a COinS span -->
+				<span class="Z3988">
+					<xsl:attribute name="title">
+						<xsl:call-template name="renderCOinS"/>
+					</xsl:attribute><xsl:comment> COinS </xsl:comment></span>
 				<xsl:choose>
 					<xsl:when test="count(dim:field[@element='title'][not(@qualifier)]) &gt; 1">
 						<!-- display first title as h1 -->
@@ -249,7 +260,16 @@
 		</xsl:choose>
 	</xsl:template>
 
-
+	<xsl:template match="dim:dim" mode="itemDetailView-DIM">
+		<span class="Z3988">
+			<xsl:attribute name="title">
+				<xsl:call-template name="renderCOinS"/>
+			</xsl:attribute><xsl:comment> COinS </xsl:comment></span>
+		<table class="ds-includeSet-table detailtable">
+			<xsl:apply-templates mode="itemDetailView-DIM"/>
+		</table>
+	</xsl:template>
+	
 	<!-- 
 		dimField
 		
