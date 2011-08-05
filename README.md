@@ -6,7 +6,7 @@ Themes & other customizations for UNB's implementation of the DSpace repository.
 
 Clone appropriate branch of the repo: `[git-repos]/unb-dspace`
 
-Fetch DSpace source release: `[dspace-src]`
+Fetch DSpace 1.7.x source release: `[dspace-src]`
 
 ### RiverRun config files
 
