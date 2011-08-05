@@ -66,12 +66,17 @@
         -->
 
         <!-- Replace default ViewArtifacts aspect with a RiverRun-specific version: -->
-        <aspect name="RiverRun: Displaying Artifacts" path="resource://aspects/RiverRunViewArtifacts/" />
+        <aspect name="RiverRun: Display Artifacts" path="resource://aspects/RiverRunViewArtifacts/" />
+        
         <!-- Replace default BrowseArtifacts aspect: -->
-        <aspect name="RiverRun: Browsing Artifacts" path="resource://aspects/RiverRunBrowseArtifacts/" />
-        <aspect name="Searching Artifacts" path="resource://aspects/SearchArtifacts/" />
+        <aspect name="RiverRun: Browse Artifacts" path="resource://aspects/RiverRunBrowseArtifacts/" />
+        
+        <!-- Replace default SearchArtifacts aspect: -->
+        <aspect name="RiverRun: Search Artifacts" path="resource://aspects/RiverRunSearchArtifacts/" />
+        
         <!-- Replace default Administration aspect: -->
         <aspect name="RiverRun: Administration" path="resource://aspects/RiverRunAdministrative/" />
+        
         <aspect name="E-Person" path="resource://aspects/EPerson/" />
         <aspect name="Submission and Workflow" path="resource://aspects/Submission/" />
 	      <aspect name="Statistics" path="resource://aspects/Statistics/" />
