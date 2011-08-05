@@ -41,28 +41,29 @@ Add custom XMLUI aspects as a module overlay:
 
 `ln -s [git-repos]/unb-dspace/riverrun/modules/riverrun-xmlui .`
 
-Add module as a dependency in `[dspace-src]/dspace/modules/pom.xml`
-
-  `
+Add module as a dependency in `[dspace-src]/dspace/modules/pom.xml`:
+```xml
+  ...
+  <modules>
+    <module>xmlui</module>
+    <module>riverrun-xmlui</module>
     ...
-    <modules>
-  		<module>xmlui</module>
-  		<module>riverrun-xmlui</module>
-      ...
-  `
+  </modules>
+```
 
 Also, add the module as a dependency in pom.xml of UI modules as needed (XMLUI, JSPUI, etc.).
 In `[dsapce-src]/dspace/modules/xmlui/pom.xml`:
-  
-  `<dependencies>
+
+```xml  
+  <dependencies>
     ... 
     <dependency>
       <groupId>ca.unb.lib.riverrun</groupId>
-      <artifactId>riverrun-oai-api</artifactId>
+      <artifactId>riverrun-xmlui-api</artifactId>
       <version>2.0</version>
     </dependency>
   </dependencies>`
-
+```
 
 ### Metadata crosswalks
 
@@ -74,25 +75,38 @@ Add custom metadata crosswalks as a module overlay:
 
 Add module as a dependency in `[dspace-src]/dspace/modules/pom.xml`:
 
-  `
+```xml
+  ...
+  <modules>
+    <module>xmlui</module>
+    <module>riverrun-oai</module>
     ...
-    <modules>
-  		<module>xmlui</module>
-  		<module>riverrun-oai</module>
-  		...
-`
+  </modules>
+```
 
 .. and in `[dsapce-src]/dspace/modules/oai/pom.xml`:
 
-  `<dependencies>
+```xml  
+  <dependencies>
     ... 
     <dependency>
       <groupId>ca.unb.lib.riverrun</groupId>
-      <artifactId>riverrun-oai-api</artifactId>
+      <artifactId>riverrun-xmlui-api</artifactId>
       <version>2.0</version>
     </dependency>
   </dependencies>`
+```
 
 ## Build & deploy
 
-Build & deploy as usual.
+Set up config values specific to your development environment with the default Maven profile defined in `settings.xml.default`.  
+
+`cp [git-repos]/unb-dspace/dspace/config/settings.xml.default $HOME/.m2/settings.xml`
+
+Edit properties defined in `$HOME/.m2/settings.xml`.  To use the settings in the build:
+
+`cd [dspace-src]/dspace`
+
+`mvn package -Dconfigure-dspace=true`
+
+
