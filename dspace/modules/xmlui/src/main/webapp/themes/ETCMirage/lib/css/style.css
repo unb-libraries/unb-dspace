@@ -1,0 +1,49 @@
+/*
+ * style.css
+ *
+ * Customizations to Mirage base theme for RiverRun, UNB's instance of DSpace.
+ */
+
+/* Primary styles */
+
+#ds-footer-left {
+  width: 50%;
+}
+
+/* All footer logos & links */
+.ds-footer-logo-link {
+  text-decoration: none;
+  cursor: pointer;
+}
+.ds-footer-logo {
+  display: inline-block;
+  background-repeat: no-repeat;
+}
+
+/* ETC logo & link */
+#ds-footer-logo-link-etc {
+  line-height: 45px;
+  margin-right: 25px;
+}    
+#ds-footer-logo-etc {
+  background: url('../../images/etc-logo-small.jpg');    
+  width: 60px;
+  height: 45px;
+}
+
+/* UNB Libraries logo & link */
+#ds-footer-logo-link-lib {
+  line-height: 38px;
+}    
+#ds-footer-logo-lib {
+  background: url('../../images/unb-libraries-logo.gif');
+  width: 225px;
+  height: 38px;
+}
+
+ 
+/* Front-page news, read from {dspace}/config/news-xmlui.xml */
+#frontpage-news #sparc-addendum img {
+  float: right;
+}
+

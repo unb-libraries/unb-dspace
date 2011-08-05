@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<document xmlns="http://di.tamu.edu/DRI/1.0/" xmlns:i18n="http://apache.org/cocoon/i18n/2.1" version="1.1">
+<body>
+<div id="frontpage-news" n="news" rend="primary">
+  <head>RiverRun Digital Repository</head>
+  <p>Welcome to RiverRun, the new repository for the UNB community to maintain and preserve digital copies of its scholarly papers. The repository is an important tool for not just preserving our organization&apos;s legacy, but it also facilitates the sharing of digital assets and advancing scholarly communication in an open access environment.</p>
+
+  <p id="sparc-addendum">
+      <figure source="/xmlui/themes/ETCMirage/images/sparc-addendum.png" target="http://www.carl-abrc.ca/projects/author/EngBrochure.pdf"/>
+  </p>
+
+  <p><hi rend="bold">The repository is currently under active development. We are seeking content for our collection from UNB faculty and the UNB community. If would would like to make a submission to RiverRun, or would more information on getting involved, please <xref target="/contact">contact us</xref>.</hi></p>
+    
+  <p>
+  The Canadian Association of Research Libraries has put together a page on their website (in <xref target="http://www.carl-abrc.ca/projects/author/author-e.html">English</xref> and <xref target="http://www.carl-abrc.ca/projects/author/author-f.html">French</xref>) with important information for authors on increasing the reach of published scholarship.</p>
+
+  <p>
+
+    Of particular note for UNB and STU faculty is the <xref target="http://www.carl-abrc.ca/projects/author/EngBrochure.pdf">SPARC Canadian Author Addendum</xref>, providing valuable advice to authors for maintaining rights to their intellectual property when publishing journal articles.</p>
+</div>
+
+</body>
+<options/>
+<meta>
+<userMeta/>
+<pageMeta/>
+<repositoryMeta/>
+</meta>
+</document>

@@ -1,0 +1,59 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>ca.unb.lib.riverrun</groupId>
+    <artifactId>riverrun-xmlui-api</artifactId>
+    <packaging>jar</packaging>
+    <name>RiverRun XML-UI (Manakin) :: API and Core Aspects</name>
+    <url>https://github.com/unb-libraries/unb-dspace</url>
+    <description>
+        RiverRun extensions to DSpace/Manakin XMLUI-based APIs and components, built on Cocoon and Wing frameworks.
+    </description>
+
+    <parent>
+        <groupId>ca.unb.lib.riverrun</groupId>
+        <artifactId>riverrun-xmlui</artifactId>
+        <version>2.0</version>
+    </parent>
+
+    <dependencies>
+      <dependency>
+         <groupId>org.dspace</groupId>
+         <artifactId>dspace-xmlui-api</artifactId>
+      </dependency>
+      <dependency>
+         <groupId>org.dspace</groupId>
+         <artifactId>dspace-xmlui-wing</artifactId>
+      </dependency>
+      <dependency>
+         <groupId>org.dspace</groupId>
+         <artifactId>dspace-api</artifactId>
+      </dependency>
+      <dependency>
+         <groupId>org.dspace</groupId>
+         <artifactId>dspace-api-lang</artifactId>
+      </dependency>
+      <dependency>
+         <groupId>org.dspace</groupId>
+         <artifactId>dspace-services-impl</artifactId>
+      </dependency>
+      <dependency>
+         <groupId>org.dspace</groupId>
+         <artifactId>dspace-services-api</artifactId>
+      </dependency>
+      <dependency>
+         <groupId>org.dspace</groupId>
+         <artifactId>dspace-services-utils</artifactId>
+      </dependency>
+      <dependency>
+        <groupId>org.dspace</groupId>
+        <artifactId>dspace-stats</artifactId>
+      </dependency>
+      <dependency>
+         <groupId>javax.servlet</groupId>
+         <artifactId>servlet-api</artifactId>
+         <version>2.3</version>
+         <scope>provided</scope>
+      </dependency>
+    </dependencies>
+
+</project>

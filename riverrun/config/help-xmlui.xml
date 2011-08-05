@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document xmlns="http://di.tamu.edu/DRI/1.0/" xmlns:i18n="http://apache.org/cocoon/i18n/2.1" version="1.1">
+  <body>
+    <div>
+      <head><hi rend="italic">RiverRun</hi> Help </head>
+      <!-- begin section "The Basics" -->
+      <div>
+        <head>The Basics</head>
+        <div>
+          <head>What is <hi rend="italic">RiverRun</hi>? </head>
+          <p><hi rend="italic">RiverRun</hi> is the University of New Brunswick's digital
+repository, designed to hold, index, preserve, and make available digital assets created
+by members of the UNB community. The collection is being built by the university
+community for our own use and to help provide access to the materials for a wider
+audience over the Internet. <hi rend="italic">RiverRun</hi> is divided into departmental
+communities, with sections in each for faculty, graduate students, and undergraduates.
+<xref target="http://lib.unb.ca/etc/">The Electronic Text Centre</xref> at the <xref target="http://lib.unb.ca/">Harriet Irving Library</xref> maintains the repository
+using <xref target="http://dspace.org">DSpace</xref> software. </p>
+        </div>
+        <div>
+          <head>Why should I submit to <hi rend="italic">RiverRun</hi>? </head>
+          <p>There are many benefits to depositing resources into <hi rend="italic">RiverRun</hi>.
+The repository: </p>
+          <list>
+            <item>helps administration showcase research carried out at our university;</item>
+            <item>provides a home for your papers with permanent, unbreakable URLs;</item>
+            <item>allows the storage of datasets, illustrations, and other related files along with
+publications;</item>
+            <item>makes scholarship visible to a wider audience through popular search engines such
+as Google and Google Scholar;</item>
+            <item>improves citation numbers. Many studies have shown that publications available
+over the open web receive more citations than those offered only through paid journal
+subscriptions;</item>
+            <item>provides easy access to your work for use in the classroom, or when away from your
+office;</item>
+            <item>comes with a support staff to help you through the process;</item>
+            <item>provides speedy dissemination of new ideas; and</item>
+            <item>encourages scholarly collaboration.</item>
+          </list>
+        </div>
+        <div>
+          <head>Whom should I contact about <hi rend="italic">RiverRun</hi>? </head>
+          <p>The repository is managed by <xref target="mailto:gsallen@unb.ca?Subject=RiverRun%20Question">Geoffrey Allen</xref>,
+Digital Projects Librarian, Electronic Text Centre (506) 447-3250. You can also contact
+your UNB faculty liaison librarian for assistance if you wish. For more information
+about the Electronic Thesis and Dissertations program please visit the School of
+Graduate Studies <xref target="http://www.unb.ca/etd/">ETD page</xref>. </p>
+        </div>
+      </div>
+      <!-- end section "The Basics" -->
+      <!-- begin section "Ownership, Copyright, and Permissions" -->
+      <div>
+        <head>Ownership, Copyright, and Permissions</head>
+        <div>
+          <head>Who can deposit to <hi rend="italic">RiverRun</hi>? </head>
+          <p>All members of the UNB community may deposit into <hi rend="italic">RiverRun</hi>. The
+content in the repository is restricted to that which has been created at least in some
+part by members of the university community. Papers co-authored elsewhere may also be
+deposited provide that at least one author is from UNB. Graduate thesis and
+dissertations are managed through the School of Graduate Studies. Student contributions
+must be part of a larger collection, and sponsored by a faculty member. </p>
+        </div>
+        <div>
+          <head>What sorts of materials can I submit?</head>
+          <p><hi rend="italic">RiverRun</hi> is intended to hold scholarly materials developed by
+members of the UNB community. These may include prior publications, lecture notes,
+technical reports, datasets, and a wide range of other materials that you may wish to
+share with others. </p>
+          <p>In general the repository is intended to warehouse scholarly materials that you wish to
+share with a wider audience. It is not meant to house ephemeral items, or those
+undergoing regular revision.</p>
+          <p>The DSpace repository software is designed to handle a wide range of digital assets
+including text, image, video, and audio files. It is most comfortable with text-based
+objects.</p>
+        </div>
+        <div>
+          <head>Who owns copyright to the materials in the collection?</head>
+          <p>Copyright for all materials in <hi rend="italic">RiverRun</hi> remains with the current
+copyright owner (except for works available in the public domain, i.e. from an author
+now deceased a minimum of 50 years). </p>
+        </div>
+        <div>
+          <head>Can I restrict access to my content?</head>
+          <p>Yes. Items and collections in <hi rend="italic">RiverRun</hi> may be set as
+"invisible" or with access restricted to a certain group of people (i.e. the
+UNB community, members of a research committee, etc.) Restricted access can be for an
+indefinite period, or set as an embargo for a given time (12 months, for example) to
+meet publishers' or funders' agreements. For more information on restricting
+access to items in your collection, please contact <xref target="mailto:gsallen@unb.ca?Subject=RiverRun%20Question">Geoffrey Allen</xref>. </p>
+        </div>
+      </div>
+      <!-- end section "Ownership, Copyright, and Permissions" -->
+      <!-- begin section "Depositing Materials" -->
+      <div>
+        <head>Depositing Materials</head>
+        <div>
+          <head>Who controls the content of the collections?</head>
+          <p>The Electronic Text Centre is committed to developing <hi rend="italic">RiverRun</hi>
+as a representative citation database for all faculty members at UNB. We will continue
+to build the citation listings by department over time. If you would like to provide a
+complete listing of recent publications to <xref target="mailto:gsallen@unb.ca?Subject=RiverRun%20Collection%20Update">Geoffrey
+Allen</xref> at the ETC, we will work to ensure that your citation list is as complete
+and accurate as possible. Please notify us if you see errors in the data listed in your
+faculty collection. </p>
+          <p>All faculty members are provided with administrative control over their own collection,
+meaning that they may also add, correct, or remove items from their collections.</p>
+        </div>
+        <div>
+          <head>What is your take down policy?</head>
+          <p>In general, we discourage the removal of items from <hi rend="italic">RiverRun</hi>.
+Once items have been made publically available, people may cited them or link to the
+pages using the permanent URLs. Removal of the items may create broken links and invalid
+citaitons, and should be avoided. </p>
+          <p>The ETC and UNB Libraries reserve the right to remove content posted in violation of
+copyright or licensing agreements should a complaint be brought to our attention.</p>
+        </div>
+        <div>
+          <head>How do I attach a file to a citation in my collection?</head>
+          <p>We encourage faculty to attach a full-text file of their articles to the citations
+            wherever possible. To attach a file:</p>
+          <list type="ordered">
+            <item>log into <hi rend="italic">RiverRun</hi> using your UNB ID and password;</item>
+            <item>navigate to the citation in your collection to which you wish to add a file;</item>
+            <item>in the menu on the right, click on "Edit this item" under Administer;</item>
+            <item>select the "Item bitstreams" tab;</item>
+            <item>click on the "Upload a new bitstream" link in the table of files;</item>
+            <item>use the Browse button to find the file on your computer;</item>
+            <item>enter a description of the file (if you wish);</item>
+            <item>hit the "upload" button.</item>
+          </list>
+          <p>The new file should now appear in the table of files associated with the record. You may now return to your collection to attach another file elsewhere, or log out of <hi rend="italic">RiverRun</hi> if you are done.</p>
+          <!--
+Instructions on attaching a file can be viewed in this
+<xref target="http://dspace.hil.unb.ca:8080/bitstream/handle/1882/19841/RRFAQ-AddBitstream.mp4">brief webcast</xref>.
+-->
+          <p>We recommend that faculty covert their files to PDF before uploading, a process made simple on most computers today. </p>
+        </div>
+<!--  @todo removed until S/R aspect re-built for v. 2.8 of the API.
+        <div>
+          <head>How do I know what my publisher will allow me to post in a repository?</head>
+          <p>Each publishing house has its own policies stipulating what authors may do with digital
+copies of their papers. Before uploading a copy of a previously published paper to the
+repository, you should check that doing so is not an infringement of your rights as the
+author. The most accurate source of information on self-archiving policies is usually
+the publisher's website or the original contract that you signed.</p>
+          <p>The University of Nottingham, UK maintains the <xref target="http://www.sherpa.ac.uk/romeo/">SHERPA/RoMEO</xref> database listing the
+policies of most major publishing houses. The ETC has built a SHERPA/RoMEO lookup
+feature into <hi rend="italic">RiverRun</hi> to help faculty determine the repository
+deposit policies for their publications. Whenever an item in <hi rend="italic">RiverRun</hi> is provided with an ISSN (International Standard Serial Number), a link
+will appear on the page allowing users to <hi rend="underline">Check publisher's
+copyright and self-archiving policies</hi>. This information is provided for guidance
+purposes only, and should not be relied on as legally binding. </p>
+        </div>
+-->        
+        <div>
+          <head>What are "pre-prints" and "post-prints"?</head>
+          <p>A <hi rend="bold">pre-print</hi> (a.k.a. submitted work) is a copy of the manuscript as
+originally sent to the publisher. The pre-prints is the version of the paper prior to
+peer-review and any final edits. </p>
+          <p>A <hi rend="bold">post-print</hi> (a.k.a. accepted work) is the version of the
+manuscript including peer-review and final editing as recommended by the
+publisher's editorial board. The content, though not layout, may be identical to
+final publication. This is the format that many publishers prefer their authors to post
+at institutional repositories. </p>
+          <p>The <hi rend="bold">publisher's PDF</hi> (or the published work) is the final
+printed version including publisher's layout and added features exactly as it
+appears in print. </p>
+        </div>
+        <div>
+          <head>Can I get additional help building a collection?</head>
+          <p>The ETC is happy to assist with the building of a collection. Beyond building the
+citation lists, <xref target="mailto:gsallen@unb.ca?Subject=RiverRun%20Question">upon
+request</xref> we will: </p>
+          <list>
+            <item>upload items of your behalf,</item>
+            <item>organise collections,</item>
+            <item>create high quality metadata for the items in the collection,</item>
+            <item>investigate copyright and licensing rights,</item>
+            <item>provide assistance meeting research funder mandates,</item>
+            <item>and add images to the collection homepage.</item>
+          </list>
+        </div>
+        <div>
+          <head>What is the licence agreement?</head>
+          <p>By uploading a file to <hi rend="italic">RiverRun</hi> you are agreeing to the limited
+licence allowing UNB to store an electronic copy of your work, and make it
+available to others over the Internet (unless a non-standard agreement is negotiated in
+advance).
+The text of the default licence may be found
+<xref target="http://dspace.hil.unb.ca:8080/help/default-licence">here</xref>.
+</p>
+        </div>
+      </div>
+      <!-- end section "Depositing Materials" -->
+      <!-- begin section "Using RiverRun" -->
+      <div>
+        <head>Using <hi rend="italic">RiverRun</hi></head>
+        <div>
+          <head>How do I access content in <hi rend="italic">RiverRun</hi>?</head>
+          <p>Most content in the collection is made openly accessible over the Internet to anyone
+interested. Some items in the collection have their access restricted to a limited group
+of users, such as only members of the UNB community. To access these materials, users
+must first log into their <hi rend="italic">RiverRun</hi> accounts.</p>
+          <p>The content of <hi rend="italic">RiverRun</hi> is indexed by major search engines, such
+as Google, and may therefore be discovered through a range of other search portals.</p>
+        </div>
+        <div>
+          <head>How do I log into <hi rend="italic">RiverRun</hi>?</head>
+          <p>After clicking on the <xref target="http://dspace.hil.unb.ca:8080/login">Login</xref>
+link from any page of <hi rend="italic">RiverRun</hi>, UNB staff and students may log
+into the collection using the same UNB ID and password that they use for all other
+campus technical services.</p>
+          <p>Any user may also <xref target="http://dspace.hil.unb.ca:8080/register">register for an
+account</xref> for the collection. Permissions for non-UNB users must be negotiated by
+contacting the repository manager, <xref target="mailto:gsallen@unb.ca?Subject=RiverRun%20Question">Geoffrey Allen</xref>.</p>
+        </div>
+      </div>
+      <!-- end section "Using RiverRun" -->
+    </div>
+  </body>
+  <options/>
+  <meta>
+    <userMeta/>
+    <pageMeta>
+      <metadata element="xhtml_head_item">&#13;
+&lt;link rel="schema.DCTERMS" href="http://purl.org/dc/terms/" /&gt;&#13;
+&lt;link rel="schema.DC" href="http://purl.org/dc/elements/1.1/" /&gt;&#13;
+
+&lt;meta name="copyright" content="Copyright University of New Brunswick Libraries 2011" xml:lang="en" /&gt;&#13;
+&lt;meta name="dc.title" content="RiverRun Help" xml:lang="en" /&gt;&#13;
+&lt;meta name="dc.creator" content="Geoffrey Allen" xml:lang="en" /&gt;&#13;
+&lt;meta name="dc.subject" content="RiverRun, Institutional Repository, University of New Brunswick" xml:lang="en" /&gt;&#13;
+&lt;meta name="dc.description" content="Frequently Asked Questions for RiverRun, the Institutional Repository for the University of New Brunswick" xml:lang="en" /&gt;&#13;
+&lt;meta name="dc.publisher" content="University of New Brunswick Libraries" xml:lang="en" /&gt;&#13;
+&lt;meta name="dc.rights" content="Copyright University of New Brunswick Libraries 2011" xml:lang="en" /&gt;&#13;
+&lt;meta name="dc.language" content="en" xml:lang="en" /&gt;&#13;
+&lt;meta name="dc.date.created" content="2011-05-01" xml:lang="en" /&gt;&#13;
+&lt;meta name="dc.date.modfied" content="2011-05-03" xml:lang="en" /&gt;&#13;
+&lt;meta name="dc.identifier" content="http://dspace.hil.unb.ca:8080/help" xml:lang="en" /&gt;&#13;
+
+            </metadata>
+    </pageMeta>
+    <repositoryMeta/>
+  </meta>
+</document>
