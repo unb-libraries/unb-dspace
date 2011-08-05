@@ -15,9 +15,11 @@
         <map:transformers>
             <map:transformer name="Navigation" src="org.dspace.app.xmlui.aspect.browseArtifacts.Navigation"/>
             <map:transformer name="CommunityBrowser" src="org.dspace.app.xmlui.aspect.artifactbrowser.CommunityBrowser"/>
+            <map:transformer name="ConfigurableBrowse" src="org.dspace.app.xmlui.aspect.artifactbrowser.ConfigurableBrowse"/>
+
+            <!-- RiverRun customizations -->
             <map:transformer name="CommunityRecentSubmissions" src="ca.unb.lib.riverrun.app.xmlui.aspect.artifactbrowser.CommunityRecentSubmissions"/>
             <map:transformer name="CollectionRecentSubmissions" src="ca.unb.lib.riverrun.app.xmlui.aspect.artifactbrowser.CollectionRecentSubmissions"/>
-            <map:transformer name="ConfigurableBrowse" src="org.dspace.app.xmlui.aspect.artifactbrowser.ConfigurableBrowse"/>
         </map:transformers>
 
         <map:matchers default="wildcard">
@@ -36,9 +38,11 @@
             -->
             <map:transform type="Navigation"/>
 
+            <!-- DSpace home page -->
             <map:match pattern="">
                 <map:transform type="CommunityBrowser">
-                        <map:parameter name="depth" value="1"/>
+                    <!-- show all communities & collections -->
+                    <map:parameter name="depth" value="999"/>
                 </map:transform>
                 <map:serialize type="xml"/>
             </map:match>
@@ -46,7 +50,7 @@
             <!-- List all communities & collections in DSpace -->
             <map:match pattern="community-list">
                     <map:transform type="CommunityBrowser">
-                            <map:parameter name="depth" value="999"/>
+                        <map:parameter name="depth" value="999"/>
                     </map:transform>
                     <map:serialize type="xml"/>
             </map:match>
