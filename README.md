@@ -16,6 +16,12 @@ Link RiverRun config files, etc., to DSpace source directory:
 
 `ln -s [git-repos]/unb-dspace/riverrun ./riverrun`
 
+Any RiverRun config files in [git-repo]/riverrun/config are copied over default
+DSpace config files during installation package generation. Config edits should
+be made, and tracked, in
+ 
+`[git-repo]/riverrun/config`
+
 ### Modified Maven assembly file
 
 Maven assembly file has been modified to include config files, etc., from `[dspace-src]/riverrun`
