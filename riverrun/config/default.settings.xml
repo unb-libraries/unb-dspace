@@ -20,6 +20,8 @@
       <properties>
           <!-- Database settings -->
 	  <default.db.url>jdbc:postgresql://localhost:5432/dspace</default.db.url>
+	  <default.db.username>dspace</default.db.username>
+	  <default.db.password>dspace</default.db.password>
 
           <!-- Email settings -->
           <!-- don't spam the admins: change these for development builds -->
