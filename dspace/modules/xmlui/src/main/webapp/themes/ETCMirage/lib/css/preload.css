@@ -1,0 +1,4 @@
+ /* Communities / collections tree expander: hide all sublevels on page load
+ -----------------------------------------------------------------------------*/
+div#aspect_artifactbrowser_CommunityBrowser_div_comunity-browser ul ul { display: none; } 
+div#aspect_artifactbrowser_CommunityBrowser_div_comunity-browser .tree-expanded { display: block; }
