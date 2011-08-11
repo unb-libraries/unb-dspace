@@ -47,3 +47,56 @@
   float: right;
 }
 
+/* Communities / collections tree expander
+-----------------------------------------------------------------------------*/
+div#aspect_artifactbrowser_CommunityBrowser_div_comunity-browser > ul {
+	clear: both;
+	margin: 0 0 20px;
+}
+
+div#aspect_artifactbrowser_CommunityBrowser_div_comunity-browser ul {
+	background: url('../../images/grey_line.gif') repeat-y;
+}
+
+div#aspect_artifactbrowser_CommunityBrowser_div_comunity-browser > ul ul {
+	margin: -4px 0 0 4px;
+	padding: 5px 0 0;
+}
+
+div#aspect_artifactbrowser_CommunityBrowser_div_comunity-browser li {
+	background: url('../../images/tree_li.gif') no-repeat 0 11px;
+	clear: both;
+	list-style: none;
+	padding: 5px 0 0 10px;
+}
+
+div#aspect_artifactbrowser_CommunityBrowser_div_comunity-browser > ul li.first {
+  background: #fff url('../../images/tree_li_first.gif') no-repeat 0 4px;
+}
+
+div#aspect_artifactbrowser_CommunityBrowser_div_comunity-browser > ul li.last,
+div#aspect_artifactbrowser_CommunityBrowser_div_comunity-browser > ul li:last-child {
+	background: #fff url('../../images/tree_li_last.gif') no-repeat 0 -481px;
+}
+
+div#aspect_artifactbrowser_CommunityBrowser_div_comunity-browser .tree-trigger,
+div#aspect_artifactbrowser_CommunityBrowser_div_comunity-browser .tree-slug {
+	background: url('../../images/tree_icons.gif') no-repeat;
+	display: inline;
+	float: left;
+	font-size: 0;
+	margin: 2px 5px 0 0;
+	overflow: hidden;
+	text-decoration: none;
+	width: 9px;
+	height: 9px;
+}
+
+div#aspect_artifactbrowser_CommunityBrowser_div_comunity-browser  .tree-trigger-expanded {
+	background-position: -9px 0;
+}
+
+div#aspect_artifactbrowser_CommunityBrowser_div_comunity-browser  .tree-slug {
+	background-position: -18px 0;
+}
+

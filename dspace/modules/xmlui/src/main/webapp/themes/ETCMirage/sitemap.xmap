@@ -140,12 +140,25 @@
 				<map:transform type="IncludePageMeta">
 					<map:parameter name="stylesheet.handheld" value="lib/css/handheld.css"/>
 					<map:parameter name="stylesheet.print" value="lib/css/print.css"/>
+					<map:parameter name="stylesheet.all" value="lib/css/media.css"/>					
 				</map:transform>
+				
+        <!-- 
+          Pre-load CSS via Javascript to hide dynamically-styled elements: 
+          see lib/xsl/core/page-structure.xsl 
+        -->
+        <map:transform type="IncludePageMeta">
+          <map:parameter name="preload" value="../{global:subtheme-path}/lib/css/preload.css"/>
+        </map:transform>
 
+        <!-- Javascript files to be loaded at bottom of page -->
 				<map:transform type="IncludePageMeta">
-					<map:parameter name="stylesheet.all" value="lib/css/media.css"/>
-					<map:parameter name="javascript" value="lib/js/jquery-ui-1.8.5.custom.min.js"/>
-
+					<map:parameter name="javascript#1" value="lib/js/jquery-ui-1.8.5.custom.min.js"/>
+					<map:parameter name="javascript#2" value="../{global:subtheme-path}/lib/js/community-tree.js"/> 
+			  </map:transform>
+					
+			  <!-- Include theme, sub-theme name and path -->
+				<map:transform type="IncludePageMeta">
 					<map:parameter name="theme.path" value="{global:theme-path}"/>
 					<map:parameter name="theme.name" value="{global:theme-name}"/>
 					

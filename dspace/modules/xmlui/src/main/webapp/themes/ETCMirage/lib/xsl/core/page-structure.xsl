@@ -99,6 +99,27 @@
 				</link>
 			</xsl:for-each>
 			
+			<!-- 
+			  Before the page renders, include CSS to pre-hide content that will be displayed
+			  during Javascript-powered page interactions.  Including the CSS with Javascript
+			  means users *without* Javascript will be able to view all page content.
+		 -->
+			<xsl:for-each select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='preload']">
+<script type="text/javascript">
+  <xsl:text disable-output-escaping="yes">
+    /* &lt;![CDATA[ */</xsl:text>
+  <xsl:text disable-output-escaping="yes">
+    document.write('&lt;link rel="stylesheet" type="text/css" href="</xsl:text>
+	<xsl:value-of select="$theme-path"/>
+	<xsl:text>/</xsl:text>
+	<xsl:value-of select="."/>
+  <xsl:text disable-output-escaping="yes">" /&gt;');</xsl:text>
+  <xsl:text disable-output-escaping="yes">
+    /* ]]&gt; */
+  </xsl:text>
+</script>
+			</xsl:for-each>			
+			
 			<!-- Add syndication feeds -->
 			<xsl:for-each select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='feed']">
 				<link rel="alternate" type="application">
