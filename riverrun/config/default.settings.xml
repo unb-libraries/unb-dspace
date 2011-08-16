@@ -18,6 +18,9 @@
         </property>
       </activation>
       <properties>
+          <!-- Installation settings -->
+	  <default.install.dir>/opt/dspace</default.install.dir>
+
           <!-- Database settings -->
 	  <default.db.url>jdbc:postgresql://localhost:5432/dspace</default.db.url>
 	  <default.db.username>dspace</default.db.username>
