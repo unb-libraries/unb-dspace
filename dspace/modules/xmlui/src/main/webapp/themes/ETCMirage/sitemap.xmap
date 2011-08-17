@@ -134,7 +134,11 @@
 					<map:parameter name="stylesheet.screen#6" value="css/authority-control.css"/>
 					
 					<!-- subtheme CSS -->
-					<map:parameter name="stylesheet.screen#7" value="../{global:subtheme-path}/lib/css/style.css"/>
+					<!-- 
+					   Warning: requests for CSS files not resolving to correct files
+					   See https://github.com/unb-libraries/unb-dspace/issues/53
+					-->
+					<map:parameter name="stylesheet.screen#7" value="../{global:subtheme-path}/lib/css/styles.css"/>
 				</map:transform>
 
 				<map:transform type="IncludePageMeta">
