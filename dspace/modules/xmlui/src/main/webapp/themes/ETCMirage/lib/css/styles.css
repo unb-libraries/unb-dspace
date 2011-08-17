@@ -71,7 +71,8 @@ div#aspect_artifactbrowser_CommunityBrowser_div_comunity-browser li {
 }
 
 div#aspect_artifactbrowser_CommunityBrowser_div_comunity-browser > ul li.first {
-  background: #fff url('../../images/tree_li_first.gif') no-repeat 0 4px;
+  padding-top: 0;	
+  background: url("../../images/tree_li_first.gif") no-repeat scroll 0 -1px transparent;
 }
 
 div#aspect_artifactbrowser_CommunityBrowser_div_comunity-browser > ul li.last,
