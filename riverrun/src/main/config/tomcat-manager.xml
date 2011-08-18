@@ -19,23 +19,28 @@ Common usage:
   </description>
 
   <!-- Configure the context path for this application -->
-  <property name="path"     value="/xmlui"/>
+  <property name="xmlui.context.path"     value="/xmlui"/>
 
   <!-- 
     Configure properties to access the Manager application. 
-    Set user name, password in user-specific Maven settings file,
+  -->
+  <property name="tomcat-manager.url" value="http://localhost:8080/manager"/>
+  
+  <!-- 
+    Set tomcat user name and password in user-specific Maven settings file, 
     probably $HOME/.m2/settings.xml
   -->
-  <property name="url"      value="http://localhost:8080/manager"/>
-  <property name="username" value="${tomcat-manager.username}"/>
-  <property name="password" value="${tomcat-manager.password}"/>
 
   <!-- Configure the custom Ant tasks for the Manager application -->
   <taskdef name="reload"    classname="org.apache.catalina.ant.ReloadTask"/>
 
   <!-- Executable Targets -->
   <target name="reload" description="Reload web application">
-    <reload  url="${url}" username="${username}" password="${password}" path="${path}"/>
+    <reload  
+      url="${tomcat-manager.url}" 
+      username="${tomcat-manager.username}" 
+      password="${tomcat-manager.password}" 
+      path="${xmlui.context.path}"/>
   </target>
 
 </project>
