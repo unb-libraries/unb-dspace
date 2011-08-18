@@ -12,14 +12,21 @@
 
 Common usage:
 
-  Invoked by Jenkins to reload web apps after a successful build
+  Reload webapps after a successful build.  Handy for Jenkins jobs and 
+  for non-root users to manage DSpace webapps.
+  
     % ant reload
     
 ========================================================================
   </description>
 
   <!-- Configure the context path for this application -->
-  <property name="xmlui.context.path"     value="/xmlui"/>
+  <property name="jspui.context.path"   value="/jspui"/>
+  <property name="lni.context.path"     value="/lni"/>  
+  <property name="oai.context.path"     value="/oai"/>
+  <property name="solr.context.path"    value="/solr"/>
+  <property name="sword.context.path"   value="/sword"/>  
+  <property name="xmlui.context.path"   value="/xmlui"/>    
 
   <!-- 
     Configure properties to access the Manager application. 
@@ -35,12 +42,72 @@ Common usage:
   <taskdef name="reload"    classname="org.apache.catalina.ant.ReloadTask"/>
 
   <!-- Executable Targets -->
-  <target name="reload" description="Reload web application">
-    <reload  
-      url="${tomcat-manager.url}" 
+  <target 
+    name="reload" 
+    description="Reload all DSpace web applications" 
+    depends="reload_jspui,reload_lni,reload_oai,reload_solr,reload_sword,reload_xmlui"/>
+  
+  <target name="reload_jspui" description="Reload JSPUI">
+    <reload url="${tomcat-manager.url}"  
+      username="${tomcat-manager.username}" 
+      password="${tomcat-manager.password}" 
+      path="${jspui.context.path}"/>
+  </target>
+  
+  <target name="reload_lni" description="Reload LNI">
+    <reload url="${tomcat-manager.url}"  
+      username="${tomcat-manager.username}" 
+      password="${tomcat-manager.password}" 
+      path="${lni.context.path}"/>
+  </target>
+  
+  <target name="reload_oai" description="Reload OAI">
+    <reload url="${tomcat-manager.url}"  
+      username="${tomcat-manager.username}" 
+      password="${tomcat-manager.password}" 
+      path="${oai.context.path}"/>
+  </target>
+  
+  <target name="reload_solr" description="Reload SOLR">
+    <reload url="${tomcat-manager.url}"  
+      username="${tomcat-manager.username}" 
+      password="${tomcat-manager.password}" 
+      path="${solr.context.path}"/>
+  </target>
+  
+  <target name="reload_sword" description="Reload SWORD">
+    <reload url="${tomcat-manager.url}"  
+      username="${tomcat-manager.username}" 
+      password="${tomcat-manager.password}" 
+      path="${sword.context.path}"/>
+  </target>
+  
+  <target name="reload_xmlui" description="Reload XMLUI">
+    <reload url="${tomcat-manager.url}"  
       username="${tomcat-manager.username}" 
       password="${tomcat-manager.password}" 
       path="${xmlui.context.path}"/>
+  </target>
+
+  <!-- ============================================================= -->
+  <!-- Print some useful help text                                  -->
+  <!-- ============================================================= -->
+  <target name="help">
+    <echo message="" />
+    <echo message="Tomcat Manager tasks" />
+    <echo message="--------------------" />
+    <echo message="" />
+    <echo message="Available targets:" />
+    <echo message="" />
+    <echo message="reload         --> Reload all DSpace webapps"/>
+    <echo message=""/>
+    <echo message="reload_jspui   --> Reload JSPUI"/>
+    <echo message="reload_lni     --> Reload LNI"/>
+    <echo message="reload_oai     --> Reload OAI"/>
+    <echo message="reload_solr    --> Reload Solr"/>
+    <echo message="reload_sword   --> Reload SWORD"/>
+    <echo message="reload_xmlui   --> Reload XMLUI"/>
+    <echo message=""/>        
   </target>
 
 </project>
