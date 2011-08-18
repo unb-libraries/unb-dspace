@@ -1,7 +1,5 @@
-<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0
-                      http://maven.apache.org/xsd/settings-1.0.0.xsd">
+<?xml version="1.0"?>
+<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0                       http://maven.apache.org/xsd/settings-1.0.0.xsd">
   <localRepository/>
   <interactiveMode/>
   <usePluginRegistry/>
@@ -18,33 +16,39 @@
         </property>
       </activation>
       <properties>
-          <!-- Installation settings -->
-	  <default.install.dir>/opt/dspace</default.install.dir>
-
-          <!-- Database settings -->
-	  <default.db.url>jdbc:postgresql://localhost:5432/dspace</default.db.url>
-	  <default.db.username>dspace</default.db.username>
-	  <default.db.password>dspace</default.db.password>
-
-          <!-- Email settings -->
-          <!-- don't spam the admins: change these for development builds -->
-          <repoadmin.email>gsallen@unb.ca</repoadmin.email>
-          <sysadmin.email>jnugent@unb.ca</sysadmin.email>
-          
-          <!-- Mail referrers. Maybe restrict this to localhost in development -->
-          <default.mail.allowed.referrers>localhost,dspace.hil.unb.ca,prolog.hil.unb.ca</default.mail.allowed.referrers>
-          
-          <!-- Handle settings -->
-          <!-- # CNRI Handle prefix: use a nonsense value (e.g., 123456789) for development builds -->
-          <default.handle.prefix>1882</default.handle.prefix>
-          
-          <!-- LDAP settings -->
-          <!-- Update the password before attempting LDAP authentication -->
-          <default.ldap.search.password>my_ldap_password</default.ldap.search.password>
-          
-          <!-- XMLUI settings -->
-          <!-- Default is 12, but set to zero to turn off community-list caching in development installs -->
-          <default.xmlui.community-list.cache>12 hours</default.xmlui.community-list.cache>
+        <!-- Installation settings -->
+        <default.install.dir>/opt/dspace</default.install.dir>
+        
+        <!-- Database settings -->
+        <default.db.url>jdbc:postgresql://localhost:5432/dspace</default.db.url>
+        <default.db.username>dspace</default.db.username>
+        <default.db.password>dspace</default.db.password>
+        
+        <!-- Email settings -->
+        <!-- don't spam the admins: change these for development builds -->
+        <repoadmin.email>gsallen@unb.ca</repoadmin.email>
+        <sysadmin.email>jnugent@unb.ca</sysadmin.email>
+        
+        <!-- Mail referrers. Maybe restrict this to localhost in development -->
+        <default.mail.allowed.referrers>localhost,dspace.hil.unb.ca,prolog.hil.unb.ca</default.mail.allowed.referrers>
+        
+        <!-- Handle settings -->
+        <!-- # CNRI Handle prefix: use a nonsense value (e.g., 123456789) for development builds -->
+        <default.handle.prefix>1882</default.handle.prefix>
+        
+        <!-- LDAP settings -->
+        <!-- Update the password before attempting LDAP authentication -->
+        <default.ldap.search.password>my_ldap_password</default.ldap.search.password>
+        
+        <!-- XMLUI settings -->
+        <!-- Default is 12, but set to zero to turn off community-list caching in development installs -->
+        <default.xmlui.community-list.cache>12 hours</default.xmlui.community-list.cache>
+        
+        <!-- 
+          Tomcat Manager username & password: see riverrun/src/main/config/tomcat-manager.xml
+        -->
+        <tomcat-manager.username>tomcat-user</tomcat-manager.username>
+        <tomcat-manager.password>tomcat-password</tomcat-manager.password>
       </properties>
     </profile>
   </profiles>
