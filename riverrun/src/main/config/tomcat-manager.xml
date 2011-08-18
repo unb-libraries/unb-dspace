@@ -1,0 +1,41 @@
+<!--
+  Build file defines DSpace tasks performed by Tomcat Manager
+-->
+
+<project name="DSpace" default="help">
+
+  <!-- ============================================================= -->
+  <!-- Description                                                   -->
+  <!-- ============================================================= -->
+  <description>
+====================== Tomcat Manager tasks ============================
+
+Common usage:
+
+  Invoked by Jenkins to reload web apps after a successful build
+    % ant reload
+    
+========================================================================
+  </description>
+
+  <!-- Configure the context path for this application -->
+  <property name="path"     value="/xmlui"/>
+
+  <!-- 
+    Configure properties to access the Manager application. 
+    Set user name, password in user-specific Maven settings file,
+    probably $HOME/.m2/settings.xml
+  -->
+  <property name="url"      value="http://localhost:8080/manager"/>
+  <property name="username" value="${tomcat-manager.username}"/>
+  <property name="password" value="${tomcat-manager.password}"/>
+
+  <!-- Configure the custom Ant tasks for the Manager application -->
+  <taskdef name="reload"    classname="org.apache.catalina.ant.ReloadTask"/>
+
+  <!-- Executable Targets -->
+  <target name="reload" description="Reload web application">
+    <reload  url="${url}" username="${username}" password="${password}" path="${path}"/>
+  </target>
+
+</project>
