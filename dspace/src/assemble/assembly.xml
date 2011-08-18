@@ -43,7 +43,6 @@
 				<exclude>config/dspace.cfg</exclude>
 			</excludes>
 		</fileSet>
-		<!-- RiverRun configuration files -->
 		<fileSet>
 			<directory>../riverrun</directory>
 			<outputDirectory>.</outputDirectory>
@@ -62,6 +61,12 @@
 		<file>
 			<source>../riverrun/config/dspace.cfg</source>
 			<outputDirectory>config</outputDirectory>
+			<filtered>true</filtered>
+		</file>
+		<!-- Get Tomcat Manager ant tasks -->
+		<file>
+			<source>../riverrun/src/main/config/tomcat-manager.xml</source>
+			<outputDirectory>.</outputDirectory>
 			<filtered>true</filtered>
 		</file>
 	</files>
