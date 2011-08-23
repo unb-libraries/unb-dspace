@@ -184,3 +184,10 @@ div#aspect_artifactbrowser_CommunityBrowser_div_comunity-browser  .tree-slug {
 	background-position: -18px 0;
 }
 
+/* Form elements
+-----------------------------------------------------------------------------*/
+.ds-button-field, #aspect_eperson_StartRegistration_list_registration-progress li {
+  background-color: #AC4934;
+  border: 1px solid #7C2411;
+  color: #FFFFFF;
+}
