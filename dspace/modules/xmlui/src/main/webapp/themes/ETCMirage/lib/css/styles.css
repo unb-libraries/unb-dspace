@@ -3,8 +3,67 @@
  *
  * Customizations to Mirage base theme for RiverRun, UNB's instance of DSpace.
  */
+ 
+ /* RiverRun header
+ -----------------------------------------------------------------------------*/
 
-/* Primary styles */
+#ds-header-wrapper {
+  background-color: #E1E1E1;
+}
+
+#ds-header {
+  background: #E1E1E1 url('../../images/header-bg.gif') scroll -10px 0 no-repeat;
+  height: 73px;
+}
+
+#ds-header-logo-text {
+  /* undo Mirage styles */
+ float: none;
+ font-size: normal;
+ font-weight: normal;
+ line-height: normal;
+ 
+ /* Shove title text out past the margin */
+ display: block;
+ height: 70px;
+ width: 250px;
+ text-indent: -9999px;
+}
+
+#ds-trail-wrapper {
+  background: transparent url('../../images/navtrail-wrapper-bg.gif') scroll 0 0 repeat-x;  
+  border-top: none;
+  border-bottom: 1px solid #999999;
+  height: 31px;  
+}
+
+#ds-trail {
+  background: transparent url('../../images/navtrail-bg.gif') scroll -10px 0 no-repeat;
+  padding: 3px 0 0 0;
+}
+
+#ds-trail li, #ds-trail li a {
+  color: #FFFFFF;
+}
+
+#ds-trail li a:hover {
+  text-decoration: none;
+}
+
+#ds-user-box {
+  right: 0;
+  top: 10px;
+  position: absolute;
+  color: #3D3D3D;
+}
+
+#ds-user-box a{
+  color: #3D3D3D;
+}
+
+
+/* Footer 
+-----------------------------------------------------------------------------*/
 
 #ds-footer-left {
   width: 50%;
