@@ -4,8 +4,18 @@
  * Customizations to Mirage base theme for RiverRun, UNB's instance of DSpace.
  */
  
- /* RiverRun header
- -----------------------------------------------------------------------------*/
+/* Primary styles
+-----------------------------------------------------------------------------*/
+
+a, a:active, a:visited { color: #545454; }
+a:hover { color: #545454; text-decoration: none; }
+
+
+h1 { color: #922F19; }
+
+ 
+/* RiverRun header
+-----------------------------------------------------------------------------*/
 
 #ds-header-wrapper {
   background-color: #E1E1E1;
@@ -46,10 +56,6 @@
   color: #FFFFFF;
 }
 
-#ds-trail li a:hover {
-  text-decoration: none;
-}
-
 #ds-user-box {
   right: 0;
   top: 10px;
@@ -64,6 +70,10 @@
 
 /* Footer 
 -----------------------------------------------------------------------------*/
+
+#ds-footer {
+  border-top: 1px solid #999999;
+}  
 
 #ds-footer-left {
   width: 50%;
@@ -101,9 +111,23 @@
 }
 
  
-/* Front-page news, read from {dspace}/config/news-xmlui.xml */
+/* Front-page news, read from {dspace}/config/news-xmlui.xml
+  @fixme: id should be a generic class for images in news feed
+-----------------------------------------------------------------------------*/
 #frontpage-news #sparc-addendum img {
   float: right;
+}
+
+/* Artifact Browser
+-----------------------------------------------------------------------------*/
+
+/* Remove light blue underline from coll. / comm. / item headings */
+div.simple-item-view-authors,                                     /* Item author(s) */
+#aspect_artifactbrowser_ItemViewer_div_item-view h2,              /* Item headings */
+div.simple-item-view-description h3,                              /* Item description */
+#aspect_artifactbrowser_CommunityViewer_div_community-home h2,    /* community headings */
+#aspect_artifactbrowser_CollectionViewer_div_collection-home h2 { /* collection headings */
+  border-bottom: 1px solid #CCCCCC;
 }
 
 /* Communities / collections tree expander
