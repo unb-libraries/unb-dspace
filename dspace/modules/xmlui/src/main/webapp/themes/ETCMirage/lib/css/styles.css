@@ -56,6 +56,10 @@ h1 { color: #922F19; }
   color: #FFFFFF;
 }
 
+#ds-trail li.last-link a {
+  text-decoration: none;
+}
+
 #ds-user-box {
   right: 0;
   top: 10px;
@@ -108,6 +112,26 @@ h1 { color: #922F19; }
   background: url('../../images/unb-libraries-logo.gif');
   width: 225px;
   height: 38px;
+}
+
+/* Sidebar options boxes
+-----------------------------------------------------------------------------*/
+
+h1.ds-option-set-head {
+  background-color: transparent;
+  border-color: #7C2411;
+  border-width: 1px; 1px medium;
+  border-style: solid none none solid;
+}
+
+div.ds-option-set {
+  border-color: #7C2411;
+  border-width: 1px; 1px medium;
+  border-style: none none none solid;
+}
+
+ul.ds-options-list li h2.ds-sublist-head {
+  font-weight: bold;
 }
 
  
