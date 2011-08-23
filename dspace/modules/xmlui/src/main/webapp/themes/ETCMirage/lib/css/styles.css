@@ -215,3 +215,15 @@ div#aspect_artifactbrowser_CommunityBrowser_div_comunity-browser  .tree-slug {
   border: 1px solid #7C2411;
   color: #FFFFFF;
 }
+
+ul.ds-progress-list li.current input.ds-button-field, #aspect_eperson_StartRegistration_list_registration-progress li.current {
+  background-color: #666666;
+  border: 1px solid #333333;
+}
+
+ul.ds-progress-list li.disabled input.ds-button-field, #aspect_eperson_StartRegistration_list_registration-progress li.disabled {
+  background-color: #ECECEC;
+  border: 1px solid #CCCCCC;
+  color: #878787;  
+}
+
