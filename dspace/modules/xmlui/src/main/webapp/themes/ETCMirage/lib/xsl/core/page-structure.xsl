@@ -255,7 +255,6 @@
             <xsl:value-of select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='contextPath'][not(@qualifier)]"/>
             <xsl:text>/</xsl:text>
           </xsl:attribute>
-          <span id="ds-header-logo">&#160;</span>
           <span id="ds-header-logo-text">RiverRun</span>
         </a>
         

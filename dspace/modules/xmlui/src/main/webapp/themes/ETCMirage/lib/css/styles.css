@@ -3,8 +3,81 @@
  *
  * Customizations to Mirage base theme for RiverRun, UNB's instance of DSpace.
  */
+ 
+/* Primary styles
+-----------------------------------------------------------------------------*/
 
-/* Primary styles */
+a, a:active, a:visited { color: #545454; }
+a:hover { color: #545454; text-decoration: none; }
+
+
+h1 { color: #922F19; }
+
+ 
+/* RiverRun header
+-----------------------------------------------------------------------------*/
+
+#ds-header-wrapper {
+  background-color: #E1E1E1;
+}
+
+#ds-header {
+  background: #E1E1E1 url('../../images/header-bg.gif') scroll -10px 0 no-repeat;
+  height: 73px;
+}
+
+#ds-header-logo-text {
+  /* undo Mirage styles */
+ float: none;
+ font-size: normal;
+ font-weight: normal;
+ line-height: normal;
+ 
+ /* Shove title text out past the margin */
+ display: block;
+ height: 70px;
+ width: 250px;
+ text-indent: -9999px;
+}
+
+#ds-trail-wrapper {
+  background: transparent url('../../images/navtrail-wrapper-bg.gif') scroll 0 0 repeat-x;  
+  border-top: none;
+  border-bottom: 1px solid #999999;
+  height: 31px;  
+}
+
+#ds-trail {
+  background: transparent url('../../images/navtrail-bg.gif') scroll -10px 0 no-repeat;
+  padding: 3px 0 0 0;
+}
+
+#ds-trail li, #ds-trail li a {
+  color: #FFFFFF;
+}
+
+#ds-trail li.last-link a {
+  text-decoration: none;
+}
+
+#ds-user-box {
+  right: 0;
+  top: 10px;
+  position: absolute;
+  color: #3D3D3D;
+}
+
+#ds-user-box a{
+  color: #3D3D3D;
+}
+
+
+/* Footer 
+-----------------------------------------------------------------------------*/
+
+#ds-footer {
+  border-top: 1px solid #999999;
+}  
 
 #ds-footer-left {
   width: 50%;
@@ -41,10 +114,44 @@
   height: 38px;
 }
 
+/* Sidebar options boxes
+-----------------------------------------------------------------------------*/
+
+h1.ds-option-set-head {
+  background-color: transparent;
+  border-color: #7C2411;
+  border-width: 1px; 1px medium;
+  border-style: solid none none solid;
+}
+
+div.ds-option-set {
+  border-color: #7C2411;
+  border-width: 1px; 1px medium;
+  border-style: none none none solid;
+}
+
+ul.ds-options-list li h2.ds-sublist-head {
+  font-weight: bold;
+}
+
  
-/* Front-page news, read from {dspace}/config/news-xmlui.xml */
+/* Front-page news, read from {dspace}/config/news-xmlui.xml
+  @fixme: id should be a generic class for images in news feed
+-----------------------------------------------------------------------------*/
 #frontpage-news #sparc-addendum img {
   float: right;
+}
+
+/* Artifact Browser
+-----------------------------------------------------------------------------*/
+
+/* Remove light blue underline from coll. / comm. / item headings */
+div.simple-item-view-authors,                                     /* Item author(s) */
+#aspect_artifactbrowser_ItemViewer_div_item-view h2,              /* Item headings */
+div.simple-item-view-description h3,                              /* Item description */
+#aspect_artifactbrowser_CommunityViewer_div_community-home h2,    /* community headings */
+#aspect_artifactbrowser_CollectionViewer_div_collection-home h2 { /* collection headings */
+  border-bottom: 1px solid #CCCCCC;
 }
 
 /* Communities / collections tree expander
@@ -101,3 +208,10 @@ div#aspect_artifactbrowser_CommunityBrowser_div_comunity-browser  .tree-slug {
 	background-position: -18px 0;
 }
 
+/* Form elements
+-----------------------------------------------------------------------------*/
+.ds-button-field, #aspect_eperson_StartRegistration_list_registration-progress li {
+  background-color: #AC4934;
+  border: 1px solid #7C2411;
+  color: #FFFFFF;
+}
