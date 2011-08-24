@@ -154,6 +154,27 @@ div.simple-item-view-description h3,                              /* Item descri
   border-bottom: 1px solid #CCCCCC;
 }
 
+
+/* Static content generated from DRI
+-----------------------------------------------------------------------------*/
+#ds-static-help > .ds-static-div { margin-bottom: 40px; }
+
+h2.ds-div-head { margin: 15px 0; border-bottom: 1px solid #CCCCCC; }
+h3.ds-div-head { margin: 15px 0 5px; font-size: 100%; }
+
+.ds-static-div ul.ds-simple-list { margin-bottom: 10px; }
+.ds-static-div ul.ds-simple-list li { margin: 0 0 10px; }
+
+/* 
+  @todo: why has Mirage theme turned off list style for <ol>?
+  Reset style here, only, for now.
+*/
+.ds-static-div ol.ds-ordered-list { list-style-type: decimal; }
+.ds-static-div ol.ds-ordered-list li { margin: 0 0 10px 30px; }
+
+
+span.ds-rend-italic { font-style: italic; }
+
 /* Communities / collections tree expander
 -----------------------------------------------------------------------------*/
 div#aspect_artifactbrowser_CommunityBrowser_div_comunity-browser > ul {
