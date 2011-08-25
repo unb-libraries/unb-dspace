@@ -13,7 +13,12 @@ a:hover { color: #545454; text-decoration: none; }
 
 h1 { color: #922F19; }
 
- 
+*::-moz-selection {
+    background: none repeat scroll 0 0 #787878;
+    color: #FFFFFF;
+    text-shadow: none;
+}
+
 /* RiverRun header
 -----------------------------------------------------------------------------*/
 
@@ -44,7 +49,7 @@ h1 { color: #922F19; }
   background: transparent url('../../images/navtrail-wrapper-bg.gif') scroll 0 0 repeat-x;  
   border-top: none;
   border-bottom: 1px solid #999999;
-  height: 31px;  
+  height: 31px;
 }
 
 #ds-trail {
@@ -256,3 +261,46 @@ ul.ds-progress-list li.disabled input.ds-button-field, #aspect_eperson_StartRegi
   color: #878787;  
 }
 
+textarea.ds-textarea-field:focus, input.ds-text-field:focus, input.input.ds-password-field:focus {
+  border-color: #333333;
+}
+
+.rgba.boxshadow textarea.ds-textarea-field:focus, .rgba.boxshadow input.ds-text-field:focus, .rgba.boxshadow input.ds-password-field:focus {
+  border-color: rgba(51, 51, 51, 0.75);
+  box-shadow: 0 0 8px rgba(51, 51, 51, 0.5);
+  outline: medium none;
+}
+
+/* Submissions
+-----------------------------------------------------------------------------*/
+.submission h2, .ds-form-list legend {
+  color: #922F19;
+}
+
+/* Administration 
+-----------------------------------------------------------------------------*/
+
+/* Control panel */
+.administrative.tabbed ul.horizontal {
+  border-bottom: 1px solid #999999;
+}
+
+.administrative.tabbed ul.horizontal li {
+  border-color: #999999 #999999 -moz-use-text-color;
+}
+
+.pane {
+  background-color: #FAFAFA;
+  border: 1px solid #999999;
+}
+
+/* Pagination
+-----------------------------------------------------------------------------*/
+
+.current-page-link {
+  color: #545454;
+}
+
+.current-page-link a {
+  color: #545454;
+}
