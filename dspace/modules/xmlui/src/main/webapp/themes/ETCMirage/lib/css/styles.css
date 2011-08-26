@@ -138,10 +138,11 @@ ul.ds-options-list li h2.ds-sublist-head {
 
  
 /* Front-page news, read from {dspace}/config/news-xmlui.xml
-  @fixme: id should be a generic class for images in news feed
+  @fixme: replace id with generic class for images in news feed
+  @fixme better: don't embed the image, make it a background.
 -----------------------------------------------------------------------------*/
 #frontpage-news #sparc-addendum img {
-  float: right;
+  float: left;
 }
 
 /* Artifact Browser
