@@ -55,11 +55,16 @@ function init_tree() {
 		return false;
 	});
 	
+	// Add class to the first child <ul> of the community / collection list, because:
+	// * IE6 doesn't support CSS2 > or :first-child
+	// * IE7 only provides static support for :first-child
+	$('div#aspect_artifactbrowser_CommunityBrowser_div_comunity-browser > ul:first').addClass('tree');
+	
 	// Add class to first <li> in first level of tree
-	$('div#aspect_artifactbrowser_CommunityBrowser_div_comunity-browser > ul > li:first').addClass('first');
+	// @fixme $('div#aspect_artifactbrowser_CommunityBrowser_div_comunity-browser > ul > li:first').addClass('first');
 	
 	// Add class for last <li>.
-	$('div#aspect_artifactbrowser_CommunityBrowser_div_comunity-browser > ul li:last-child').addClass('last');
+	$('div#aspect_artifactbrowser_CommunityBrowser_div_comunity-browser ul li:last-child').addClass('last');
 
 	// Change state of trigger.
 	$('ul.tree-expanded').parent('li').children('a').first().addClass('tree-trigger-expanded');

@@ -13,11 +13,8 @@ a:hover { color: #545454; text-decoration: none; }
 
 h1 { color: #922F19; }
 
-*::-moz-selection {
-    background: none repeat scroll 0 0 #787878;
-    color: #FFFFFF;
-    text-shadow: none;
-}
+*::-moz-selection { background: #787878; color: #FFFFFF; text-shadow: none; }
+*::selection      { background: #787878; color: #FFFFFF; text-shadow: none; }
 
 /* RiverRun header
 -----------------------------------------------------------------------------*/
@@ -170,6 +167,7 @@ div.simple-item-view-description h3,                              /* Item descri
 
 /* Static content generated from DRI
 -----------------------------------------------------------------------------*/
+/* @fixme: first child selector does not work in IE6 */
 #ds-static-help > .ds-static-div { margin-bottom: 40px; }
 
 #ds-static-help h2.ds-div-head { margin: 15px 0; border-bottom: 1px solid #CCCCCC; }
@@ -190,35 +188,36 @@ span.ds-rend-italic { font-style: italic; }
 
 /* Communities / collections tree expander
 -----------------------------------------------------------------------------*/
-div#aspect_artifactbrowser_CommunityBrowser_div_comunity-browser > ul {
+div#aspect_artifactbrowser_CommunityBrowser_div_comunity-browser ul.tree {
 	clear: both;
 	margin: 0 0 20px;
 }
 
 div#aspect_artifactbrowser_CommunityBrowser_div_comunity-browser ul {
-	background: url('../../images/grey_line.gif') repeat-y;
+	background: transparent url('../../images/grey_line.gif') repeat-y;
 }
 
-div#aspect_artifactbrowser_CommunityBrowser_div_comunity-browser > ul ul {
+div#aspect_artifactbrowser_CommunityBrowser_div_comunity-browser ul.tree ul {
 	margin: -4px 0 0 4px;
 	padding: 5px 0 0;
 }
 
-div#aspect_artifactbrowser_CommunityBrowser_div_comunity-browser li {
-	background: url('../../images/tree_li.gif') no-repeat 0 11px;
+div#aspect_artifactbrowser_CommunityBrowser_div_comunity-browser ul li {
+	background: transparent url('../../images/tree_li.gif') no-repeat 0 11px;
 	clear: both;
 	list-style: none;
 	padding: 5px 0 0 10px;
 }
 
+/*
 div#aspect_artifactbrowser_CommunityBrowser_div_comunity-browser > ul li.first {
   padding-top: 0;	
   background: url("../../images/tree_li_first.gif") no-repeat scroll 0 -1px transparent;
 }
+*/
 
-div#aspect_artifactbrowser_CommunityBrowser_div_comunity-browser > ul li.last,
-div#aspect_artifactbrowser_CommunityBrowser_div_comunity-browser > ul li:last-child {
-	background: #fff url('../../images/tree_li_last.gif') no-repeat 0 -481px;
+div#aspect_artifactbrowser_CommunityBrowser_div_comunity-browser ul li.last {
+	background: #FFFFFF url('../../images/tree_li_last.gif') no-repeat 0 -481px;  
 }
 
 div#aspect_artifactbrowser_CommunityBrowser_div_comunity-browser .tree-trigger,
