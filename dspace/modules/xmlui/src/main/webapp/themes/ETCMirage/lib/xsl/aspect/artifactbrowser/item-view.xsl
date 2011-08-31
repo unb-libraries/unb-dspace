@@ -87,7 +87,7 @@
 			</xsl:when>
 
 			<!-- Author(s) row -->
-			<xsl:when
+			<xsl:when 
 				test="$clause = 2 and (dim:field[@element='contributor'][@qualifier='author'] or dim:field[@element='creator'] or dim:field[@element='contributor'])">
 				<div class="simple-item-view-authors">
 					<xsl:choose>
@@ -158,9 +158,48 @@
 					<xsl:with-param name="phase" select="$otherPhase"/>
 				</xsl:call-template>
 			</xsl:when>
+			
+      <!-- Published version (DOI) -->
+      <xsl:when test="$clause = 4 and (dim:field[@element='identifier' and @qualifier='doi'])">
+        <div class="simple-item-view-other">
+          <span class="bold"><i18n:text>xmlui.ETCRiverRun.METS-1.0.item-doi</i18n:text>:</span>
+          <span>
+						<xsl:for-each select="dim:field[@element='identifier' and @qualifier='doi']">
+						  <!-- DOI(s) may have been entered as URLs. Sort out which. -->
+						  <xsl:choose>
+                <xsl:when test="starts-with(node(), 'http://')">
+                  <!-- assume DOI has been entered as a URL -->
+                  <a>
+                    <xsl:attribute name="href">
+                      <xsl:value-of select="node()"/>
+                    </xsl:attribute>
+                    <xsl:value-of select="substring-after(node(),'http://dx.doi.org/')"/>
+                  </a>
+                </xsl:when>
+                <xsl:otherwise>
+                  <!-- assume value is a plain DOI -->
+                  <a>
+                    <xsl:attribute name="href">
+                      <xsl:value-of select="concat('http://dx.doi.org/', node())"/>
+                    </xsl:attribute>
+                    <xsl:value-of select="node()"/>
+                  </a>
+                </xsl:otherwise>
+						  </xsl:choose>
+							<xsl:if test="count(following-sibling::dim:field[@element='identifier' and @qualifier='doi']) != 0">
+								<br/>
+							</xsl:if>
+						</xsl:for-each>
+					</span>
+        </div>
+        <xsl:call-template name="itemSummaryView-DIM-fields">
+					<xsl:with-param name="clause" select="($clause + 1)"/>
+					<xsl:with-param name="phase" select="$otherPhase"/>
+				</xsl:call-template>
+			</xsl:when>
 
 			<!-- date.issued row -->
-			<xsl:when test="$clause = 4 and (dim:field[@element='date' and @qualifier='issued'])">
+			<xsl:when test="$clause = 5 and (dim:field[@element='date' and @qualifier='issued'])">
 				<div class="simple-item-view-other">
 					<span class="bold"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-date</i18n:text>:</span>
 					<span>
@@ -178,9 +217,28 @@
 					<xsl:with-param name="phase" select="$otherPhase"/>
 				</xsl:call-template>
 			</xsl:when>
+			
+      <!-- Citation -->
+      <xsl:when test="$clause = 6 and (dim:field[@element='identifier' and @qualifier='citation'])">
+        <div class="simple-item-view-other">
+          <span class="bold"><i18n:text>xmlui.ETCRiverRun.METS-1.0.item-citation</i18n:text>:</span>
+          <span>
+            <xsl:for-each select="dim:field[@element='identifier' and @qualifier='citation']">
+              <xsl:copy-of select="./node()"/>
+              <xsl:if test="count(following-sibling::dim:field[@element='identifier' and @qualifier='citation']) != 0">
+                <br/>
+              </xsl:if>
+						</xsl:for-each>
+          </span>
+        </div>
+        <xsl:call-template name="itemSummaryView-DIM-fields">
+					<xsl:with-param name="clause" select="($clause + 1)"/>
+					<xsl:with-param name="phase" select="$otherPhase"/>
+				</xsl:call-template>
+			</xsl:when>
 
 			<!-- full-record toggle -->
-			<xsl:when test="$clause = 5 and $ds_item_view_toggle_url != ''">
+			<xsl:when test="$clause = 7 and $ds_item_view_toggle_url != ''">
 				<p class="ds-paragraph item-view-toggle item-view-toggle-bottom">
 					<a>
 						<xsl:attribute name="href">
@@ -200,7 +258,7 @@
 				Modified to fix https://jira.duraspace.org/browse/DS-967, reported in
 				DSpace 1.7.1
 			-->
-			<xsl:when test="$clause = 6 and (dim:field[@element='description' and @qualifier='abstract' and descendant::text()])">
+			<xsl:when test="$clause = 8 and (dim:field[@element='description' and @qualifier='abstract' and descendant::text()])">
 				<div class="simple-item-view-description">
 					<h3><i18n:text>xmlui.dri2xhtml.METS-1.0.item-abstract</i18n:text>:</h3>
 					<div>
@@ -226,7 +284,7 @@
 			</xsl:when>
 
 			<!-- Description row -->
-			<xsl:when test="$clause = 7 and (dim:field[@element='description' and not(@qualifier)])">
+			<xsl:when test="$clause = 9 and (dim:field[@element='description' and not(@qualifier)])">
 				<div class="simple-item-view-description">
 					<h3 class="bold"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-description</i18n:text>:</h3>
 					<div>
@@ -255,7 +313,7 @@
 			<!-- recurse without changing phase if we didn't output anything -->
 			<xsl:otherwise>
 				<!-- IMPORTANT: This test should be updated if clauses are added! -->
-				<xsl:if test="$clause &lt; 8">
+				<xsl:if test="$clause &lt; 10">
 					<xsl:call-template name="itemSummaryView-DIM-fields">
 						<xsl:with-param name="clause" select="($clause + 1)"/>
 						<xsl:with-param name="phase" select="$phase"/>
