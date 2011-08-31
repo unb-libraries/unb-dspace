@@ -11,7 +11,7 @@ a, a:active, a:visited { color: #545454; }
 a:hover { color: #545454; text-decoration: none; }
 
 
-h1 { color: #922F19; }
+h1 { color: #922F19; text-align: left; }
 
 *::-moz-selection { background: #787878; color: #FFFFFF; text-shadow: none; }
 *::selection      { background: #787878; color: #FFFFFF; text-shadow: none; }
@@ -164,6 +164,16 @@ div.simple-item-view-description h3,                              /* Item descri
 #ca_unb_lib_riverrun_app_xmlui_aspect_artifactbrowser_CommunityRecentSubmissions_p_community-view-browse-all-items,
 #ca_unb_lib_riverrun_app_xmlui_aspect_artifactbrowser_CollectionRecentSubmissions_p_collection-view-browse-all-items {
   margin: 15px 0;
+}
+
+/* ? */
+div.item-summary-view-metadata h1 {
+  line-height: 116%;
+}
+
+/* item summary view: inncrease top margin on author field */
+div.simple-item-view-authors {
+  margin: 10px 0 20px;
 }
 
 /* item summary view: shrink line height & remove justification from abstract */
