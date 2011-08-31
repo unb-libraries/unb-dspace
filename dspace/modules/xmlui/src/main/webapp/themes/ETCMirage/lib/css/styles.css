@@ -169,7 +169,7 @@ div.simple-item-view-description h3,                              /* Item descri
 /* -- Item summary view -- */
 
 /* remove full justification from metdata fields */
-div.item-summary-view {
+div.item-summary-view-metadata {
   text-align: left;
 }
 /* increase line height of item titles */
