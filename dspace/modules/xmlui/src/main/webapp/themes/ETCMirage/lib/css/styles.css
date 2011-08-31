@@ -166,10 +166,17 @@ div.simple-item-view-description h3,                              /* Item descri
   margin: 15px 0;
 }
 
+/* Shrink line height in detail view */
+table.detailtable tr {
+  line-height: 1.3em;
+}
+
+
 /* Remove full justification from table cells in detail item view */
 table.detailtable td {
   text-align: left;
 }
+
 
 /* Static content generated from DRI
 -----------------------------------------------------------------------------*/
