@@ -11,7 +11,7 @@ a, a:active, a:visited { color: #545454; }
 a:hover { color: #545454; text-decoration: none; }
 
 
-h1 { color: #922F19; }
+h1 { color: #922F19; text-align: left; }
 
 *::-moz-selection { background: #787878; color: #FFFFFF; text-shadow: none; }
 *::selection      { background: #787878; color: #FFFFFF; text-shadow: none; }
@@ -166,10 +166,32 @@ div.simple-item-view-description h3,                              /* Item descri
   margin: 15px 0;
 }
 
-/* Remove full justification from table cells in detail item view */
+/* ? */
+div.item-summary-view-metadata h1 {
+  line-height: 116%;
+}
+
+/* item summary view: inncrease top margin on author field */
+div.simple-item-view-authors {
+  margin: 10px 0 20px;
+}
+
+/* item summary view: shrink line height & remove justification from abstract */
+div.simple-item-view-description div {
+  line-height: 1.3em;
+  text-align: left;
+}
+
+/* item detail view: shrink line height in metadata table */
+table.detailtable tr {
+  line-height: 1.3em;
+}
+
+/* item detail view: remove full justification from metadata table cells */
 table.detailtable td {
   text-align: left;
 }
+
 
 /* Static content generated from DRI
 -----------------------------------------------------------------------------*/
