@@ -166,13 +166,18 @@ div.simple-item-view-description h3,                              /* Item descri
   margin: 15px 0;
 }
 
-/* Shrink line height in detail view */
+/* item summary view: shrink line height & remove justification from abstract */
+div.simple-item-view-description div {
+  line-height: 1.3em;
+  text-align: left;
+}
+
+/* item detail view: shrink line height in metadata table */
 table.detailtable tr {
   line-height: 1.3em;
 }
 
-
-/* Remove full justification from table cells in detail item view */
+/* item detail view: remove full justification from metadata table cells */
 table.detailtable td {
   text-align: left;
 }

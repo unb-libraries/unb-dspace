@@ -179,12 +179,28 @@
 				</xsl:call-template>
 			</xsl:when>
 
+			<!-- full-record toggle -->
+			<xsl:when test="$clause = 5 and $ds_item_view_toggle_url != ''">
+				<p class="ds-paragraph item-view-toggle item-view-toggle-bottom">
+					<a>
+						<xsl:attribute name="href">
+							<xsl:value-of select="$ds_item_view_toggle_url"/>
+						</xsl:attribute>
+						<i18n:text>xmlui.ArtifactBrowser.ItemViewer.show_full</i18n:text>
+					</a>
+				</p>
+				<xsl:call-template name="itemSummaryView-DIM-fields">
+					<xsl:with-param name="clause" select="($clause + 1)"/>
+					<xsl:with-param name="phase" select="$otherPhase"/>
+				</xsl:call-template>
+			</xsl:when>
+
 			<!-- Abstract row -->
 			<!-- 
 				Modified to fix https://jira.duraspace.org/browse/DS-967, reported in
 				DSpace 1.7.1
 			-->
-			<xsl:when test="$clause = 5 and (dim:field[@element='description' and @qualifier='abstract']) and normalize-space(node())">
+			<xsl:when test="$clause = 6 and (dim:field[@element='description' and @qualifier='abstract' and descendant::text()])">
 				<div class="simple-item-view-description">
 					<h3><i18n:text>xmlui.dri2xhtml.METS-1.0.item-abstract</i18n:text>:</h3>
 					<div>
@@ -210,7 +226,7 @@
 			</xsl:when>
 
 			<!-- Description row -->
-			<xsl:when test="$clause = 6 and (dim:field[@element='description' and not(@qualifier)])">
+			<xsl:when test="$clause = 7 and (dim:field[@element='description' and not(@qualifier)])">
 				<div class="simple-item-view-description">
 					<h3 class="bold"><i18n:text>xmlui.dri2xhtml.METS-1.0.item-description</i18n:text>:</h3>
 					<div>
@@ -234,17 +250,6 @@
 					<xsl:with-param name="clause" select="($clause + 1)"/>
 					<xsl:with-param name="phase" select="$otherPhase"/>
 				</xsl:call-template>
-			</xsl:when>
-
-			<xsl:when test="$clause = 7 and $ds_item_view_toggle_url != ''">
-				<p class="ds-paragraph item-view-toggle item-view-toggle-bottom">
-					<a>
-						<xsl:attribute name="href">
-							<xsl:value-of select="$ds_item_view_toggle_url"/>
-						</xsl:attribute>
-						<i18n:text>xmlui.ArtifactBrowser.ItemViewer.show_full</i18n:text>
-					</a>
-				</p>
 			</xsl:when>
 
 			<!-- recurse without changing phase if we didn't output anything -->
