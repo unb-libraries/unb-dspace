@@ -5,6 +5,10 @@
 		resulting from 	https://jira.duraspace.org/browse/DS-967, "Item view in
 		Mirage theme generates self-closing <div/> when abstract is empty."
 		
+	* Modifies itemSummaryView-DIM, itemDetailView-DIM to check for the existence
+	 	of bitstreams, rather than bundles, when generating an item's file list
+	 	(otherwise, empty CONTENT/ORIGINAL bundles cause broken layouts)
+		
 	* Modifies itemSummaryView-DIM-fields to output a COinS object before 
 	  tiem title
 	  
@@ -14,6 +18,8 @@
 	* Adds a named template, dimField, that generates a row of metadata in the
 		table presented on detailed item view. dimField can be invoked with modified
 	  content from matching templates, as needed.
+	
+
 -->
 <xsl:stylesheet xmlns:i18n="http://apache.org/cocoon/i18n/2.1"
 	xmlns:dri="http://di.tamu.edu/DRI/1.0/" xmlns:mets="http://www.loc.gov/METS/"
@@ -26,6 +32,48 @@
 	exclude-result-prefixes="xalan encoder i18n dri mets dim  xlink xsl">
 
 	<xsl:output indent="yes"/>
+	
+	<xsl:template name="itemSummaryView-DIM">
+		<!-- Generate the info about the item from the metadata section -->
+		<xsl:apply-templates 
+			select="./mets:dmdSec/mets:mdWrap[@OTHERMDTYPE='DIM']/mets:xmlData/dim:dim" mode="itemSummaryView-DIM"/>
+
+		<!-- Generate the bitstream information from the file section -->
+		<xsl:choose>
+			<xsl:when test="./mets:fileSec/mets:fileGrp[@USE='CONTENT' or @USE='ORIGINAL']/mets:file">
+				<xsl:apply-templates select="./mets:fileSec/mets:fileGrp[@USE='CONTENT' or @USE='ORIGINAL']">
+					<xsl:with-param name="context" select="."/>
+					<xsl:with-param name="primaryBitstream" select="./mets:structMap[@TYPE='LOGICAL']/mets:div[@TYPE='DSpace Item']/mets:fptr/@FILEID"/>
+				</xsl:apply-templates>
+			</xsl:when>
+			
+			<!-- Special case for handling ORE resource maps stored as DSpace bitstreams -->
+			<xsl:when test="./mets:fileSec/mets:fileGrp[@USE='ORE']">
+				<xsl:apply-templates select="./mets:fileSec/mets:fileGrp[@USE='ORE']"/>
+			</xsl:when>
+		
+			<xsl:otherwise>
+				<h2><i18n:text>xmlui.dri2xhtml.METS-1.0.item-files-head</i18n:text></h2>
+				<table class="ds-table file-list">
+				<tr class="ds-table-header-row">
+				   <th><i18n:text>xmlui.dri2xhtml.METS-1.0.item-files-file</i18n:text></th>
+				   <th><i18n:text>xmlui.dri2xhtml.METS-1.0.item-files-size</i18n:text></th>
+				   <th><i18n:text>xmlui.dri2xhtml.METS-1.0.item-files-format</i18n:text></th>
+				   <th><i18n:text>xmlui.dri2xhtml.METS-1.0.item-files-view</i18n:text></th>
+				</tr>
+				<tr>
+				   <td colspan="4">
+				       <p><i18n:text>xmlui.dri2xhtml.METS-1.0.item-no-files</i18n:text></p>
+				   </td>
+				</tr>
+				</table>
+			</xsl:otherwise>
+		</xsl:choose>
+
+		<!-- Generate the Creative Commons license information from the file section (DSpace deposit license hidden by default)-->
+		<xsl:apply-templates select="./mets:fileSec/mets:fileGrp[@USE='CC-LICENSE']"/>
+
+    </xsl:template>
 
 	<xsl:template name="itemSummaryView-DIM-fields">
 		<xsl:param name="clause" select="'1'"/>
@@ -332,6 +380,50 @@
 			<xsl:apply-templates mode="itemDetailView-DIM"/>
 		</table>
 	</xsl:template>
+	
+	<!-- An item rendered in the detailView pattern, the "full item record" view of a DSpace item in Manakin. -->
+    <xsl:template name="itemDetailView-DIM">
+        <!-- Output all of the metadata about the item from the metadata section -->
+        <xsl:apply-templates select="mets:dmdSec/mets:mdWrap[@OTHERMDTYPE='DIM']/mets:xmlData/dim:dim"
+            mode="itemDetailView-DIM"/>
+
+		<!-- Generate the bitstream information from the file section -->
+        <xsl:choose>
+            <xsl:when test="./mets:fileSec/mets:fileGrp[@USE='CONTENT' or @USE='ORIGINAL']/mets:file">
+                <xsl:apply-templates select="./mets:fileSec/mets:fileGrp[@USE='CONTENT' or @USE='ORIGINAL']">
+                    <xsl:with-param name="context" select="."/>
+                    <xsl:with-param name="primaryBitstream" select="./mets:structMap[@TYPE='LOGICAL']/mets:div[@TYPE='DSpace Item']/mets:fptr/@FILEID"/>
+                </xsl:apply-templates>
+            </xsl:when>
+
+            <!-- Special case for handling ORE resource maps stored as DSpace bitstreams -->
+            <xsl:when test="./mets:fileSec/mets:fileGrp[@USE='ORE']">
+                <xsl:apply-templates select="./mets:fileSec/mets:fileGrp[@USE='ORE']"/>
+            </xsl:when>
+
+            <xsl:otherwise>
+                <h2><i18n:text>xmlui.dri2xhtml.METS-1.0.item-files-head</i18n:text></h2>
+                <table class="ds-table file-list">
+                    <tr class="ds-table-header-row">
+                        <th><i18n:text>xmlui.dri2xhtml.METS-1.0.item-files-file</i18n:text></th>
+                        <th><i18n:text>xmlui.dri2xhtml.METS-1.0.item-files-size</i18n:text></th>
+                        <th><i18n:text>xmlui.dri2xhtml.METS-1.0.item-files-format</i18n:text></th>
+                        <th><i18n:text>xmlui.dri2xhtml.METS-1.0.item-files-view</i18n:text></th>
+                    </tr>
+                    <tr>
+                        <td colspan="4">
+                            <p><i18n:text>xmlui.dri2xhtml.METS-1.0.item-no-files</i18n:text></p>
+                        </td>
+                    </tr>
+                </table>
+            </xsl:otherwise>
+        </xsl:choose>
+
+
+        <!-- Generate the Creative Commons license information from the file section (DSpace deposit license hidden by default) -->
+        <xsl:apply-templates select="mets:fileSec/mets:fileGrp[@USE='CC-LICENSE']"/>
+
+    </xsl:template>
 	
 	<!-- 
 		dimField
