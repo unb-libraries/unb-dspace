@@ -47,6 +47,9 @@
         <!-- Default is 12, but set to zero to turn off community-list caching in development installs -->
         <default.xmlui.community-list.cache>12 hours</default.xmlui.community-list.cache>
         
+        <!-- Google Analytics key -->
+        <default.xmlui.google.analytics.key>UA-00000000-0</default.xmlui.google.analytics.key>
+        
         <!-- 
           Tomcat Manager username & password: see riverrun/src/main/config/tomcat-manager.xml
         -->
