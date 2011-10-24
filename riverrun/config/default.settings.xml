@@ -19,6 +19,9 @@
         <!-- Installation settings -->
         <default.install.dir>/opt/dspace</default.install.dir>
         
+        <!-- DSpace host name: should match base URL.  Do not include port number. -->
+        <default.hostname>localhost</default.hostname>
+        
         <!-- DSpace base URL: include port number, etc. -->
         <default.baseurl>http://localhost:8080</default.baseurl>
         
