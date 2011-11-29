@@ -16,6 +16,16 @@
  <form-map>
    <name-map collection-handle="default" form-name="traditional" />
    <name-map collection-handle="1882/1497" form-name="SeniorReports" />
+   
+    <!-- 
+      The input form for ETDs assumes values for the following elements are 
+      provided by the collection's metadata template:
+        * dc.publisher
+        * dc.type
+      Do not add a collection handle below without editing the collection's 
+      template.
+    -->
+    <name-map collection-handle="1882/39" form-name="etd-form"/>
  </form-map>
 
 
@@ -396,20 +406,103 @@ it, please enter the types and the actual numbers or codes below.</hint>
      </page>-->
    </form>
    
-   <form name="one">
-     <page number="1">
-       <field>
-		 <dc-schema>dc</dc-schema>
-         <dc-element>contributor</dc-element>
-         <dc-qualifier>author</dc-qualifier>
-         <repeatable>true</repeatable>
-         <label>One: Authors</label>
-                 <input-type>name</input-type>
-         <hint>Enter the names of the authors of this item below.</hint>
-         <required></required>
-       </field>
-      </page>
-    </form>
+   <!-- Input form for ETDs -->
+  <form name="etd-form">
+    <page number="1">
+      <field>
+        <dc-schema>dc</dc-schema>
+        <dc-element>contributor</dc-element>
+        <dc-qualifier>author</dc-qualifier>
+        <repeatable>true</repeatable>
+        <label>Authors</label>
+        <input-type>name</input-type>
+        <hint>Enter the names of the authors of this item below, in the same order as in the print version</hint>
+        <required></required>
+      </field>
+      <field>
+        <dc-schema>dc</dc-schema>
+        <dc-element>contributor</dc-element>
+        <dc-qualifier>other</dc-qualifier>
+        <repeatable>false</repeatable>
+        <label>Faculty</label>
+        <input-type>onebox</input-type>
+        <hint>Enter "University of New Brunswick," and the name of the faculty for which the publication was prepared</hint>
+        <required></required>
+      </field>
+      <field>
+        <dc-schema>dc</dc-schema>
+        <dc-element>title</dc-element>
+        <dc-qualifier></dc-qualifier>
+        <repeatable>false</repeatable>
+        <label>Title</label>
+        <input-type>onebox</input-type>
+        <hint>*This is a mandatory field.* Enter the main title of the item.</hint>
+        <required>You must enter a main title for this item.</required>
+      </field>
+      <field>
+        <dc-schema>dc</dc-schema>
+        <dc-element>date</dc-element>
+        <dc-qualifier>issued</dc-qualifier>
+        <repeatable>false</repeatable>
+        <label>Date Submitted</label>
+        <input-type>date</input-type>
+        <hint>Please give the date the thesis or dissertation was submitted.  
+          You can leave out the day and/or month if they aren't applicable.</hint>
+        <required>You must enter at least the year.</required>
+      </field>
+      <field>
+       <dc-schema>dc</dc-schema>
+        <dc-element>publisher</dc-element>
+        <dc-qualifier></dc-qualifier>
+        <repeatable>false</repeatable>
+        <label>Publisher</label>
+        <input-type value-pairs-name="etd-publishers">dropdown</input-type>
+        <hint>Select the publisher of the item.</hint>
+        <required>Publisher is required.</required>
+      </field>
+      <field>
+        <dc-schema>dc</dc-schema>
+        <dc-element>format</dc-element>
+        <dc-qualifier>extent</dc-qualifier>
+        <repeatable>false</repeatable>
+        <label>Extent</label>
+        <input-type>onebox</input-type>
+        <hint> Enter the number of pages. For example: iv, 196</hint>
+        <required></required>
+      </field>
+      <field>
+        <dc-schema>dc</dc-schema>
+        <dc-element>language</dc-element>
+        <dc-qualifier>iso</dc-qualifier>
+        <repeatable>false</repeatable>
+        <label>Language</label>
+        <input-type value-pairs-name="common_iso_languages">dropdown</input-type>
+        <hint>Select the language of the main content of the item.  If the language does not appear in the list below, please select 'Other'.  If the content does not really have a language (for example, if it is a dataset or an image) please select 'N/A'.</hint>
+        <required></required>
+      </field>
+      <field>
+       <dc-schema>dc</dc-schema>
+        <dc-element>type</dc-element>
+        <dc-qualifier></dc-qualifier>
+        <repeatable>false</repeatable>
+        <label>Type</label>
+        <input-type value-pairs-name="etd-types">dropdown</input-type>
+        <hint>Select the type of the item.</hint>
+        <required>Type is required.</required>
+      </field>
+      <field>
+        <dc-schema>dc</dc-schema>
+        <dc-element>description</dc-element>
+        <dc-qualifier>abstract</dc-qualifier>
+        <repeatable>false</repeatable>
+        <label>Abstract</label>
+        <input-type>textarea</input-type>
+        <hint> Enter the abstract of the item. </hint>
+        <required></required>
+      </field>
+    </page>
+  </form>   
+   
  </form-definitions>
 
 
@@ -613,6 +706,24 @@ it, please enter the types and the actual numbers or codes below.</hint>
        <stored-value>Dept. of Mechanical Engineering</stored-value>
      </pair>
    </value-pairs>
+   
+     <value-pairs value-pairs-name="etd-publishers" dc-term="publisher">
+       <pair>
+         <displayed-value>Fredericton: University of New Brunswick</displayed-value>
+ 	<stored-value>Fredericton: University of New Brunswick</stored-value>
+       </pair>
+       <pair>
+         <displayed-value>Saint John: University of New Brunswick</displayed-value>
+ 	<stored-value>Saint John: University of New Brunswick</stored-value>
+       </pair>
+     </value-pairs>
+
+     <value-pairs value-pairs-name="etd-types" dc-term="type">
+      <pair>
+        <displayed-value>Thesis or Dissertation</displayed-value>
+        <stored-value>Thesis or Dissertation</stored-value>
+      </pair>
+     </value-pairs>
 
     </form-value-pairs>
 

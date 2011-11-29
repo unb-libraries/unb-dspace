@@ -19,6 +19,9 @@
  <submission-map>
    <name-map collection-handle="default" submission-name="traditional" />
    <name-map collection-handle="1882/1497" submission-name="SeniorReports" />
+   
+   <!-- Modified submission process for ETDs. -->
+   <name-map collection-handle="1882/39" submission-name="etd-submission"/>
  </submission-map>
 
 
@@ -271,6 +274,56 @@
      <!--This submission workflow does not include license sign-off-->
      
    </submission-process>
+   
+   <!-- 
+    Item submission for ETDs:
+      * Skip initial questions
+      * Describe the item
+      * Upload the item 
+      * Verify/review
+      * Grant license
+    -->
+  <submission-process name="etd-submission">
+    <step>
+      <processing-class>org.dspace.submit.step.SkipInitialQuestionsStep</processing-class>
+    </step>
+
+    <!--Step 1: describe the item-->
+    <step>
+      <heading>submit.progressbar.describe</heading>
+      <processing-class>org.dspace.submit.step.DescribeStep</processing-class>
+      <jspui-binding>org.dspace.app.webui.submit.step.JSPDescribeStep</jspui-binding>
+      <xmlui-binding>org.dspace.app.xmlui.aspect.submission.submit.DescribeStep</xmlui-binding>
+      <workflow-editable>true</workflow-editable>
+    </step>
+
+    <!--Step 2: upload one or more files -->
+    <step>
+      <heading>submit.progressbar.upload</heading>
+      <processing-class>org.dspace.submit.step.UploadStep</processing-class>
+      <jspui-binding>org.dspace.app.webui.submit.step.JSPUploadStep</jspui-binding>
+      <xmlui-binding>org.dspace.app.xmlui.aspect.submission.submit.UploadStep</xmlui-binding>
+      <workflow-editable>true</workflow-editable>
+    </step>
+
+    <!--Step 3: verify/review -->
+    <step>
+      <heading>submit.progressbar.verify</heading>
+      <processing-class>org.dspace.submit.step.VerifyStep</processing-class>
+      <jspui-binding>org.dspace.app.webui.submit.step.JSPVerifyStep</jspui-binding>
+      <xmlui-binding>org.dspace.app.xmlui.aspect.submission.submit.ReviewStep</xmlui-binding>
+      <workflow-editable>true</workflow-editable>
+    </step>
+
+    <!--Step 4: grant license -->
+    <step>
+      <heading>submit.progressbar.license</heading>
+      <processing-class>org.dspace.submit.step.LicenseStep</processing-class>
+      <jspui-binding>org.dspace.app.webui.submit.step.JSPLicenseStep</jspui-binding>
+      <xmlui-binding>org.dspace.app.xmlui.aspect.submission.submit.LicenseStep</xmlui-binding>
+      <workflow-editable>false</workflow-editable>
+    </step>
+  </submission-process>
    
  </submission-definitions>
 
