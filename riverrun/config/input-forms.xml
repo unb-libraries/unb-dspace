@@ -18,12 +18,7 @@
    <name-map collection-handle="1882/1497" form-name="SeniorReports" />
    
     <!-- 
-      The input form for ETDs assumes values for the following elements are 
-      provided by the collection's metadata template:
-        * dc.publisher
-        * dc.type
-      Do not add a collection handle below without editing the collection's 
-      template.
+      Modified input form for ETDs
     -->
     <name-map collection-handle="1882/39" form-name="etd-form"/>
  </form-map>
