@@ -417,6 +417,16 @@ it, please enter the types and the actual numbers or codes below.</hint>
       <field>
         <dc-schema>dc</dc-schema>
         <dc-element>contributor</dc-element>
+        <dc-qualifier>advisor</dc-qualifier>
+        <repeatable>true</repeatable>
+        <label>Supervisor</label>
+        <input-type>name</input-type>
+        <hint>Enter the names of the supervisor(s) of this item below, in the same order as in the print version</hint>
+        <required></required>
+      </field>      
+      <field>
+        <dc-schema>dc</dc-schema>
+        <dc-element>contributor</dc-element>
         <dc-qualifier>other</dc-qualifier>
         <repeatable>false</repeatable>
         <label>Faculty</label>
