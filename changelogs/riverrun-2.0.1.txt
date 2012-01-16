@@ -1,0 +1,132 @@
+commit cf71de8ba5ca6d0be8ada7548cd25edb9ba016be
+Author: Jen Whitney <jen.j.whitney@gmail.com>
+Date:   Mon Jan 16 10:00:40 2012 -0400
+
+    Add Supervisor(s) to ETD submission process.
+    
+    Add repeatable text input for supervisor name(s) to ETD input form, mapped to
+    dc.contributor.advisor.  Adjust help text for first-names field for all forms.
+    
+    Fixes #79.
+
+commit 449fa54c2f59275b20ac0592414a5d3c2ccaec03
+Author: Jen Whitney <jen.j.whitney@gmail.com>
+Date:   Wed Jan 11 14:02:50 2012 -0400
+
+    Add new subclass of org.dspace.content.crosswalk.QDCCrosswalk
+    
+    Overrides preferList() method to return FALSE so QDC metadata is returned inside
+    root element in an OAI response.
+    
+    Fixes #78.
+
+commit 89740cbbc306a9872cffad4cc3ec5fd7a9202af2
+Author: Jen Whitney <jen.j.whitney@gmail.com>
+Date:   Wed Dec 14 15:46:33 2011 -0400
+
+    Provide QDC over OAI-PMH
+    
+    Add RiverRun-specific DSpace-to-QDC mapping to
+    riverrun/config/crosswalks/QDC.properties. Enable dissemination of QDC metadata
+    over OAI in riverrun/config/oaicat.properties.
+    
+    Fixes #77.
+
+commit 4b41b89b4464ca0a0a4b0a01b4055ac3459db376
+Author: Jen Whitney <jen.j.whitney@gmail.com>
+Date:   Tue Nov 29 16:44:39 2011 -0400
+
+    Fix outdated comment: ETD input forms no longer rely on metadata values defined
+    in collection template.  See #76.
+
+commit 4c93d9f8455b1755a6920bae9a73111be6ce8527
+Author: Jen Whitney <jen.j.whitney@gmail.com>
+Date:   Tue Nov 29 16:31:04 2011 -0400
+
+    Add custom item submission process and input form for ETDs.
+    
+    Fixes #76.
+
+commit a692096f4301802f514626927ea41a413cc95034
+Author: Jen Whitney <jen.j.whitney@gmail.com>
+Date:   Wed Nov 16 14:32:22 2011 -0400
+
+    Improve page load times for community list
+    
+    Configure XMLUI to render minimal metadata for community / collection browse
+    list. Adjust Javascript in collapser/expander utility to hook into modified HTML
+    delivered to browse list by ETCMirage theme.
+    
+    Fixes #75.
+
+commit 1a5552ef6ccd51882eb532016dd6845a55c10a70
+Author: Jen Whitney <jen.j.whitney@gmail.com>
+Date:   Thu Oct 27 15:03:44 2011 -0300
+
+    Fix path to Mirage's authority control CSS file defined in ETCMirage theme's
+    sitemap.
+    
+    Fixes #74.
+
+commit 1320d6714dc06309ec4c2801ff56f6261c8bf578
+Author: Jen Whitney <jen.j.whitney@gmail.com>
+Date:   Thu Oct 27 12:36:32 2011 -0300
+
+    Use recommended settings to filter spiders from Solr stats queries
+    
+    Use the 'isBot' flag instead of a giant list of IPs to filter spider-generated
+    usage events from Solr stats.
+    
+    Fixes #73.
+
+commit 91fcb8a86d673444d3bb7d786753da10c5a09328
+Author: Jen Whitney <jen.j.whitney@gmail.com>
+Date:   Mon Oct 24 16:04:37 2011 -0300
+
+    Add Maven-configurable host name to DSpace config
+    
+    Update RiverRun version of dspace.cfg to allow host name to be configured in
+    user's Maven settings. Add a default value to default.settings.xml Maven
+    settings file.
+    
+    Fixes #72.
+
+commit f940feb9e4e6e1ca367fa1639b9bfa8712205563
+Author: Jen Whitney <jen.j.whitney@gmail.com>
+Date:   Mon Oct 24 15:42:02 2011 -0300
+
+    Include LDAP authentication in DSpace config file
+    
+    Add LDAP authentication to the stack of authentication methods defined in
+    RiverRun version of dspace.cfg.  Fixes #71.
+
+commit 94d6e6a5dd2e198309de3da3921130518920198d
+Author: Jen Whitney <jen.j.whitney@gmail.com>
+Date:   Fri Oct 21 15:17:41 2011 -0300
+
+    Add Google Analytics key to Maven settings file
+    
+    Allow GA key to be configured in user's Maven settings file.  Add default setting
+    to config/default.settings.xml and adjust config/dspace.cfg to fetch value from
+    Maven settings.  Fixes #65.
+
+commit 1df53958c09954f0521b0cfd3ae16db8c51a2390
+Author: Jen Whitney <jen.j.whitney@gmail.com>
+Date:   Fri Oct 21 15:05:39 2011 -0300
+
+    Revert canonical handle prefix
+    
+    Fixes #70. The handle prefix configuration was set to
+    http://dspace.hil.unb.ca:8080/xmlui/handle during the upgrade to DSpace 1.7.
+    Revert to http://hdl.handle.net.
+
+commit a1eb0c200fd77f742304be25e1cb73e769bacfba
+Author: Jen Whitney <jen.j.whitney@gmail.com>
+Date:   Thu Sep 22 16:10:26 2011 -0300
+
+    Fix broken layout in item view when item has an empty bitstream bundle
+    
+    Mirage theme checks for existence of bitstream bundles, rather than bitstreams,
+    before generating file list on item view. This generates incomplete HTML & a
+    broken layout for items with an empty bundle. Added test to file list section for
+    existence of bitstreams within CONTENT & ORIGINAL bundles.
