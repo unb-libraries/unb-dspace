@@ -1,0 +1,29 @@
+commit 0adf374ee6c57fc68fbf65ee1c3e2326cc0c79b8
+Author: Jen Whitney <jen.j.whitney@gmail.com>
+Date:   Mon Jan 30 11:16:49 2012 -0400
+
+    Can't load feedback form
+    
+    Fix typo in RiverRun-flavoured DSpace config file to refer to build
+    paramter ${default.hostname} instead of ${dspace.localhost}.
+    
+    Fixes #82.
+
+commit 84a865cdcb771ac5faefca1521da495bd673355f
+Author: Jen Whitney <jen.j.whitney@gmail.com>
+Date:   Mon Jan 30 11:06:58 2012 -0400
+
+    Fix typo in news feed.
+    
+    Fixes #83.
+
+commit b4d2700f3f7751ea715f30f88fbb1854c2d133cf
+Author: Jen Whitney <jen.j.whitney@gmail.com>
+Date:   Fri Jan 20 14:12:55 2012 -0400
+
+    Customize QDC crosswalk
+    
+    Map DIM dc.contributor.author to QDC dc:contributor; map DIM
+    dc.contributor.author to QDC dc:creator.
+    
+    Fixes #81.
