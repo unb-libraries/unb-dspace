@@ -351,10 +351,14 @@ public class ETDMSDisseminationCrosswalk extends SelfNamedPlugin
          * 
          * @todo remove these; crosswalks shouldn't create metadata
          */
-        // Get, or instantiate, a Set for 'identifier' metadata values
+        // Get, or instantiate, a Set for 'identifier' and 'format' metadata values
         Set<String> identifierSet = etdms2qdc.get("identifier");
         if (identifierSet == null) {
             identifierSet = new HashSet<String>();
+        }
+        Set<String> formatSet = etdms2qdc.get("format");
+        if (formatSet == null) {
+            formatSet = new HashSet<String>();
         }
 
         // Add Theses Canada unique ID, if ID prefix has been configured
@@ -365,14 +369,25 @@ public class ETDMSDisseminationCrosswalk extends SelfNamedPlugin
             }
         }
 
-        // Try to identify the thesis document for this item
-        String documentURL = getPrimaryBitstreamURL(item);
-        if (documentURL != null && !documentURL.isEmpty()) {
-            identifierSet.add(documentURL);
+        // Try to identify the primary bitstream for this item
+        Bitstream primaryBitstream = getPrimaryBitstream(item);
+        if (primaryBitstream != null) {
+            // Hack together a direct URL to the document
+            identifierSet.add(
+                    ConfigurationManager.getProperty("dspace.url") +
+                    "/bitstream/" +
+                    item.getHandle() + "/" +
+                    primaryBitstream.getSequenceID() + "/" +
+                    primaryBitstream.getName()
+                    );
+
+            // Add document MIME type.
+            formatSet.add(primaryBitstream.getFormat().getMIMEType());
         }
 
-        // Put the identifier set back in the ETDMS-to-DC hash map
+        // Put the identifier & format sets back in the ETDMS-to-DC hash map
         etdms2qdc.put("identifier", identifierSet);
+        etdms2qdc.put("format", formatSet);
 
         // Use the ordered list of ETDMS elements to build response from ETDMS-to-QDC map
         List result = new ArrayList(dc.length);
@@ -452,7 +467,7 @@ public class ETDMSDisseminationCrosswalk extends SelfNamedPlugin
     }
     
     /**
-     * Theses Canada, Synergies identifer: primary bitstream URL
+     * Try to identify item's primary bitstream
      *
      * Bitstreams in the ORIGINAL bundle are examined for filenames ending in
      * PDF. The first matching filename is assumed to be the primary document
@@ -466,9 +481,7 @@ public class ETDMSDisseminationCrosswalk extends SelfNamedPlugin
      * the MIME type & extent information, (possibly) used by this crosswalk,
      * that's fetched from item-level metadata. Awesome.
      */
-    private String getPrimaryBitstreamURL(Item item) {
-        String bitstreamURL = null;
-
+    private Bitstream getPrimaryBitstream(Item item) {
         // Examine bitstream bundles: look for ORIGINAL bundle
         Bundle originalBundle = null;
         try {
@@ -495,20 +508,13 @@ public class ETDMSDisseminationCrosswalk extends SelfNamedPlugin
                 Matcher m = p.matcher(bitstream.getName());
 
                 if (m.matches()) {
-                    // Build a URL, of questionable utility, to bitstream...
-                    bitstreamURL =
-                            ConfigurationManager.getProperty("dspace.url") +
-                            "/bitstream/" +
-                            item.getHandle() + "/" +
-                            bitstream.getSequenceID() + "/" +
-                            bitstream.getName();
-                    break;
+                    return bitstream;
                 }
             }
         }
 
-        // Return bitstream URL or null if not found.
-        return bitstreamURL;
+        // Not found? Return null.
+        return null;
     }
 
 }
