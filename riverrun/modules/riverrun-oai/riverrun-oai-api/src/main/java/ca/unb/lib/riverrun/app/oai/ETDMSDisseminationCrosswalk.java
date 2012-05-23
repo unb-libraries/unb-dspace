@@ -94,11 +94,24 @@ public class ETDMSDisseminationCrosswalk extends SelfNamedPlugin
     /** log4j category */
     private static Logger log = Logger.getLogger(ETDMSDisseminationCrosswalk.class);
 
-    // map of qdc to etdms
+    // map of qdc elements to etdms elements
     private Map<String, Set<String>> qdc2etdms = new HashMap<String, Set<String>>();
 
-    // List of elments nested under 'degree'
-    private static final List<String> degreeChildren = Arrays.asList(new String[] {"name", "level", "discipline", "grantor"});
+    // Ordered list of top-level ETDMS elements
+    private static final List<String> etdmsElements = Arrays.asList(new String[] {
+        "title", "alternativeTitle", "creator", "subject", "description",
+        "publisher", "contributor", "date", "type", "format", "identifier",
+        "language", "coverage", "rights"
+    });
+
+    // Some of the top-level elements are required. If mapped but item has no
+    // value, add empty elements for the following:
+    private static final List<String> requiredElements = Arrays.asList(new String[] {
+        "title", "creator", "subject", "type", "identifier"
+    });
+
+    // Ordered list of elments nested under 'degree', the final element in the response
+    private static final List<String> degreeElements = Arrays.asList(new String[] {"name", "level", "discipline", "grantor"});
 
     // the XML namespaces from config file for this name.
     private Namespace namespaces[] = null;
@@ -107,7 +120,7 @@ public class ETDMSDisseminationCrosswalk extends SelfNamedPlugin
     private static final Namespace ETDMS_NS =
             Namespace.getNamespace("oai_etdms", "http://www.ndltd.org/standards/metadata/etdms/1.0/");
 
-    // sentinal: done init?
+    // sentinel: done init?
     private boolean inited = false;
 
     // my plugin name
@@ -296,128 +309,134 @@ public class ETDMSDisseminationCrosswalk extends SelfNamedPlugin
         Item item = (Item) dso;
         init();
 
+        // Reverse the mapping: store list of QDC values indexed by ETDMS element
+        Map<String, Set<String>> etdms2qdc = new HashMap<String, Set<String>>();
+
+        // loop through DC values & stored those mapped to ETDMS in reverse Map.
         DCValue[] dc = item.getMetadata(Item.ANY, Item.ANY, Item.ANY, Item.ANY);
-
-        // Most elements added directly to list
-        List result = new ArrayList(dc.length);
-
-        // ... but some added as children of degree element
-        Element degreeElement = new Element("degree");
-        
-
         for (int i = 0; i < dc.length; i++) {
             // Compose qualified DC name - schema.element[.qualifier]
             // e.g. "dc.title", "dc.subject.lcc", "lom.Classification.Keyword"
-
             String qdc = dc[i].schema + "."
                     + ((dc[i].qualifier == null) ? dc[i].element
                     : (dc[i].element + "." + dc[i].qualifier));
 
+            // Get set of ETDMS elements to which QDC element has been mapped.
             Set<String> etdmsSet = qdc2etdms.get(qdc);
 
+            // If the current QDC element has been mapped to ETDMS elements,
+            // reverse the mapping: store this QDC *value* (and possibly others)
+            // in a Set indexed by the ETDMS element name.
             if (etdmsSet != null) {
-                Iterator iterator = etdmsSet.iterator();
-                while (iterator.hasNext()) {
-                    String etdmsString = (String) iterator.next();
-                    Element etdmsElement = new Element(etdmsString.trim());
-
-                    etdmsElement.addContent(dc[i].value);
-                    if (addSchema) {
-                        etdmsElement.setAttribute("schemaLocation", schemaLocation, XSI_NS);
+                // Loop through the ETDMS elements
+                for (Iterator<String> iter = etdmsSet.iterator(); iter.hasNext();) {
+                    // Get the Set of QDC values for this ETDMS element
+                    String etdmsElement = iter.next().trim();
+                    Set<String> tmp = etdms2qdc.get(etdmsElement);
+                    if (tmp == null) {
+                        tmp = new HashSet<String>();
                     }
 
-                    if (degreeChildren.contains(etdmsElement.getName()))
-                        degreeElement.addContent(etdmsElement);
-                    else
-                        result.add(etdmsElement);
+                    // Add QDC value to Set & store back in ETDMS-to-QDC map
+                    tmp.add(dc[i].value);
+                    etdms2qdc.put(etdmsElement, tmp);
                 }
-
             }
-
         }
 
-        // Add degree element, empty or not
-        result.add(degreeElement);
+        /**
+         * Add Theses Canada identifiers:
+         * Theses Canada unique ID
+         * Thesis document URL: primary bitstream URL
+         * 
+         * @todo remove these; crosswalks shouldn't create metadata
+         */
+        // Get, or instantiate, a Set for 'identifier' and 'format' metadata values
+        Set<String> identifierSet = etdms2qdc.get("identifier");
+        if (identifierSet == null) {
+            identifierSet = new HashSet<String>();
+        }
+        Set<String> formatSet = etdms2qdc.get("format");
+        if (formatSet == null) {
+            formatSet = new HashSet<String>();
+        }
 
-
-        // Theses Canada identifier
-        // @todo remove TC ID generation; crosswalks shouldn't create metadata
-        // If we don't have a ThesesCanada prefix, skip this mess altogether.
-        if (thesesCanadaId != null && (! thesesCanadaId.isEmpty())) {
+        // Add Theses Canada unique ID, if ID prefix has been configured
+        if (thesesCanadaId != null && (!thesesCanadaId.isEmpty())) {
             String handle = item.getHandle();
             if (handle != null) {
-                Element tcElement = new Element("identifier");
-                tcElement.addContent(thesesCanadaId + "-" + handle.substring(handle.lastIndexOf("/") + 1));
+                identifierSet.add(thesesCanadaId + "-" + handle.substring(handle.lastIndexOf("/") + 1));
+            }
+        }
+
+        // Try to identify the primary bitstream for this item
+        Bitstream primaryBitstream = getPrimaryBitstream(item);
+        if (primaryBitstream != null) {
+            // Hack together a direct URL to the document
+            identifierSet.add(
+                    ConfigurationManager.getProperty("dspace.url") +
+                    "/bitstream/" +
+                    item.getHandle() + "/" +
+                    primaryBitstream.getSequenceID() + "/" +
+                    primaryBitstream.getName()
+                    );
+
+            // Add document MIME type.
+            formatSet.add(primaryBitstream.getFormat().getMIMEType());
+        }
+
+        // Put the identifier & format sets back in the ETDMS-to-DC hash map
+        etdms2qdc.put("identifier", identifierSet);
+        etdms2qdc.put("format", formatSet);
+
+        // Use the ordered list of ETDMS elements to build response from ETDMS-to-QDC map
+        List result = new ArrayList(dc.length);
+        
+        for (Iterator<String> iter = etdmsElements.iterator(); iter.hasNext(); ) {
+            String etdmsName = iter.next();
+            Set<String> qdcSet = etdms2qdc.get(etdmsName);
+
+            if (qdcSet == null && requiredElements.contains(etdmsName)) {
+                // add an empty element, if element is required
+                Element etdmsElement = new Element(etdmsName);
                 if (addSchema) {
-                    tcElement.setAttribute("schemaLocation", schemaLocation, XSI_NS);
+                    etdmsElement.setAttribute("schemaLocation", schemaLocation, XSI_NS);
                 }
-                result.add(tcElement);
+                result.add(etdmsElement);
+                continue;
             }
-        }
-        // end TC ID hack
 
-        // Theses Canada, Synergies identifer: primary bitstream URL
-        //
-        // @fixme: bitstreams are examined for filenames ending in PDF.
-        // The first matching filename is assumed to be the primary
-        // document for the item & an 'identifier' element is created
-        // with a URL to the document.
-        //
-        // Needless to say, this is too rough to be reliable, but is
-        // more or less echoed from the U. Man. class -- it's no more
-        // broken than it was.
-        //
-        // Also, the file identified in this bitstream may or may not
-        // correspond to the MIME type & extent information, (possibly)
-        // used by this crosswalk, that's fetched from item-level
-        // metadata.
-        //
-        // Needs to be fixed or removed: see Bugzilla #32
-
-        // Get bundles of bitstreams
-        Bundle[] bundles = item.getBundles();
-        List<Bundle> bundleList = Arrays.asList(bundles);
-        Iterator i = bundleList.iterator();
-
-        // Look for ORIGINAL bundle
-        Bundle originalBundle = null;
-        while (i.hasNext()) {
-            Bundle bundle = (Bundle) i.next();
-            if (bundle.getName().equalsIgnoreCase("ORIGINAL")) {
-                originalBundle = bundle;
-                break;
-            }
-        }
-
-        // Found it.
-        if (originalBundle != null) {
-            Bitstream[] bitstreams = originalBundle.getBitstreams();
-            List<Bitstream> bitstreamList = Arrays.asList(bitstreams);
-            /*Iterator*/ i = bitstreamList.iterator();
-
-            Pattern p = Pattern.compile(".+\\.(?i)pdf\\s*$");
-
-            while (i.hasNext()) {
-                Bitstream bitstream = (Bitstream) i.next();
-                Matcher m = p.matcher(bitstream.getName());
-
-                if (m.matches()) {
-                    // Build a URL, of questionable utility, to bitstream...
-                    String bitstreamURL =
-                            ConfigurationManager.getProperty("dspace.url") +
-                            "/bitstream/" +
-                            item.getHandle() + "/" +
-                            bitstream.getSequenceID() + "/" +
-                            bitstream.getName();
-
-                    Element bsElement = new Element("identifier");
-                    bsElement.addContent(bitstreamURL);
-                    result.add(bsElement);
+            if (qdcSet != null) {
+                for (Iterator<String> qdcIter = qdcSet.iterator(); qdcIter.hasNext(); ) {
+                    Element etdmsElement = new Element(etdmsName);
+                    etdmsElement.addContent(qdcIter.next());
+                     if (addSchema) {
+                        etdmsElement.setAttribute("schemaLocation", schemaLocation, XSI_NS);
+                    }
+                    result.add(etdmsElement);
                 }
             }
         }
-        // end Theses Canada, Synergies bitstream URL hack.
-        // We now return to scheduled programming.
+
+        // Repeat the above, for sub-elements of 'degree'. All sub-elements are optional.
+        Element degreeElement = new Element("degree");
+        for (Iterator<String> iter = degreeElements.iterator(); iter.hasNext();) {
+            String etdmsName = iter.next();
+            Set<String> qdcSet = etdms2qdc.get(etdmsName);
+
+            // Shouldn't be null...
+            if (qdcSet != null) {
+                for (Iterator<String> qdcIter = qdcSet.iterator(); qdcIter.hasNext(); ) {
+                    Element etdmsElement = new Element(etdmsName);
+                    etdmsElement.addContent(qdcIter.next());
+                     if (addSchema) {
+                        etdmsElement.setAttribute("schemaLocation", schemaLocation, XSI_NS);
+                    }
+                    degreeElement.addContent(etdmsElement);
+                }
+            }
+        }
+        result.add(degreeElement);
 
         // Return the list
         return result;
@@ -446,4 +465,56 @@ public class ETDMSDisseminationCrosswalk extends SelfNamedPlugin
     public boolean preferList() {
         return false;
     }
+    
+    /**
+     * Try to identify item's primary bitstream
+     *
+     * Bitstreams in the ORIGINAL bundle are examined for filenames ending in
+     * PDF. The first matching filename is assumed to be the primary document
+     * for the item & an 'identifier' element is created with a URL to the
+     * document.
+     *
+     * Needless to say, this is too rough to be reliable, but is more or less
+     * echoed from the U. Man. class -- it's no more broken than it was.
+     *
+     * Also, the file identified in this bitstream may or may not correspond to
+     * the MIME type & extent information, (possibly) used by this crosswalk,
+     * that's fetched from item-level metadata. Awesome.
+     */
+    private Bitstream getPrimaryBitstream(Item item) {
+        // Examine bitstream bundles: look for ORIGINAL bundle
+        Bundle originalBundle = null;
+        try {
+            List<Bundle> bundleList = Arrays.asList(item.getBundles());
+            for (Iterator<Bundle> i = bundleList.iterator(); i.hasNext();) {
+                Bundle bundle = i.next();
+                if (bundle.getName().equalsIgnoreCase("ORIGINAL")) {
+                    originalBundle = bundle;
+                    break;
+                }
+            }
+        }
+        catch (SQLException sqlex) {
+            log.warn("Failed to fetch item bundles", sqlex);
+        }
+
+        // If ORIGINAL bundle found, look for a PDF bitstream
+        if (originalBundle != null) {
+            Pattern p = Pattern.compile(".+\\.(?i)pdf\\s*$");
+            List<Bitstream> bitstreamList = Arrays.asList(originalBundle.getBitstreams());
+            
+            for (Iterator<Bitstream> i = bitstreamList.iterator(); i.hasNext(); ) {
+                Bitstream bitstream = i.next();
+                Matcher m = p.matcher(bitstream.getName());
+
+                if (m.matches()) {
+                    return bitstream;
+                }
+            }
+        }
+
+        // Not found? Return null.
+        return null;
+    }
+
 }
