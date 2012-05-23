@@ -41,8 +41,8 @@ office;</item>
         </div>
         <div>
           <head>Whom should I contact about <hi rend="ds-rend-italic">RiverRun</hi>? </head>
-          <p>The repository is managed by <xref target="mailto:gsallen@unb.ca?Subject=RiverRun%20Question">Geoffrey Allen</xref>,
-Digital Projects Librarian, Electronic Text Centre (506) 447-3250. You can also contact
+          <p>The repository is managed by <xref target="mailto:ecmoore@unb.ca?Subject=RiverRun%20Question">Erik Moore</xref>,
+Electronic Text Centre, (506) 452 6202. You can also contact
 your UNB faculty liaison librarian for assistance if you wish. For more information
 about the Electronic Thesis and Dissertations program please visit the School of
 Graduate Studies <xref target="http://www.unb.ca/etd/">ETD page</xref>. </p>
@@ -88,7 +88,7 @@ now deceased a minimum of 50 years). </p>
 UNB community, members of a research committee, etc.) Restricted access can be for an
 indefinite period, or set as an embargo for a given time (12 months, for example) to
 meet publishers' or funders' agreements. For more information on restricting
-access to items in your collection, please contact <xref target="mailto:gsallen@unb.ca?Subject=RiverRun%20Question">Geoffrey Allen</xref>. </p>
+access to items in your collection, please contact <xref target="mailto:ecmoore@unb.ca?Subject=RiverRun%20Question">Erik Moore</xref>. </p>
         </div>
       </div>
       <!-- end section "Ownership, Copyright, and Permissions" -->
@@ -101,8 +101,7 @@ access to items in your collection, please contact <xref target="mailto:gsallen@
           <p>The Electronic Text Centre is committed to developing <hi rend="ds-rend-italic">RiverRun</hi>
 as a representative citation database for all faculty members at UNB. We will continue
 to build the citation listings by department over time. If you would like to provide a
-complete listing of recent publications to <xref target="mailto:gsallen@unb.ca?Subject=RiverRun%20Collection%20Update">Geoffrey
-Allen</xref> at the ETC, we will work to ensure that your citation list is as complete
+complete listing of recent publications to <xref target="mailto:ecmoore@unb.ca?Subject=RiverRun%20Collection%20Update">Erik Moore</xref> at the ETC, we will work to ensure that your citation list is as complete
 and accurate as possible. Please notify us if you see errors in the data listed in your
 faculty collection. </p>
           <p>All faculty members are provided with administrative control over their own collection,
@@ -177,7 +176,7 @@ appears in print. </p>
         <div>
           <head>Can I get additional help building a collection?</head>
           <p>The ETC is happy to assist with the building of a collection. Beyond building the
-citation lists, <xref target="mailto:gsallen@unb.ca?Subject=RiverRun%20Question">upon
+citation lists, <xref target="mailto:ecmoore@unb.ca?Subject=RiverRun%20Question">upon
 request</xref> we will: </p>
           <list type="unordered">
             <item>upload items of your behalf,</item>
@@ -221,7 +220,7 @@ into the collection using the same UNB ID and password that they use for all oth
 campus technical services.</p>
           <p>Any user may also <xref target="http://dspace.hil.unb.ca:8080/register">register for an
 account</xref> for the collection. Permissions for non-UNB users must be negotiated by
-contacting the repository manager, <xref target="mailto:gsallen@unb.ca?Subject=RiverRun%20Question">Geoffrey Allen</xref>.</p>
+contacting the repository manager, <xref target="mailto:ecmoore@unb.ca?Subject=RiverRun%20Question">Erik Moore</xref>.</p>
         </div>
       </div>
       <!-- end section "Using RiverRun" -->
@@ -238,7 +237,6 @@ contacting the repository manager, <xref target="mailto:gsallen@unb.ca?Subject=R
 
 &lt;meta name="copyright" content="Copyright University of New Brunswick Libraries 2011" xml:lang="en" /&gt;&#13;
 &lt;meta name="dc.title" content="RiverRun Help" xml:lang="en" /&gt;&#13;
-&lt;meta name="dc.creator" content="Geoffrey Allen" xml:lang="en" /&gt;&#13;
 &lt;meta name="dc.subject" content="RiverRun, Institutional Repository, University of New Brunswick" xml:lang="en" /&gt;&#13;
 &lt;meta name="dc.description" content="Frequently Asked Questions for RiverRun, the Institutional Repository for the University of New Brunswick" xml:lang="en" /&gt;&#13;
 &lt;meta name="dc.publisher" content="University of New Brunswick Libraries" xml:lang="en" /&gt;&#13;
