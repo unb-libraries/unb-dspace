@@ -107,7 +107,7 @@ Add module as a dependency in `[dspace-src]/dspace/modules/pom.xml`:
 
 Set up config values specific to your development environment with the default Maven profile defined in `settings.xml.default`.  
 
-`cp [git-repos]/unb-dspace/dspace/config/settings.xml.default $HOME/.m2/settings.xml`
+`cp [git-repos]/unb-dspace/riverrun/config/default.settings.xml $HOME/.m2/settings.xml`
 
 Edit properties defined in `$HOME/.m2/settings.xml`.  To use the settings in the build:
 
